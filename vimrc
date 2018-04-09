@@ -56,6 +56,7 @@ au BufNewFile,BufRead *.js setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.php setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.hpp setlocal expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead Jenkinsfile setf groovy
 
 " XMLの対応カッコ移動
 source $VIMRUNTIME/macros/matchit.vim
