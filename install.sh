@@ -8,5 +8,5 @@ fi
 mkdir -p /home/vagrant/.vim/colors
 vim +'PlugInstall --sync' +qa
 
-curl https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
-curl https://github.com/git/git/blob/master/contrib/completion/git-completion.bash > ~/.git-compeletion.bash
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-compeletion.bash
