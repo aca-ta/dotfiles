@@ -224,6 +224,9 @@ else
     
 fi
 GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUPSTREAM=true
+GIT_PS1_SHOWUNTRACKEDFILES=
+GIT_PS1_SHOWSTASHSTATE=true
 PS1='\[\e[32m\][\u \t \[\e[32m\]\W]\[\e[0m$(__git_ps1)\]\$ '
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
