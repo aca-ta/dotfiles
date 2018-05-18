@@ -1,11 +1,21 @@
 #!/bin/bash
 
-set_symlink() {
+set_symlinks() {
 
-  local file=${1}
-  
-  rm -f ${HOME}/.${file}
-  ln -s $(pwd)/etc/${file} ~/.${file}
+  for file in $(ls ./etc)
+  do
+    rm -f ${HOME}/.${file}
+    ln -s $(pwd)/etc/${file} ~/.${file}
+  done
+}
+
+
+fetch_git_completions(){
+
+  curl -fLo ${HOME}/.git-prompt.sh \
+      https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+  curl -fLo ${HOME}/.git-completion.bash \
+      https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 }
 
 
@@ -22,19 +32,8 @@ install_vim_plugins(){
 }
 
 
-fetch_git_completions(){
-
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ${HOME}/.git-prompt.sh
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ${HOME}/.git-completion.bash
-}
-
-
-for file in $(ls ./etc)
-do
-  set_symlink ${file}
-done
-
-install_vim_plugins
+set_symlinks
 fetch_git_completions
+install_vim_plugins
 
 source ${HOME}/.bashrc 
