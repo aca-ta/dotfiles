@@ -211,16 +211,16 @@
 
 
 ##me
-if [ -f ./.git-prompt.sh ]; then
-    source ./.git-prompt.sh
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
 else
-    echo "./.git-prompt.sh does not exist"
+    echo "~/.git-prompt.sh does not exist"
     echo `$HOME`
 fi
-if [ -f ./.git-completion.bash ]; then
-    source ./.git-completion.bash
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
 else
-    echo "./.git-completion.bash does not exist"
+    echo "~/.git-completion.bash does not exist"
     
 fi
 GIT_PS1_SHOWDIRTYSTATE=true
