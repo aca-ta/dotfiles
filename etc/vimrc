@@ -73,7 +73,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'tomasr/molokai', {'do': 'cp colors/* ~/.vim/colors/'}
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -104,8 +103,6 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_cpp_cpplint_exec = 'cpplint'
-" ctrlp
-let g:ctrlp_show_hidden = 1
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'new-tab'

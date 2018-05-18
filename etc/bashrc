@@ -1,0 +1,53 @@
+## tmux
+[[ "$-" != *i* ]] && return
+[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
+    [[ -n "$ATTACH_ONLY" ]] && {
+        tmux a 2>/dev/null || {
+            cd && exec tmux
+        }
+        exit
+    }
+
+    tmux new-window && exec tmux a
+    exec tmux
+}
+
+## git completion
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+else
+    echo "~/.git-prompt.sh does not exist"
+    echo `$HOME`
+fi
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+else
+    echo "~/.git-completion.bash does not exist"
+    
+fi
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUPSTREAM=true
+GIT_PS1_SHOWUNTRACKEDFILES=
+GIT_PS1_SHOWSTASHSTATE=true
+
+
+PS1='\[\e[32m\][\u \t \[\e[32m\]\W]\[\e[0m$(__git_ps1)\]\$ '
+alias ls='ls -F --color=auto'
+alias ll='ls -l'
+alias l='ls -f'
+alias view='vim -R'
+alias exp='explorer.exe'
+
+## python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# nvm
+if [[ -s ~/.nvm/nvm.sh ]] ; then source ~/.nvm/nvm.sh ; fi
+export PATH="$HOME/.local/bin:$PATH"
+
+# composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+export TERM=xterm-256color

@@ -1,19 +1,37 @@
 #!/bin/bash
 
-cp ./bashrc ~/.bashrc
+set_symlink() {
+  local file=${1}
+  
+  rm -f ${HOME}/.${file}
+  ln -s $(pwd)/etc/${file} ~/.${file}
 
-cp ./vimrc ~/.vimrc
-if [ ! -e ~/.vim/autoload/plug.vim ]; then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+}
+
+install_vim_plugins(){
+
+  rm -r ${HOME}/.vim/autoload/plug.vim
+  mkdir -p ${HOME}/.vim/autoload
+  mkdir -p ${HOME}/.vim/colors
+
+  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+  
+  vim +'PlugInstall --sync' +qa
+}
 
-mkdir -p /home/vagrant/.vim/colors
-vim +'PlugInstall --sync' +qa
+fetch_git_completions(){
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ${HOME}/.git-prompt.sh
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ${HOME}/.git-completion.bash
+}
 
-cp ./tmux.conf ~/.tmux.conf
 
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-compeletion.bash
+for file in $(ls ./etc)
+do
+  set_symlink ${file}
+done
 
-source ~/.bashrc
+install_vim_plugins
+fetch_git_completions
+
+source ${HOME}/.bashrc 
