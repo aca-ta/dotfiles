@@ -1,11 +1,11 @@
 #!/bin/bash
 
 set_symlink() {
+
   local file=${1}
   
   rm -f ${HOME}/.${file}
   ln -s $(pwd)/etc/${file} ~/.${file}
-
 }
 
 install_vim_plugins(){
@@ -21,10 +21,10 @@ install_vim_plugins(){
 }
 
 fetch_git_completions(){
+
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ${HOME}/.git-prompt.sh
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ${HOME}/.git-completion.bash
 }
-
 
 for file in $(ls ./etc)
 do
