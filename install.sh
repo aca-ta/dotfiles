@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cp ./bashrc ~/.bashrc
+
 cp ./vimrc ~/.vimrc
 if [ ! -e ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -13,3 +15,5 @@ cp ./tmux.conf ~/.tmux.conf
 
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-compeletion.bash
+
+source ~/.bashrc
