@@ -36,6 +36,7 @@ PS1='\[\e[32m\][\u \t \[\e[32m\]\W]\[\e[0m$(__git_ps1)\]\$ '
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias l='ls -f'
+alias vi='vim'
 alias view='vim -R'
 alias exp='explorer.exe'
 

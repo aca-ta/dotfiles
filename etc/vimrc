@@ -80,8 +80,8 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'mechatroner/rainbow_csv'
 call plug#end()
-
 
 " nerdtree
 nnoremap <silent><C-e> :NERDTreeToggle<CR><C-w>=
