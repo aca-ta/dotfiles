@@ -3,6 +3,7 @@ syntax enable
 colorscheme molokai
 set t_Co=256
 set t_ut=
+set updatetime=1
 
 set number
 set smartindent
@@ -83,6 +84,7 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'mechatroner/rainbow_csv'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " nerdtree
@@ -115,3 +117,9 @@ let g:ycm_goto_buffer_command = 'new-tab'
 
 nnoremap jd :YcmCompleter GoTo<CR> 
 nnoremap gd :YcmCompleter GetDoc<CR> 
+
+" gitgutter
+let g:gitgutter_highlight_lines = 0
+
+nnoremap gn :GitGutterNextHunk<CR>
+nnoremap gp :GitGutterPrevHunk<CR>
