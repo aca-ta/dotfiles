@@ -114,6 +114,7 @@ let g:syntastic_cpp_cpplint_exec = 'cpplint'
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'new-tab'
+let g:ycm_global_ycm_extra_conf = '/home/shuhei-tsukamoto/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 nnoremap jd :YcmCompleter GoTo<CR> 
 nnoremap gd :YcmCompleter GetDoc<CR> 
