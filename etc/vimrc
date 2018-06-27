@@ -84,6 +84,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'mechatroner/rainbow_csv'
 Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
@@ -124,3 +126,6 @@ let g:gitgutter_highlight_lines = 0
 
 nnoremap gn :GitGutterNextHunk<CR>
 nnoremap gp :GitGutterPrevHunk<CR>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
