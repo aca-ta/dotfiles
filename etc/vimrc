@@ -67,7 +67,8 @@ source $VIMRUNTIME/macros/matchit.vim
 " Plug
 silent! call plug#begin('~/.vim/plugged')
 Plug 'autowitch/hive.vim'
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
