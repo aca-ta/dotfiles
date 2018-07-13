@@ -100,6 +100,8 @@ nnoremap -  <C-w>-
 nnoremap \|  <C-w>\|
 nnoremap _  <C-w>_
 nnoremap =  <C-w>=
+vnoremap > >gv
+vnoremap < <gv
 
 " syntastic
 let g:syntastic_check_on_open = 0
