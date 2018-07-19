@@ -93,6 +93,7 @@ Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " nerdtree
+let NERDTreeShowHidden=1
 nnoremap <silent><C-e> :NERDTreeToggle<CR><C-w>=
 
 nnoremap +  <C-w>+
