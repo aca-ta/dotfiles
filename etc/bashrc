@@ -68,5 +68,6 @@ if [[ -e ~/.goenv ]]; then
   export GOENV_ROOT=$HOME/.goenv
   export PATH=$GOENV_ROOT/bin:$PATH
   eval "$(goenv init -)"
-  export PATH="$HOME/.go/bin:$PATH"
+  export GOPATH=$HOME/.go
+  export PATH="$PATH:$GOPATH/bin"
 fi
