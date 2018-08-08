@@ -91,6 +91,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tell-k/vim-autopep8'
 call plug#end()
 
 " nerdtree
