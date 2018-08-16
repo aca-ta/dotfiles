@@ -92,6 +92,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tell-k/vim-autopep8'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 
 " nerdtree
