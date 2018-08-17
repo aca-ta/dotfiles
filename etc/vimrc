@@ -126,7 +126,8 @@ let g:syntastic_typescript_checkers=['tslint']
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'new-tab'
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf =  $HOME . '.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 
 nnoremap jd :YcmCompleter GoTo<CR> 
 nnoremap gd :YcmCompleter GetDoc<CR> 
