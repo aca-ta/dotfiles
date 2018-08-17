@@ -36,6 +36,9 @@ set backspace=eol,indent,start
 set laststatus=2 
 " ステータスラインの内容
 set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 " インクリメンタル検索を有効化
 set incsearch
 " 検索文字をハイライト
@@ -93,6 +96,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tell-k/vim-autopep8'
 Plug 'udalov/kotlin-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Quramy/tsuquyomi'
 call plug#end()
 
 " nerdtree
@@ -122,7 +127,8 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_cpp_cpplint_exec = 'cpplint'
-let g:syntastic_typescript_checkers=['tslint']
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers=['tsuquyomi']
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'new-tab'

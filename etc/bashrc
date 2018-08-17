@@ -2,28 +2,28 @@
 
 ## tmux
 [[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
-    [[ -n "$ATTACH_ONLY" ]] && {
-        tmux a 2>/dev/null || {
-            cd && exec tmux
-        }
-        exit
+  [[ -n "$ATTACH_ONLY" ]] && {
+    tmux a 2>/dev/null || {
+      cd && exec tmux
     }
+    exit
+  }
 
-    tmux new-window && exec tmux a
-    exec tmux
+  tmux new-window && exec tmux a
+  exec tmux
 }
 
 ## git completion
 if [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
+  source ~/.git-prompt.sh
 else
-    echo "~/.git-prompt.sh does not exist"
-    echo `$HOME`
+  echo "~/.git-prompt.sh does not exist"
+  echo `$HOME`
 fi
 if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
+  source ~/.git-completion.bash
 else
-    echo "~/.git-completion.bash does not exist"
+  echo "~/.git-completion.bash does not exist"
     
 fi
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -36,6 +36,9 @@ PS1='\[\[\e[32m\][\u \t \[\e[32m\]\W]\[\e[0m$(__git_ps1)\]\]\$ '
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias l='ls -f'
+if [ -f /usr/local/bin/vim ]; then
+  alias vim='/usr/local/bin/vim'
+fi
 alias vi='vim'
 alias view='vim -R'
 alias exp='explorer.exe'
