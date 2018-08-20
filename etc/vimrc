@@ -137,6 +137,7 @@ let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 
 nnoremap jd :YcmCompleter GoTo<CR> 
 nnoremap gd :YcmCompleter GetDoc<CR> 
+nnoremap ref :YcmCompleter RefactorRename
 
 " gitgutter
 let g:gitgutter_highlight_lines = 0
