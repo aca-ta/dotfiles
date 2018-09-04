@@ -139,6 +139,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 nnoremap jd :rightbelow vertical YcmCompleter GoTo<CR>
 nnoremap gd :YcmCompleter GetDoc<CR>
 nnoremap gr :YcmCompleter GetReferences<CR>
+nnoremap gy :YcmCompleter GetType<CR>
 nnoremap ref :YcmCompleter RefactorRename
 
 " gitgutter
