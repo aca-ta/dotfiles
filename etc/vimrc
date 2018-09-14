@@ -1,6 +1,6 @@
 syntax enable
 "カラースキーマ
-colorscheme iceberg
+colorscheme OceanicNext
 let g:solarized_termcolors=256
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -84,7 +84,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/vim-sqlfmt'
-Plug 'cocopon/iceberg.vim', {'do': 'cp colors/* ~/.vim/colors/'}
+Plug 'mhartington/oceanic-next', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
