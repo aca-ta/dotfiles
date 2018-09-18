@@ -1,7 +1,7 @@
 [[ "$-" != *i* ]] && return
 
 ## tmux
-[[ -z "$TMUX" ]] && {
+[[ -z "$TMUX" ]] && type "tmux" > /dev/null 2>&1 && {
   [[ -n "$ATTACH_ONLY" ]] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
