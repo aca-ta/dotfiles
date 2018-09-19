@@ -136,6 +136,9 @@ let g:syntastic_cpp_cpplint_exec = 'cpplint'
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers=['tsuquyomi']
 
+" autopep8
+let g:autopep8_aggressive=1
+
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 let g:ycm_global_ycm_extra_conf =  $HOME . '.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
