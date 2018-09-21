@@ -161,8 +161,5 @@ nnoremap gp :GitGutterPrevHunk<CR>
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
-" rainbow_csv
-let g:rcsv_colorpairs = [['red', 'red'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
-
 " go-vim
 let g:go_fmt_command = "goimports"
