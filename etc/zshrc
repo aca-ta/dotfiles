@@ -1,4 +1,5 @@
 source ~/.shrc.sh
+unsetopt BG_NICE
 
 HISTFILE=~/.zsh_history
 HISTSIZE=6000000
@@ -10,7 +11,20 @@ setopt histignorealldups
 
 autoload -Uz compinit && compinit -c
 autoload -Uz colors && colors
-autoload predict-on && predict-on
 setopt auto_pushd
 
 setopt PROMPT_SUBST ; PS1='%F{035}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
+
+# zplug
+source ~/.zplug/init.zsh
+
+zplug "zsh-users/zsh-autosuggestions", defer:2
+
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load
