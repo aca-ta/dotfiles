@@ -44,14 +44,23 @@ alias view='vim -R'
 alias exp='explorer.exe'
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+  if [[ -s ~/.pyenv ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  pyenv() {
+    unset -f pyenv
+    eval "$(pyenv init -)"
+    pyenv "$@"
+  }
+fi
 
 # nvm
 if [[ -s ~/.nvm/nvm.sh ]]; then
-  source ~/.nvm/nvm.sh
-  export PATH="$HOME/.local/bin:$PATH"
+  nvm() {
+    unset -f nvm
+    . ~/.nvm/nvm.sh
+    nvm "$@"
+  }
 fi
 
 # composer
@@ -62,19 +71,34 @@ export TERM=xterm-256color
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # rbenv
-if [[ -e ~/.rbenv ]];then
+rbenv() {
   export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
+  if [[ -e ~/.rbenv ]];then
+    unset -f rbenv
+    eval "$(rbenv init -)"
+    rbenv "$@"
+  fi
+}
 
+# goenv
+export GOPATH=$HOME/.go
+export PATH="$PATH:$GOPATH/bin"
 if [[ -e ~/.goenv ]]; then
   export GOENV_ROOT=$HOME/.goenv
   export PATH=$GOENV_ROOT/bin:$PATH
-  eval "$(goenv init -)"
-  export GOPATH=$HOME/.go
-  export PATH="$PATH:$GOPATH/bin"
+  goenv(){
+    unset -f goenv
+    eval "$(goenv init -)"
+    goenv "$@"
+  }
 fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+  export SDKMAN_DIR="$HOME/.sdkman"
+  sdk(){
+    unset -f sdk
+    . ~/.sdkman/bin/sdkman-init.sh
+    sdk "$@"
+  }
+fi
