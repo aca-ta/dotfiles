@@ -9,7 +9,6 @@ set_symlinks() {
   done
 }
 
-
 fetch_git_completions(){
 
   curl -fLo ${HOME}/.git-prompt.sh \
@@ -18,6 +17,10 @@ fetch_git_completions(){
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 }
 
+fetch_dircolors(){
+  curl -fLo ${HOME}/.dircolors.256dark \
+      https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
+}
 
 install_vim_plugins(){
 
@@ -34,6 +37,7 @@ install_vim_plugins(){
 
 set_symlinks
 fetch_git_completions
+fetch_dircolors
 install_vim_plugins
 
 source ${HOME}/.bashrc 
