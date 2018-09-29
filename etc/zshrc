@@ -1,0 +1,16 @@
+source ~/.shrc.sh
+
+HISTFILE=~/.zsh_history
+HISTSIZE=6000000
+SAVEHIST=6000000
+# 他ターミナルとhisoryを共有
+setopt share_history
+# ヒストリーに重複を表示しない
+setopt histignorealldups
+
+autoload -Uz compinit && compinit -c
+autoload -Uz colors && colors
+autoload predict-on && predict-on
+setopt auto_pushd
+
+setopt PROMPT_SUBST ; PS1='%F{034}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
