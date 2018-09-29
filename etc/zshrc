@@ -13,4 +13,4 @@ autoload -Uz colors && colors
 autoload predict-on && predict-on
 setopt auto_pushd
 
-setopt PROMPT_SUBST ; PS1='%F{034}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
+setopt PROMPT_SUBST ; PS1='%F{035}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
