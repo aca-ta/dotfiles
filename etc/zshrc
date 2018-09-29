@@ -4,14 +4,18 @@ unsetopt BG_NICE
 HISTFILE=~/.zsh_history
 HISTSIZE=6000000
 SAVEHIST=6000000
-# 他ターミナルとhisoryを共有
-setopt share_history
-# ヒストリーに重複を表示しない
-setopt histignorealldups
 
+setopt share_history # 他ターミナルとhisoryを共有
+setopt histignorealldups # ヒストリーに重複を表示しない
+setopt hist_reduce_blanks # 余分な空白は詰めて記録
+
+setopt ignoreeof #Ctrl-Dでシェルからログアウトしない
 autoload -Uz compinit && compinit -c
+setopt auto_menu
 autoload -Uz colors && colors
 setopt auto_pushd
+setopt correct
+setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
 
 setopt PROMPT_SUBST ; PS1='%F{035}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
 
