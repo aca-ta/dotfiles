@@ -1,5 +1,10 @@
 [[ "$-" != *i* ]] && return
 
+# dircolor
+if type dircolors >/dev/null; then
+  eval $(dircolors ~/.dircolors.256dark)
+fi
+
 ## tmux
 [[ -z "$TMUX" ]] && type "tmux" > /dev/null 2>&1 && {
   [[ -n "$ATTACH_ONLY" ]] && {
