@@ -48,4 +48,3 @@ fetch_dircolors
 install_vim_plugins
 install_zplug
 
-source ${HOME}/.zshrc
