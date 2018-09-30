@@ -34,10 +34,17 @@ install_vim_plugins(){
   vim +'PlugInstall --sync' +qa
 }
 
+install_zplug() {
+  if [[ ! -e ${HOME}/.zplug ]]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  fi
+}
+
 
 set_symlinks
 fetch_git_completions
 fetch_dircolors
 install_vim_plugins
+install_zplug
 
 source ${HOME}/.bashrc 
