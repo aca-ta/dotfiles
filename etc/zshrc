@@ -13,7 +13,8 @@ setopt ignoreeof #Ctrl-Dでシェルからログアウトしない
 autoload -Uz compinit && compinit -C
 setopt auto_menu
 autoload -Uz colors && colors
-setopt auto_pushd
+setopt auto_pushd # cd -<tab>で以前移動したディレクトリを表示
+setopt pushd_ignore_dups # auto_pushdで重複するディレクトリは記録しない
 setopt correct
 setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
 
