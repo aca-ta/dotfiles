@@ -11,7 +11,8 @@ setopt hist_reduce_blanks # 余分な空白は詰めて記録
 
 setopt ignoreeof #Ctrl-Dでシェルからログアウトしない
 autoload -Uz compinit && compinit -C
-setopt auto_menu
+setopt menu_complete # 補完メニューを連続的に表示
+zstyle ':completion:*' menu select interactive # 補完メニューを一覧表示し、矢印キーで選択可能にする
 autoload -Uz colors && colors
 setopt auto_pushd # cd -<tab>で以前移動したディレクトリを表示
 setopt pushd_ignore_dups # auto_pushdで重複するディレクトリは記録しない
