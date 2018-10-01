@@ -10,7 +10,7 @@ setopt histignorealldups # ヒストリーに重複を表示しない
 setopt hist_reduce_blanks # 余分な空白は詰めて記録
 
 setopt ignoreeof #Ctrl-Dでシェルからログアウトしない
-autoload -Uz compinit && compinit -c
+autoload -Uz compinit && compinit -C
 setopt auto_menu
 autoload -Uz colors && colors
 setopt auto_pushd
