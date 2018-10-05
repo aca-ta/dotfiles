@@ -123,7 +123,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['json','yaml', 'css', 'html'],
-                           \ 'passive_filetypes': ['python','php', 'h', 'cpp', 'hpp', 'javascript', 'typescript'] }
+                           \ 'passive_filetypes': ['python','php', 'h', 'cpp', 'hpp', 'javascript', 'typescript', 'go'] }
 let g:syntastic_python_checkers=['mypy', 'pylint']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_yaml_checkers=['jsyaml']
@@ -135,6 +135,7 @@ let g:syntastic_css_checkers=['csslint']
 let g:syntastic_cpp_cpplint_exec = 'cpplint'
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers=['tsuquyomi']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet']
 
 " autopep8
 let g:autopep8_aggressive=1
