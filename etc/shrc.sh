@@ -48,6 +48,7 @@ if [[ -s ~/.pyenv ]]; then
   pyenv() {
     unset -f pyenv
     eval "$(pyenv init -)"
+    pyenv rehash
     pyenv "$@"
   }
 fi
