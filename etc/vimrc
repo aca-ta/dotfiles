@@ -40,7 +40,9 @@ set backspace=eol,indent,start
 " ステータスラインを常に表示
 set laststatus=2 
 " ステータスラインの内容
-set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}
+set statusline+=%{fugitive#statusline()}
+set statusline+=%=%l,%c%V%8P
 set statusline+=%*
 " インクリメンタル検索を有効化
 set incsearch
