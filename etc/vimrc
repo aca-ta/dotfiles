@@ -41,8 +41,6 @@ set backspace=eol,indent,start
 set laststatus=2 
 " ステータスラインの内容
 set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 " インクリメンタル検索を有効化
 set incsearch
@@ -79,7 +77,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
@@ -117,25 +115,6 @@ nnoremap =  <C-w>=
 vnoremap > >gv
 vnoremap < <gv
 
-" syntastic
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['json','yaml', 'css', 'html'],
-                           \ 'passive_filetypes': ['python','php', 'h', 'cpp', 'hpp', 'javascript', 'typescript'] }
-let g:syntastic_python_checkers=['mypy', 'pylint']
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_yaml_checkers=['jsyaml']
-let g:syntastic_html_checkers=['tidy']
-let g:syntastic_json_checkers=['jsonlint']
-let g:syntastic_php_checkers=['php', 'phpcs']
-let g:syntastic_php_phpcs_args='--standard=PSR2'
-let g:syntastic_css_checkers=['csslint']
-let g:syntastic_cpp_cpplint_exec = 'cpplint'
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers=['tsuquyomi']
-
 " autopep8
 let g:autopep8_aggressive=1
 
@@ -163,3 +142,6 @@ let g:vim_markdown_folding_disabled = 1
 
 " go-vim
 let g:go_fmt_command = "goimports"
+
+" ale
+let g:ale_open_list = 1
