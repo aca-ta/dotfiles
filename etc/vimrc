@@ -144,10 +144,18 @@ let g:vim_markdown_folding_disabled = 1
 
 " go-vim
 let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 0
 
 " ale
 let g:ale_open_list = 1
 let g:ale_list_window_size = 5
+let g:ale_sign_column_always = 1
+let g:ale_keep_list_window_open = 1
+let g:ale_loclist_msg_format = '[%linter%] %s'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+nmap <silent> <C-p> :lprev<CR>
+nmap <silent> <C-n> :lnext<CR>
 
 
 " close a loclist when a window is closed
