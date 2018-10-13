@@ -153,6 +153,8 @@ let g:ale_keep_list_window_open = 1
 let g:ale_loclist_msg_format = '[%linter%] %s'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_linters = {'text': ['textlint']}
+
 nmap <silent> <C-p> :lprev<CR>
 nmap <silent> <C-n> :lnext<CR>
 
