@@ -164,3 +164,6 @@ augroup CloseLoclistWindowGroup
   autocmd!
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
+
+" vim markdown
+let g:vim_markdown_new_list_item_indent = 2
