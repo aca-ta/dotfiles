@@ -59,9 +59,9 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 "タブ関連
 set switchbuf+=usetab,newtab"
  
-au BufNewFile,BufRead *.hql setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.hql setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *.js setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.php setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.hpp setlocal expandtab tabstop=2 shiftwidth=2
