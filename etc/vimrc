@@ -102,6 +102,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tell-k/vim-autopep8'
 Plug 'udalov/kotlin-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " nerdtree

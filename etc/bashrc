@@ -7,3 +7,5 @@ else
 fi
 
 PS1='\[\[\e[32m\][\u \t \[\e[32m\]\W]\[\e[0m$(__git_ps1)\]\]\$ '
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
