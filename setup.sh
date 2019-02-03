@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo apt install zsh tmux
+
+# zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
