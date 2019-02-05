@@ -157,6 +157,7 @@ let g:ale_loclist_msg_format = '[%linter%] %s'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'text': ['textlint']}
+let g:ale_python_auto_pipenv = 1
 
 nmap <silent> <C-p> :lprev<CR>
 nmap <silent> <C-n> :lnext<CR>
