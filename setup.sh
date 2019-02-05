@@ -14,3 +14,4 @@ CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
 
 # YouCompleteMe
 sudo apt install -y build-essential cmake
+~/.vim/plugged/YouCompleteMe/install.py
