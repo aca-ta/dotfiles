@@ -19,3 +19,6 @@ pyenv rehash
 # YouCompleteMe
 sudo apt install -y build-essential cmake
 ~/.vim/plugged/YouCompleteMe/install.py
+
+# tig
+sudo apt install -y tig
