@@ -45,7 +45,7 @@ install_shellcheck() {
   export scversion="stable" # or "v0.4.7", or "latest"
   wget "https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz" -O "./shellcheck-${scversion}.linux.x86_64.tar.xz"
   tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
-  cp shellcheck-"${scversion}"/shellcheck ~/.local/bin
+  mkdir -p ~/.local/bin/ && cp shellcheck-"${scversion}"/shellcheck ~/.local/bin/
   shellcheck --version
   rm -r ./shellcheck*
 }
