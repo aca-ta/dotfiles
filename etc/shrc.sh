@@ -40,6 +40,7 @@ alias vi='vim'
 alias view='vim -R'
 alias exp='explorer.exe'
 export TERM=xterm-256color
+export PATH="$HOME/.local/bin:$PATH" #XXX
 
 # python
 if [[ -s ~/.pyenv ]]; then
