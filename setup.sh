@@ -11,6 +11,13 @@ install_python(){
   pip install pipenv pylint mypy
 }
 
+install_go(){
+  git clone https://github.com/syndbg/goenv.git ~/.goenv
+  goenv install 1.11.5
+  goenv global 1.11.5
+  goenv rehash
+}
+
 install_youcompleteme(){
   sudo apt install -y build-essential cmake
   ~/.vim/plugged/YouCompleteMe/install.py
@@ -20,3 +27,4 @@ sudo apt update && sudo apt upgrade
 sudo apt install -u zsh tmux tig
 install_python
 install_youcompleteme
+install_go
