@@ -30,9 +30,9 @@ else
   echo `$HOME`
 fi
 
-alias ls='ls -F --color=auto'
+alias ls='ls --color=auto'
 alias ll='ls -l'
-alias l='ls -f'
+alias l='ls '
 if [ -f /usr/local/bin/vim ]; then
   alias vim='/usr/local/bin/vim'
 fi
