@@ -1,7 +1,9 @@
 #!/bin/bash
 
 install_python(){
-  git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+  if [[ ! -e ${HOME}/.pyenv ]]; then
+    git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+  fi
 
   sudo apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev zlib1g-dev
 
@@ -12,10 +14,12 @@ install_python(){
 }
 
 install_go(){
-  git clone https://github.com/syndbg/goenv.git ~/.goenv
-  goenv install 1.11.5
-  goenv global 1.11.5
-  goenv rehash
+  if [[ ! -e ${HOME}/.goenv ]]; then
+    git clone https://github.com/syndbg/goenv.git ~/.goenv
+  fi
+  ~/.goenv/bin/goenv install 1.11.5
+  ~/.goenv/bin/goenv global 1.11.5
+  ~/.goenv/bin/goenv rehash
 }
 
 install_youcompleteme(){
