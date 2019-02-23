@@ -99,12 +99,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'tell-k/vim-autopep8'
 Plug 'udalov/kotlin-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 call plug#end()
 
 " nerdtree
@@ -118,9 +118,6 @@ nnoremap _  <C-w>_
 nnoremap =  <C-w>=
 vnoremap > >gv
 vnoremap < <gv
-
-" autopep8
-let g:autopep8_aggressive=1
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
