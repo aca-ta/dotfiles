@@ -33,7 +33,7 @@ install_nodejs() {
 
 install_youcompleteme(){
   sudo apt install -y build-essential cmake
-  ~/.vim/plugged/YouCompleteMe/install.py
+  ~/.vim/plugged/YouCompleteMe/install.py --go-completer
 }
 
 sudo apt update && sudo apt upgrade
