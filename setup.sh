@@ -26,14 +26,13 @@ install_nodejs() {
   if [[ ! -e ${HOME}/.nvm ]]; then
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
   fi
-  source ~/.bashrc
   nvm install --lts
   nvm use --lts
 }
 
 install_youcompleteme(){
   sudo apt install -y build-essential cmake
-  ~/.vim/plugged/YouCompleteMe/install.py --go-completer
+  ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer
 }
 
 sudo apt update && sudo apt upgrade
