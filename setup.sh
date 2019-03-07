@@ -22,6 +22,15 @@ install_go(){
   ~/.goenv/bin/goenv rehash
 }
 
+install_nodejs() {
+  if [[ ! -e ${HOME}/.nvm ]]; then
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  fi
+  source ~/.bashrc
+  nvm install --lts
+  nvm use --lts
+}
+
 install_youcompleteme(){
   sudo apt install -y build-essential cmake
   ~/.vim/plugged/YouCompleteMe/install.py
@@ -30,5 +39,6 @@ install_youcompleteme(){
 sudo apt update && sudo apt upgrade
 sudo apt install -u zsh tmux tig
 install_python
-install_youcompleteme
 install_go
+install_nodejs
+install_youcompleteme
