@@ -1,11 +1,29 @@
 #!/bin/bash
 
+install_tools(){
+  case "${OSTYPE}" in
+    darwin*)
+      brew update
+      brew install zsh tmux reattach-to-user-namespace tig 
+      ;;
+    *)
+      sudo apt update && sudo apt upgrade
+      sudo apt install -u zsh tmux tig
+  esac
+}
+
 install_python(){
   if [[ ! -e ${HOME}/.pyenv ]]; then
-    git clone git://github.com/yyuu/pyenv.git ~/.pyenv
-  fi
+    case "${OSTYPE}" in
+      darwin*)
+        brew install zlib pyenv
+        ;;
 
-  sudo apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev zlib1g-dev
+      *)
+        git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+        sudo apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev zlib1g-dev
+    esac
+  fi
 
   CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
   pyenv global 3.7.0
@@ -31,12 +49,19 @@ install_nodejs() {
 }
 
 install_youcompleteme(){
-  sudo apt install -y build-essential cmake
+  case "${OSTYPE}" in
+    darwin*)
+      brew install cmake
+      ;;
+
+    *)
+      sudo apt install -y build-essential cmake
+  esac
   ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer
 }
 
-sudo apt update && sudo apt upgrade
-sudo apt install -u zsh tmux tig
+
+install_tools
 install_python
 install_go
 install_nodejs

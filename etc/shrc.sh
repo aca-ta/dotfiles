@@ -1,5 +1,8 @@
 [[ "$-" != *i* ]] && return
 
+# LANG
+export LANG=ja_jp.utf-8
+
 # dircolor
 if type dircolors >/dev/null; then
   eval $(dircolors ~/.dircolors.256dark)
@@ -30,7 +33,12 @@ else
   echo `$HOME`
 fi
 
-alias ls='ls --color=auto'
+if [ "$(uname)" = "Darwin" ]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
+
 alias ll='ls -l'
 alias l='ls '
 if [ -f /usr/local/bin/vim ]; then
