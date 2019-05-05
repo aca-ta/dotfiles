@@ -107,6 +107,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'thinca/vim-quickrun'
+Plug 'kana/vim-operator-replace'
+Plug 'kana/vim-operator-user'
 call plug#end()
 
 " nerdtree
@@ -170,3 +172,6 @@ augroup END
 
 " vim markdown
 let g:vim_markdown_new_list_item_indent = 2
+
+" vim-operator-replace
+map r <Plug>(operator-replace)
