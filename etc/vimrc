@@ -109,6 +109,7 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'thinca/vim-quickrun'
 Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-operator-user'
+Plug 'JuliaLang/julia-vim'
 call plug#end()
 
 " nerdtree
