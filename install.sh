@@ -22,6 +22,11 @@ fetch_dircolors(){
       https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 }
 
+install_template() {
+  rm -f ${HOME}/.vim/template
+  ln -s $(pwd)/template  ${HOME}/.vim/template
+}
+
 install_vim_plugins(){
 
   rm -r ${HOME}/.vim/autoload/plug.vim
@@ -54,6 +59,7 @@ install_shellcheck() {
 set_symlinks
 fetch_git_completions
 fetch_dircolors
+install_template
 install_vim_plugins
 install_zplug
 install_shellcheck

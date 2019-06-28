@@ -61,6 +61,7 @@ set switchbuf+=usetab,newtab"
  
 au BufNewFile,BufRead *.hql setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
+au BufNewFile *.py 0r $HOME/.vim/template/template.py
 au BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.php setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp setlocal expandtab tabstop=2 shiftwidth=2
