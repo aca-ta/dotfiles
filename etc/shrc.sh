@@ -1,7 +1,7 @@
 [[ "$-" != *i* ]] && return
 
 # LANG
-export LANG=ja_jp.utf-8
+export LANG=ja_JP.UTF-8
 
 # dircolor
 if type dircolors >/dev/null; then
