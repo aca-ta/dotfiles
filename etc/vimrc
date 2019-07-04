@@ -164,8 +164,8 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'text': ['textlint']}
 let g:ale_python_auto_pipenv = 1
 
-nmap <silent> <C-p> :lprev<CR>
-nmap <silent> <C-n> :lnext<CR>
+nmap <silent> <C-p> :cprev<CR>
+nmap <silent> <C-n> :cnext<CR>
 
 
 " close a loclist when a window is closed
