@@ -111,6 +111,8 @@ Plug 'thinca/vim-quickrun'
 Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-operator-user'
 Plug 'JuliaLang/julia-vim'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
 call plug#end()
 
 " nerdtree
@@ -185,3 +187,6 @@ let g:vim_markdown_new_list_item_indent = 2
 
 " vim-operator-replace
 map r <Plug>(operator-replace)
+
+" previm
+let g:previm_open_cmd = 'open -a Firefox'
