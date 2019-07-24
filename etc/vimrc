@@ -113,6 +113,7 @@ Plug 'kana/vim-operator-user'
 Plug 'JuliaLang/julia-vim'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 " nerdtree
