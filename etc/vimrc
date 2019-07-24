@@ -89,7 +89,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mhartington/oceanic-next', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
