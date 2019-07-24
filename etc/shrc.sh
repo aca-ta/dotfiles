@@ -37,6 +37,7 @@ if [ "$(uname)" = "Darwin" ]; then
   alias ls='ls -G'
 else
   alias ls='ls --color=auto'
+  export DISPLAY=:0.0
 fi
 
 alias ll='ls -l'
