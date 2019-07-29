@@ -114,6 +114,7 @@ Plug 'JuliaLang/julia-vim'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'posva/vim-vue'
+Plug 'janko/vim-test'
 call plug#end()
 
 " nerdtree
@@ -191,3 +192,6 @@ map r <Plug>(operator-replace)
 
 " previm
 let g:previm_open_cmd = 'open -a Firefox'
+
+" vim-test
+let test#strategy = "vimterminal"
