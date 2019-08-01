@@ -35,8 +35,8 @@ install_go(){
   if [[ ! -e ${HOME}/.goenv ]]; then
     git clone https://github.com/syndbg/goenv.git ~/.goenv
   fi
-  ~/.goenv/bin/goenv install 1.11.5
-  ~/.goenv/bin/goenv global 1.11.5
+  ~/.goenv/bin/goenv install 1.12.7
+  ~/.goenv/bin/goenv global 1.12.7
   ~/.goenv/bin/goenv rehash
 }
 
