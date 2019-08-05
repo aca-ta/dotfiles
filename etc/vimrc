@@ -196,4 +196,4 @@ let g:previm_open_cmd = 'open -a Firefox'
 
 " vim-test
 let test#strategy = "vimterminal"
-let test#vim#term_position = "vertical belowright"
+let test#vim#term_position = "aboveleft"
