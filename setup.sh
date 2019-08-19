@@ -61,8 +61,15 @@ install_youcompleteme(){
 }
 
 
+setup_git(){
+  if [[ $(type git) ]]; then
+    git config --global core.excludesfile ~/.gitignore_global
+  fi
+}
+
 install_tools
 install_python
 install_go
 install_nodejs
 install_youcompleteme
+setup_git
