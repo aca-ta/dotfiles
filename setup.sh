@@ -67,9 +67,26 @@ setup_git(){
   fi
 }
 
+install_shellcheck() {
+  case "${OSTYPE}" in
+    darwin*)
+      brew install shellcheck
+      ;;
+    *)
+      export scversion="stable" # or "v0.4.7", or "latest"
+      wget "https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz" -O "./shellcheck-${scversion}.linux.x86_64.tar.xz"
+      tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
+      mkdir -p ~/.local/bin/ && cp shellcheck-"${scversion}"/shellcheck ~/.local/bin/
+      shellcheck --version
+      rm -r ./shellcheck*
+      ;;
+  esac
+}
+
 install_tools
 install_python
 install_go
 install_nodejs
 install_youcompleteme
 setup_git
+install_shellcheck
