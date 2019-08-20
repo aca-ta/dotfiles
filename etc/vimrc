@@ -136,7 +136,7 @@ let g:ycm_global_ycm_extra_conf =  $HOME . '.vim/plugged/YouCompleteMe/third_par
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-nnoremap jd :rightbelow vertical YcmCompleter GoTo<CR>
+nnoremap gt :rightbelow vertical YcmCompleter GoTo<CR>
 nnoremap gd :YcmCompleter GetDoc<CR>
 nnoremap gr :YcmCompleter GoToReferences<CR>
 nnoremap gy :YcmCompleter GetType<CR>
