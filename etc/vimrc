@@ -117,6 +117,7 @@ Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
+Plug 'Townk/vim-autoclose'
 call plug#end()
 
 " nerdtree
