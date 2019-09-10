@@ -55,9 +55,9 @@ install_youcompleteme(){
       ;;
 
     *)
-      sudo apt install -y build-essential cmake
+      sudo apt install -y build-essential cmake python3-dev
   esac
-  ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer
+  ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer --clang-completer
 }
 
 
