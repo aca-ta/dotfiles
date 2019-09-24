@@ -70,6 +70,7 @@ au BufNewFile,BufRead *.hpp setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *Jenkinsfile* setf groovy
 au BufNewFile,BufRead *.qgs setf xml
 au BufNewFile,BufRead *.md setlocal expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.plb setf sql
 
 " XMLの対応カッコ移動
 source $VIMRUNTIME/macros/matchit.vim
