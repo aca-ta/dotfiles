@@ -4,11 +4,11 @@ install_tools(){
   case "${OSTYPE}" in
     darwin*)
       brew update
-      brew install zsh tmux reattach-to-user-namespace tig 
+      brew install zsh tmux reattach-to-user-namespace tig bat fzf
       ;;
     *)
       sudo apt update && sudo apt upgrade
-      sudo apt install -u zsh tmux tig
+      sudo apt install -u zsh tmux tig fzf
   esac
 }
 
@@ -60,6 +60,12 @@ install_youcompleteme(){
   ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer --clang-completer
 }
 
+setup_tmux(){
+  if [[ ! -e ${HOME}/.tmux ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
+
 
 setup_git(){
   if [[ $(type git) ]]; then
@@ -88,5 +94,6 @@ install_python
 install_go
 install_nodejs
 install_youcompleteme
+setup_tmux
 setup_git
 install_shellcheck
