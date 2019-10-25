@@ -3,6 +3,14 @@
 # LANG
 export LANG=ja_JP.UTF-8
 
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+  alias ls='gls --color=auto'
+else
+  alias ls='ls --color=auto'
+  export DISPLAY=:0.0
+fi
+
 # dircolor
 if type dircolors >/dev/null; then
   eval $(dircolors ~/.dircolors.256dark)
@@ -33,13 +41,6 @@ else
   echo `$HOME`
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-  alias ls='ls -G'
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-else
-  alias ls='ls --color=auto'
-  export DISPLAY=:0.0
-fi
 
 alias ll='ls -l'
 alias l='ls '
