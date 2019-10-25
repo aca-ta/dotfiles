@@ -4,7 +4,7 @@ install_tools(){
   case "${OSTYPE}" in
     darwin*)
       brew update
-      brew install zsh tmux reattach-to-user-namespace tig bat fzf
+      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils
       ;;
     *)
       sudo apt update && sudo apt upgrade

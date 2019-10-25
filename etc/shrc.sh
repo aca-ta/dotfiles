@@ -35,6 +35,7 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
   alias ls='ls -G'
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 else
   alias ls='ls --color=auto'
   export DISPLAY=:0.0
