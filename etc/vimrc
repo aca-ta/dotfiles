@@ -9,6 +9,7 @@ set t_Co=256
 set t_ut=
 set updatetime=1
 set visualbell t_vb=
+set mouse=a
 
 set number
 set smartindent
