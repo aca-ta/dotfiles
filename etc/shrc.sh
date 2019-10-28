@@ -4,10 +4,14 @@
 export LANG=ja_JP.UTF-8
 
 if [ "$(uname)" = "Darwin" ]; then
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-  alias ls='gls --color=auto'
+  if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    alias ls='gls'
+  fi
+  if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  fi
 else
-  alias ls='ls --color=auto'
   export DISPLAY=:0.0
 fi
 
@@ -17,8 +21,8 @@ if type dircolors >/dev/null; then
 fi
 
 ## tmux
-[[ -z "$TMUX" ]] && type "tmux" > /dev/null 2>&1 && {
-  [[ -n "$ATTACH_ONLY" ]] && {
+[ -z "$TMUX" ] && type "tmux" > /dev/null 2>&1 && {
+  [ -n "$ATTACH_ONLY" ] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
     }
@@ -42,6 +46,7 @@ else
 fi
 
 
+alias ls='ls --color=auto'
 alias ll='ls -l'
 alias l='ls '
 if [ -f /usr/local/bin/vim ]; then
@@ -54,7 +59,7 @@ export TERM=xterm-256color
 export PATH="$HOME/.local/bin:$PATH" #XXX
 
 # python
-if [[ -s ~/.pyenv ]]; then
+if [ -e ~/.pyenv ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   export PIPENV_VENV_IN_PROJECT=1
@@ -67,7 +72,7 @@ if [[ -s ~/.pyenv ]]; then
 fi
 
 # nvm
-if [[ -s ~/.nvm/nvm.sh ]]; then
+if [ -e ~/.nvm/nvm.sh ]; then
   nvm() {
     unset -f nvm
     . ~/.nvm/nvm.sh
@@ -81,7 +86,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # rbenv
-if [[ -e ~/.rbenv ]];then
+if [ -e ~/.rbenv ];then
   export PATH="$HOME/.rbenv/bin:$PATH"
   rbenv() {
     unset -f rbenv
@@ -93,7 +98,7 @@ fi
 # goenv
 export GOPATH=$HOME/.go
 export PATH="$PATH:$GOPATH/bin"
-if [[ -e ~/.goenv ]]; then
+if [ -e ~/.goenv ]; then
   export GOENV_ROOT=$HOME/.goenv
   export PATH=$GOENV_ROOT/bin:$PATH
   goenv(){
@@ -104,7 +109,7 @@ if [[ -e ~/.goenv ]]; then
 fi
 
 # sdkman
-if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+if [ -e "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
   export SDKMAN_DIR="$HOME/.sdkman"
   sdk(){
     unset -f sdk
