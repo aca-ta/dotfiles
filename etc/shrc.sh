@@ -8,8 +8,9 @@ if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     alias ls='gls'
   fi
-  if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  if [ -e "/usr/local/opt/gnu-tar/libexec/gnubin/tar" ]; then
+    export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+    alias tar='gtar'
   fi
 else
   export DISPLAY=:0.0
