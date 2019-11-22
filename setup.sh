@@ -20,7 +20,7 @@ install_python(){
         ;;
 
       *)
-        git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+        git clone git://github.com/pyenv/pyenv.git ~/.pyenv
         sudo apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev zlib1g-dev
     esac
   fi
