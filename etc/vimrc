@@ -120,6 +120,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
 Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 " nerdtree
