@@ -203,3 +203,6 @@ let g:previm_open_cmd = 'open -a Firefox'
 let test#strategy = "vimterminal"
 let test#vim#term_position = "aboveleft"
 let test#python#pytest#options = '-vv'
+
+" https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
+let g:omni_sql_no_default_maps = 1
