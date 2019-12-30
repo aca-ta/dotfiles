@@ -121,6 +121,7 @@ Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " nerdtree
