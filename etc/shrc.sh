@@ -97,8 +97,6 @@ if [ -e ~/.rbenv ];then
 fi
 
 # goenv
-export GOPATH=$HOME/.go
-export PATH="$PATH:$GOPATH/bin"
 if [ -e ~/.goenv ]; then
   export GOENV_ROOT=$HOME/.goenv
   export PATH=$GOENV_ROOT/bin:$PATH
@@ -106,6 +104,7 @@ if [ -e ~/.goenv ]; then
     unset -f goenv
     eval "$(goenv init -)"
     goenv "$@"
+    export PATH="$PATH:$GOPATH/bin"
   }
 fi
 
