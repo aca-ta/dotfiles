@@ -18,7 +18,7 @@ fi
 
 # dircolor
 if type dircolors >/dev/null; then
-  eval $(dircolors ~/.dircolors.256dark)
+  eval $(dircolors ${HOME}/.dircolors.256dark)
 fi
 
 ## tmux
@@ -42,9 +42,10 @@ if [ -f ~/.git-prompt.sh ]; then
   GIT_PS1_SHOWUNTRACKEDFILES=
   GIT_PS1_SHOWSTASHSTATE=true
 else
-  echo "~/.git-prompt.sh does not exist"
-  echo `$HOME`
+  echo "${HOME}/.git-prompt.sh does not exist"
+  echo "${HOME}"
 fi
+
 
 
 alias ls='ls --color=auto'
@@ -76,7 +77,7 @@ fi
 if [ -e ~/.nvm/nvm.sh ]; then
   nvm() {
     unset -f nvm
-    . ~/.nvm/nvm.sh
+    . $HOME/.nvm/nvm.sh
     nvm "$@"
   }
 fi
@@ -113,7 +114,12 @@ if [ -e "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
   export SDKMAN_DIR="$HOME/.sdkman"
   sdk(){
     unset -f sdk
-    . ~/.sdkman/bin/sdkman-init.sh
+    . $HOME/.sdkman/bin/sdkman-init.sh
     sdk "$@"
   }
+fi
+
+# Linuxbrew
+if [ -d /home/linuxbrew ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
