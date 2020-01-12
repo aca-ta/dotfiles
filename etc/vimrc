@@ -18,8 +18,8 @@ set shiftwidth=4
 set tabstop=4
 set ambiwidth=double
 " タブ可視化と色設定
-set list lcs=tab:\|\ 
-hi SpecialKey ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set list lcs=tab:\¦\ 
+hi SpecialKey ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#4e4e4e
 "検索時に大文字小文字を区別しない
 set ic
 "バックアップをとらない
