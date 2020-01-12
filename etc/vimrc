@@ -14,9 +14,8 @@ set mouse=a
 set number
 set smartindent
 set expandtab
-set shiftwidth=2
-set showtabline=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set ambiwidth=double
 "検索時に大文字小文字を区別しない
 set ic
@@ -59,18 +58,13 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
  
 "タブ関連
 set switchbuf+=usetab,newtab"
+set showtabline=2
  
-au BufNewFile,BufRead *.hql setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.hql setlocal filetype=hive
 au BufNewFile *.py 0r $HOME/.vim/template/template.py
-au BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.php setlocal expandtab tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *.cpp setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
-au BufNewFile,BufRead *.hpp setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *Jenkinsfile* setf groovy
 au BufNewFile,BufRead *.qgs setf xml
-au BufNewFile,BufRead *.md setlocal expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.plb setf sql
 au BufNewFile *.sh 0r $HOME/.vim/template/template.sh
 
