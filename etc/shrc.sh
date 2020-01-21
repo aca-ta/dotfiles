@@ -123,3 +123,10 @@ fi
 if [ -d /home/linuxbrew ]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
+
+# ghq + fzf
+if type ghq > /dev/null && type fzf > /dev/null; then
+    gcd() {
+        ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*"
+    }
+fi
