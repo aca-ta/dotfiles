@@ -191,9 +191,6 @@ augroup CloseQuickfixWindowGroup
   autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
 augroup END
 
-" vim markdown
-let g:vim_markdown_new_list_item_indent = 2
-
 " vim-operator-replace
 map r <Plug>(operator-replace)
 
