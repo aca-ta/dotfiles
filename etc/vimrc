@@ -119,6 +119,7 @@ Plug 'janko/vim-test'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
 Plug 'Yggdroot/indentLine'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " nerdtree
@@ -195,7 +196,7 @@ augroup END
 map r <Plug>(operator-replace)
 
 " previm
-let g:previm_open_cmd = 'open -a Firefox'
+let g:previm_open_cmd = ''
 
 " vim-test
 let test#strategy = "vimterminal"
