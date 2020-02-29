@@ -138,7 +138,7 @@ vnoremap < <gv
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 let g:ycm_global_ycm_extra_conf =  $HOME . '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/versions/3.8.2/bin/python'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 nnoremap tj :rightbelow vertical YcmCompleter GoTo<CR>
