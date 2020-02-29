@@ -25,8 +25,8 @@ install_python(){
     esac
   fi
 
-  CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
-  pyenv global 3.7.0
+  CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.2
+  pyenv global 3.8.2
   pyenv rehash
   pip install pipenv pylint mypy
 }
