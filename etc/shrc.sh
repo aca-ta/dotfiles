@@ -127,7 +127,7 @@ fi
 
 # ghq + fzf
 if type ghq > /dev/null && type fzf > /dev/null; then
-    gls() {
+    gcd() {
         ghq list --full-path | fzf --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
         cd $select
     }
