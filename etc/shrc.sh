@@ -132,3 +132,4 @@ if type ghq > /dev/null && type fzf > /dev/null; then
         cd $select
     }
 fi
+export PATH="$HOME/.embulk/bin:$PATH"
