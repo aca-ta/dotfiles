@@ -120,6 +120,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
 Plug 'Yggdroot/indentLine'
 Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 call plug#end()
 
 " nerdtree
