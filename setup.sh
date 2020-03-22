@@ -71,6 +71,7 @@ setup_tmux(){
 setup_git(){
   if [[ $(type git) ]]; then
     git config --global core.excludesfile ~/.gitignore_global
+    git config --global core.editor 'vim -c "set fenc=utf-8"'
   fi
 }
 
