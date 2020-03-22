@@ -8,22 +8,23 @@ install_tools(){
       ;;
     *)
       sudo apt update && sudo apt upgrade
-      sudo apt install -u zsh tmux tig fzf
+      brew install zsh tmux tig bat fzf
+
+      # enable zsh
+      command -v zsh | sudo tee -a /etc/shells
+      sudo chsh -s "$(command -v zsh)" "${USER}"
+
+      # enable fzf key-bindings
+      sh $(brew --prefix)/opt/fzf/install
+
+      # install rg
+      curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+      sudo dpkg -i ripgrep_11.0.2_amd64.deb
   esac
 }
 
 install_python(){
-  if [[ ! -e ${HOME}/.pyenv ]]; then
-    case "${OSTYPE}" in
-      darwin*)
-        brew install zlib pyenv
-        ;;
-
-      *)
-        git clone git://github.com/pyenv/pyenv.git ~/.pyenv
-        sudo apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev zlib1g-dev
-    esac
-  fi
+  brew install zlib pyenv
 
   CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.2
   pyenv global 3.8.2
