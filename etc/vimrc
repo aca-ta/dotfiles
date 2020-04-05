@@ -160,6 +160,9 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
+" indentLine
+let g:indentLine_conceallevel = 0
+
 " go-vim
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 0
