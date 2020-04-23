@@ -19,7 +19,7 @@ setopt pushd_ignore_dups # auto_pushdで重複するディレクトリは記録�
 setopt correct
 setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
 
-setopt PROMPT_SUBST ; PS1='%F{035}[%n %* %c]%f\$$(__git_ps1 " (%s)") '
+setopt PROMPT_SUBST ; PS1='%F{035}[%n %* %c]%f$(__git_ps1 " (%s)")\$ '
 
 # zplug
 source ~/.zplug/init.zsh
