@@ -121,6 +121,7 @@ Plug 'tpope/vim-repeat'
 Plug 'Yggdroot/indentLine'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 " nerdtree
@@ -209,3 +210,6 @@ let test#python#pytest#options = '-vv'
 
 " https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
 let g:omni_sql_no_default_maps = 1
+
+" rainbow
+let g:rainbow_active = 1
