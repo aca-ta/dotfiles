@@ -48,9 +48,9 @@ fi
 
 
 
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias l='ls '
+alias ls='lsd --color=auto'
+alias ll='lsd -l'
+alias l='lsd '
 if [ -f /usr/local/bin/vim ]; then
   alias vim='/usr/local/bin/vim'
 fi
