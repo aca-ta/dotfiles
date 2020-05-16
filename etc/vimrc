@@ -117,7 +117,7 @@ Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'luochen1990/rainbow'
@@ -160,8 +160,9 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" indentLine
-let g:indentLine_conceallevel = 0
+" indentGuide
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
 
 " go-vim
 let g:go_fmt_command = "goimports"
