@@ -12,6 +12,10 @@ if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
     alias tar='gtar'
   fi
+  if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]; then
+    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    alias sed='gsed'
+  fi
 else
   export DISPLAY=:0.0
 fi
@@ -50,7 +54,7 @@ fi
 
 alias ls='lsd --color=auto'
 alias ll='lsd -l'
-alias l='lsd '
+alias l='lsd'
 if [ -f /usr/local/bin/vim ]; then
   alias vim='/usr/local/bin/vim'
 fi
@@ -106,7 +110,7 @@ if [ -e ~/.goenv ]; then
     unset -f goenv
     eval "$(goenv init -)"
     goenv "$@"
-    export PATH="$PATH:$GOPATH/bin"
+    export PATH="$PATH:$GOENV_ROOT/shims"
   }
 fi
 
@@ -120,6 +124,9 @@ if [ -e "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
   }
 fi
 
+# embulk
+export PATH="$HOME/.embulk/bin:$PATH"
+
 # Linuxbrew
 if [ -d /home/linuxbrew ]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -132,4 +139,3 @@ if type ghq > /dev/null && type fzf > /dev/null; then
         cd $select
     }
 fi
-export PATH="$HOME/.embulk/bin:$PATH"
