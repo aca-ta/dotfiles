@@ -15,6 +15,7 @@ set number
 set smartindent
 set expandtab
 set shiftwidth=4
+set showtabline=4
 set tabstop=4
 set ambiwidth=double
 " タブ可視化と色設定
@@ -61,9 +62,15 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
  
 "タブ関連
 set switchbuf+=usetab,newtab"
-set showtabline=2
+
+" sqlのautocompletionを行わない
+" https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
+let g:omni_sql_no_default_maps = 1
  
-au BufNewFile,BufRead *.hql setlocal filetype=hive
+au BufNewFile,BufRead *.hql setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.ddl setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js setlocal filetype=javascript expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.vue setlocal filetype=vue expandtab tabstop=2 shiftwidth=2
 au BufNewFile *.py 0r $HOME/.vim/template/template.py
 au BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 au BufNewFile,BufRead *Jenkinsfile* setf groovy
@@ -91,11 +98,9 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'yuttie/hydrangea-vim', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml'] }
 Plug 'mechatroner/rainbow_csv'
 Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
@@ -116,7 +121,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
 Plug 'Townk/vim-autoclose'
-Plug 'tpope/vim-repeat'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
@@ -139,7 +143,7 @@ vnoremap < <gv
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 let g:ycm_global_ycm_extra_conf =  $HOME . '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/versions/3.8.2/bin/python'
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/versions/3.8.1/bin/python'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 nnoremap tj :rightbelow vertical YcmCompleter GoTo<CR>
@@ -178,7 +182,13 @@ let g:ale_set_quickfix = 1
 let g:ale_loclist_msg_format = '[%linter%] %s'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'text': ['textlint']}
+let g:ale_linters = {'text': ['textlint'], 'vue': ['eslint'], 'javascript': ['eslint']}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'vue': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
 
 nmap <silent> <C-p> :cprev<CR>
 nmap <silent> <C-n> :cnext<CR>
@@ -200,15 +210,12 @@ augroup END
 map r <Plug>(operator-replace)
 
 " previm
-let g:previm_open_cmd = ''
+let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " vim-test
 let test#strategy = "vimterminal"
 let test#vim#term_position = "aboveleft"
 let test#python#pytest#options = '-vv'
-
-" https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
-let g:omni_sql_no_default_maps = 1
 
 " rainbow
 let g:rainbow_active = 1
