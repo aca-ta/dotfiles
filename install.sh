@@ -17,6 +17,13 @@ fetch_git_completions(){
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 }
 
+set_git_secrets(){
+    brew install git-secrets
+    git secrets --register-aws --global
+    git secrets --add 'private_key' --global
+    git secrets --add 'private_key_id' --global
+}
+
 fetch_dircolors(){
   curl -fLo ${HOME}/.dircolors.256dark \
       https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
@@ -47,6 +54,7 @@ install_zplug() {
 }
 
 set_symlinks
+set_git_secrets
 fetch_git_completions
 fetch_dircolors
 install_template
