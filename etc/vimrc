@@ -225,3 +225,6 @@ let test#python#pytest#options = '-vv'
 
 " rainbow
 let g:rainbow_active = 1
+
+" vim-terraform
+let g:terraform_fmt_on_save=1
