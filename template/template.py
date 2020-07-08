@@ -2,7 +2,7 @@
 
 
 def main():
-    """ main. """
+    """Main. """
     pass
 
 
