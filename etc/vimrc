@@ -102,6 +102,7 @@ Plug 'mattn/emmet-vim'
 Plug 'yuttie/hydrangea-vim', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'mechatroner/rainbow_csv'
