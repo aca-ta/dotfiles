@@ -81,6 +81,7 @@ au FileType yaml setlocal sw=2 sts=2 ts=2 et
 au BufNewFile,BufRead *.yml setf yaml
 au BufNewFile,BufRead *.yaml.liquid setf yaml
 au BufNewFile,BufRead *.yml.liquid setf yaml
+au BufNewFile,BufRead Dockerfile.* setf Dockerfile
 
 " XMLの対応カッコ移動
 source $VIMRUNTIME/macros/matchit.vim
