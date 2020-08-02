@@ -132,10 +132,19 @@ if [ -d /home/linuxbrew ]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-# ghq + fzf
-if type ghq > /dev/null && type fzf > /dev/null; then
-    gcd() {
-        ghq list --full-path | fzf --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
-        cd $select
+# fzf
+if type fzf-tmux > /dev/null; then
+
+    fvi() {
+        local key=${1}
+        fd $key | fzf-tmux | xargs -o vim
     }
+
+    # ghq + fzf-tmux
+    if type ghq > /dev/null; then
+        gcd() {
+            ghq list --full-path | fzf-tmux --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
+            cd $select
+        }
+    fi
 fi
