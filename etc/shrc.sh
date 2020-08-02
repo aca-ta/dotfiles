@@ -140,14 +140,20 @@ if type fzf-tmux > /dev/null; then
             local key=${1}
             fd $key | fzf-tmux | xargs -o vim
         }
+        fcd() {
+            local key=${1}
+            fd --full-path -t d $key | fzf-tmux | read select
+            cd $select
+            pwd
+        }
     fi
 
     # ghq + fzf-tmux
     if type ghq > /dev/null; then
         gcd() {
             ghq list --full-path | fzf-tmux --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
-            echo $select
             cd $select
+            pwd
         }
     fi
 fi
