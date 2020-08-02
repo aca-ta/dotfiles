@@ -142,7 +142,7 @@ if type fzf-tmux > /dev/null; then
         }
         fcd() {
             local key=${1}
-            fd --full-path -t d $key | fzf-tmux | read select
+            fd -a -t d $key | fzf-tmux | read select
             cd $select
             pwd
         }
