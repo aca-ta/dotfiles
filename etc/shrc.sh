@@ -135,15 +135,18 @@ fi
 # fzf
 if type fzf-tmux > /dev/null; then
 
-    fvi() {
-        local key=${1}
-        fd $key | fzf-tmux | xargs -o vim
-    }
+    if type fd > /dev/null; then
+        fvi() {
+            local key=${1}
+            fd $key | fzf-tmux | xargs -o vim
+        }
+    fi
 
     # ghq + fzf-tmux
     if type ghq > /dev/null; then
         gcd() {
             ghq list --full-path | fzf-tmux --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
+            echo $select
             cd $select
         }
     fi
