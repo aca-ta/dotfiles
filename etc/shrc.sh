@@ -152,7 +152,8 @@ if type fzf-tmux > /dev/null; then
     # ghq + fzf-tmux
     if type ghq > /dev/null; then
         gcd() {
-            ghq list --full-path | fzf-tmux --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
+            local key=${1}
+            ghq list --full-path $key | fzf-tmux --preview "bat --color=always --style=header,grid --line-range :80 {}/README.*" | read select
             cd $select
             pwd
         }
