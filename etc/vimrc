@@ -33,7 +33,8 @@ set showcmd
 set showmode
 "コピー時にクリップボードを使用
 "set clipboard=unnamedplus,autoselect
-set clipboard+=unnamed,unnamedplus
+" use * for the default clipboard
+set clipboard=unnamed
 "対応する括弧をハイライト
 set showmatch
 "バックスペースの挙動
