@@ -130,6 +130,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'luochen1990/rainbow'
+Plug 'puremourning/vimspector'
 call plug#end()
 
 " nerdtree
@@ -231,3 +232,6 @@ let g:rainbow_active = 1
 
 " vim-terraform
 let g:terraform_fmt_on_save=1
+
+" vimspector
+let g:vimspector_enable_mappings='HUMAN'
