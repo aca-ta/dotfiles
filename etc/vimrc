@@ -261,3 +261,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 let g:UltiSnipsEditSplit="vertical"
+
+" format json with jq
+command! Jqf %!jq '.'
