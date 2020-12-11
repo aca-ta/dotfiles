@@ -267,3 +267,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " format json with jq
 command! Jqf %!jq '.'
+
+" fzf.vim
+nnoremap fd :Files<CR>
