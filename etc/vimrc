@@ -133,6 +133,7 @@ Plug 'luochen1990/rainbow'
 Plug 'puremourning/vimspector'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 " nerdtree
