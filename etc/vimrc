@@ -134,6 +134,8 @@ Plug 'puremourning/vimspector'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'AndrewRadev/linediff.vim'
+Plug 'rickhowe/diffchar.vim'
 call plug#end()
 
 " nerdtree
