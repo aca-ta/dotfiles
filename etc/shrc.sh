@@ -3,6 +3,11 @@
 # LANG
 export LANG=ja_JP.UTF-8
 
+# Linuxbrew
+if [ -d /home/linuxbrew ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 if [ "$(uname)" = "Darwin" ]; then
   if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -128,10 +133,6 @@ fi
 # embulk
 export PATH="$HOME/.embulk/bin:$PATH"
 
-# Linuxbrew
-if [ -d /home/linuxbrew ]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
 
 # fzf
 if type fzf-tmux > /dev/null; then
