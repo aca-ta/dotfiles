@@ -152,8 +152,6 @@ nnoremap =  <C-w>=
 vnoremap > >gv
 vnoremap < <gv
 
-" 補完表示時のEnterで改行をしない
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
