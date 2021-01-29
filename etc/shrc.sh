@@ -56,7 +56,7 @@ else
   echo "${HOME}"
 fi
 
-
+alias gitr='cd $(git rev-parse --show-superproject-working-tree --show-toplevel | head -1)'
 
 alias ls='lsd --color=auto'
 alias ll='lsd -l'
