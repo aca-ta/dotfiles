@@ -2,7 +2,6 @@
 	path = .gitconfig_local
 [core]
 	editor = vim -c \"set fenc=utf-8\"
-	pager = delta
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -14,8 +13,3 @@
 	patterns = private_key_id
 [pull]
 	rebase = false
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-	features = side-by-side line-numbers
-	whitespace-error-style = 22 reverse
