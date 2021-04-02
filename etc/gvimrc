@@ -1,1 +1,9 @@
 set guifont=Cica:h15
+
+" filetypeが未指定の場合、filetypeをmarkdownとする
+function! s:NoneFileTypeSetMarkdown()
+  if len(&filetype) == 0
+    set filetype=markdown
+  endif
+endfunction
+autocmd BufEnter * call s:NoneFileTypeSetMarkdown()

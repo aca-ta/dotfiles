@@ -84,14 +84,6 @@ au BufNewFile,BufRead *.yaml.liquid setf yaml
 au BufNewFile,BufRead *.yml.liquid setf yaml
 au BufNewFile,BufRead Dockerfile.* setf Dockerfile
 
-" filetypeが未指定の場合、filetypeをmarkdownとする
-function! s:NoneFileTypeSetMarkdown()
-  if len(&filetype) == 0
-    set filetype=markdown
-  endif
-endfunction
-autocmd BufEnter * call s:NoneFileTypeSetMarkdown()
-
 " XMLの対応カッコ移動
 source $VIMRUNTIME/macros/matchit.vim
 
