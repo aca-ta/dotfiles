@@ -143,7 +143,8 @@ call plug#end()
 
 " nerdtree
 let NERDTreeShowHidden=1
-nnoremap <silent><C-e> :NERDTreeToggle<CR><C-w>=
+let g:nerdtree_tabs_open_on_gui_startup=0
+nnoremap <silent><C-e> :NERDTreeTabsToggle<CR><C-w>=
 
 nnoremap +  <C-w>+
 nnoremap -  <C-w>-
@@ -241,6 +242,7 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 let test#strategy = "vimterminal"
 let test#vim#term_position = "aboveleft"
 let test#python#pytest#options = '-vv'
+let g:test#javascript#runner = 'jest'
 
 " rainbow
 let g:rainbow_active = 1
