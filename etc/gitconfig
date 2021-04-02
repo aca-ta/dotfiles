@@ -1,7 +1,8 @@
 [include]
-	path = .gitconfig_local
+	path = ~/.gitconfig_local
 [core]
 	editor = vim -c \"set fenc=utf-8\"
+    excludesFile = ~/.gitignore_global
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
