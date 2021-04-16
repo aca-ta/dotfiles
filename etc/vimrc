@@ -71,6 +71,9 @@ let g:omni_sql_no_default_maps = 1
 au BufNewFile,BufRead *.hql setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.ddl setlocal filetype=hive expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.js setlocal filetype=javascript expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.ts setlocal filetype=typescript expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.jsx setlocal filetype=javascriptreact expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.vue setlocal filetype=vue expandtab tabstop=2 shiftwidth=2
 au BufNewFile *.py 0r $HOME/.vim/template/template.py
 au BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
