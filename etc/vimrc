@@ -142,6 +142,7 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'rickhowe/diffchar.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'glidenote/memolist.vim'
 call plug#end()
 
 " nerdtree
@@ -290,3 +291,6 @@ nnoremap Fd :Files<CR>
 " easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+
+" memolist
+let g:memolist_memo_suffix = "md"
