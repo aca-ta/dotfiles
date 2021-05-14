@@ -164,6 +164,7 @@ let g:ycm_global_ycm_extra_conf =  $HOME . '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/versions/3.8.1/bin/python'
 let g:ycm_key_invoke_completion = '<C-x><C-o>'
+let g:ycm_enable_diagnostic_highlighting = 0
 
 " show popup manually.
 " https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
