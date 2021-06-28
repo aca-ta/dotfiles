@@ -78,7 +78,7 @@ if [ -e ~/.pyenv ]; then
   export PIPENV_VENV_IN_PROJECT=1
   pyenv() {
     unset -f pyenv
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
     pyenv rehash
     pyenv "$@"
   }
