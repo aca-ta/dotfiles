@@ -160,3 +160,6 @@ if type fzf-tmux > /dev/null; then
         }
     fi
 fi
+
+# kubebuilder
+export PATH=$PATH:/usr/local/kubebuilder/bin
