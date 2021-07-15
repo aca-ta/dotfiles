@@ -4,3 +4,5 @@
 .vscode/
 
 .go-version
+
+.DS_Store
