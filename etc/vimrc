@@ -144,6 +144,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'glidenote/memolist.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'justmao945/vim-clang'
 call plug#end()
 
 " nerdtree
@@ -296,3 +297,7 @@ let g:EasyMotion_smartcase = 1
 
 " memolist
 let g:memolist_memo_suffix = "md"
+
+" set clang options for vim-clang
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
