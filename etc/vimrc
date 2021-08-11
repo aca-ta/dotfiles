@@ -140,8 +140,6 @@ Plug 'puremourning/vimspector'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'AndrewRadev/linediff.vim'
 Plug 'rickhowe/diffchar.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-scripts/AutoComplPop'
 Plug 'glidenote/memolist.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'justmao945/vim-clang'
