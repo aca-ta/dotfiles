@@ -137,8 +137,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'luochen1990/rainbow'
 Plug 'puremourning/vimspector'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'AndrewRadev/linediff.vim'
 Plug 'rickhowe/diffchar.vim'
@@ -275,13 +273,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-
-let g:UltiSnipsEditSplit="vertical"
 
 " format json with jq
 command! Jqf %!jq '.'
