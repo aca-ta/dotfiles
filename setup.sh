@@ -49,6 +49,10 @@ install_nodejs() {
   nvm use --lts
 }
 
+setup_clang() {
+  sudo apt install clang-format
+}
+
 install_youcompleteme(){
   case "${OSTYPE}" in
     darwin*)
@@ -95,6 +99,7 @@ install_tools
 install_python
 install_go
 install_nodejs
+setup_clang
 install_youcompleteme
 setup_tmux
 setup_git

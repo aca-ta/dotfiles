@@ -75,6 +75,8 @@ au BufNewFile,BufRead *.ts setlocal filetype=typescript expandtab tabstop=2 shif
 au BufNewFile,BufRead *.jsx setlocal filetype=javascriptreact expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.vue setlocal filetype=vue expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.cpp setlocal filetype=cpp expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.hpp setlocal filetype=cpp expandtab tabstop=2 shiftwidth=2
 au BufNewFile *.py 0r $HOME/.vim/template/template.py
 au BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 au BufNewFile,BufRead *Jenkinsfile* setf groovy
@@ -135,14 +137,12 @@ Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'luochen1990/rainbow'
 Plug 'puremourning/vimspector'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'AndrewRadev/linediff.vim'
 Plug 'rickhowe/diffchar.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-scripts/AutoComplPop'
 Plug 'glidenote/memolist.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'justmao945/vim-clang'
 call plug#end()
 
 " nerdtree
@@ -272,13 +272,6 @@ function! s:align()
   endif
 endfunction
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-
-let g:UltiSnipsEditSplit="vertical"
-
 " format json with jq
 command! Jqf %!jq '.'
 
@@ -295,3 +288,7 @@ let g:EasyMotion_smartcase = 1
 
 " memolist
 let g:memolist_memo_suffix = "md"
+
+" set clang options for vim-clang
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
