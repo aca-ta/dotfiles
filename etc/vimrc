@@ -143,6 +143,7 @@ Plug 'rickhowe/diffchar.vim'
 Plug 'glidenote/memolist.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'justmao945/vim-clang'
+Plug 'tell-k/vim-autopep8'
 call plug#end()
 
 " nerdtree
