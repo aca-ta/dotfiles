@@ -162,25 +162,6 @@ nnoremap =  <C-w>=
 vnoremap > >gv
 vnoremap < <gv
 
-
-" YouCompleteMe
-let g:ycm_goto_buffer_command = 'split-or-existing-window'
-let g:ycm_global_ycm_extra_conf =  $HOME . '.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/versions/3.8.1/bin/python'
-let g:ycm_key_invoke_completion = '<C-x><C-o>'
-let g:ycm_enable_diagnostic_highlighting = 0
-
-" show popup manually.
-" https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
-let g:ycm_auto_hover = "CursorMoved"
-nmap gd <plug>(YCMHover)
-
-nnoremap tj :rightbelow vertical YcmCompleter GoTo<CR>
-nnoremap gr :YcmCompleter GoToReferences<CR>
-nnoremap gy :YcmCompleter GetType<CR>
-nnoremap ref :YcmCompleter RefactorRename 
-
 " gitgutter
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_max_signs = 1000
@@ -298,9 +279,11 @@ let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
 
 " coc.nvim
-nmap <silent> tj :vsp<CR><Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
+nmap tj :vsp<CR><Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+nmap rn <Plug>(coc-rename)
 nnoremap <silent> gd :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <c-x><c-o> coc#refresh()
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
