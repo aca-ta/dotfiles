@@ -47,10 +47,11 @@ install_vim_plugins(){
 }
 
 install_zplug() {
-  if [[ ! -e ${HOME}/.zplug ]]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    chmod -R 775 ${HOME}/.zplug
-  fi
+    sudo apt install locales-all
+    if [[ ! -e ${HOME}/.zplug ]]; then
+        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+        chmod -R 775 ${HOME}/.zplug
+    fi
 }
 
 set_symlinks
