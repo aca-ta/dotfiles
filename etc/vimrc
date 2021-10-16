@@ -60,6 +60,10 @@ set fileformat=unix
 " 自動エンコード
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
+
+" vsplitで右に開く
+set splitright
+
  
 "タブ関連
 set switchbuf+=usetab,newtab"
@@ -294,7 +298,7 @@ let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
 
 " coc.nvim
-nmap <silent> tj <Plug>(coc-definition)
+nmap <silent> tj :vsp<CR><Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gd :call <SID>show_documentation()<CR>
 
