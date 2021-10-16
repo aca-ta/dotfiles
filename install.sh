@@ -54,6 +54,11 @@ install_zplug() {
     fi
 }
 
+
+install_coc_nvim() {
+  vim +'CocInstall -sync coc-jedi coc-json coc-tsserver' +qa
+}
+
 set_symlinks
 set_git_secrets
 fetch_git_completions
@@ -61,3 +66,4 @@ fetch_dircolors
 install_template
 install_vim_plugins
 install_zplug
+install_coc_nvim
