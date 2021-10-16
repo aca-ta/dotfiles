@@ -86,11 +86,8 @@ fi
 
 # nvm
 if [ -e ~/.nvm/nvm.sh ]; then
-  nvm() {
-    unset -f nvm
-    . $HOME/.nvm/nvm.sh
-    nvm "$@"
-  }
+    source $HOME/.nvm/nvm.sh
+    nvm use node
 fi
 #yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

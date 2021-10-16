@@ -53,18 +53,6 @@ setup_clang() {
   sudo apt install clang-format
 }
 
-install_youcompleteme(){
-  case "${OSTYPE}" in
-    darwin*)
-      brew install cmake
-      ;;
-
-    *)
-      sudo apt install -y build-essential cmake python3-dev
-  esac
-  ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer --clang-completer
-}
-
 setup_tmux(){
   if [[ ! -e ${HOME}/.tmux ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

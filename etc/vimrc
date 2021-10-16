@@ -110,8 +110,6 @@ Plug 'tpope/vim-vividchalk', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'mechatroner/rainbow_csv'
 Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
@@ -144,6 +142,7 @@ Plug 'glidenote/memolist.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'justmao945/vim-clang'
 Plug 'tell-k/vim-autopep8'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " nerdtree
@@ -293,3 +292,16 @@ let g:memolist_memo_suffix = "md"
 " set clang options for vim-clang
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
+
+" coc.nvim
+nmap <silent> tj <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gd :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
