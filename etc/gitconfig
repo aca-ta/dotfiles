@@ -14,6 +14,3 @@
 	patterns = private_key_id
 [pull]
 	rebase = false
-[user]
-	email = seljydef@gmail.com
-	name = aca-ta
