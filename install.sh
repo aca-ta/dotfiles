@@ -56,7 +56,7 @@ install_zplug() {
 
 
 install_coc_nvim() {
-  vim +'CocInstall -sync coc-jedi coc-json coc-tsserver' +qa
+  vim +'CocInstall -sync coc-jedi coc-json coc-tsserver coc-prettier coc-eslint coc-vetur' +qa
 }
 
 set_symlinks
