@@ -279,7 +279,7 @@ let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z --pedantic-errors'
 
 " coc.nvim
-nmap tj :vsp<CR><Plug>(coc-implementation)
+nmap tj :vsp<CR><Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 nmap rn <Plug>(coc-rename)
 nnoremap <silent> gd :call <SID>show_documentation()<CR>
