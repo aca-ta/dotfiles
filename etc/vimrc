@@ -120,7 +120,6 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -181,10 +180,6 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-
-" go-vim
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 0
 
 " ale
 let g:ale_open_list = 1
@@ -284,6 +279,10 @@ nmap gr <Plug>(coc-references)
 nmap rn <Plug>(coc-rename)
 nnoremap <silent> gd :call <SID>show_documentation()<CR>
 inoremap <silent><expr> <c-x><c-o> coc#refresh()
+
+" golang
+" missing imports on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
