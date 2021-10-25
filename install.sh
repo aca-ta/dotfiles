@@ -2,9 +2,10 @@
 
 set_symlinks() {
 
-  for file in $(ls ./etc)
+  for file in $(find ./etc ! -type d | sed -e 's/^\.\/etc\///g')
   do
     rm -f ${HOME}/.${file}
+    echo "$(pwd)/etc/${file} to ~/.${file}"
     ln -s $(pwd)/etc/${file} ~/.${file}
   done
 }
@@ -56,7 +57,7 @@ install_zplug() {
 
 
 install_coc_nvim() {
-  vim +'CocInstall -sync coc-jedi coc-json coc-tsserver coc-prettier coc-eslint coc-vetur coc-go' +qa
+  vim +'CocInstall -sync coc-jedi coc-json coc-tsserver coc-prettier coc-eslint coc-vetur coc-go coc-sh' +qa
 }
 
 set_symlinks
