@@ -81,6 +81,7 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact expandtab tabstop=
 au BufNewFile,BufRead *.vue setlocal filetype=vue expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.cpp setlocal filetype=cpp expandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.hpp setlocal filetype=cpp expandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.go setlocal filetype=go noexpandtab tabstop=4 shiftwidth=4
 au BufNewFile *.py 0r $HOME/.vim/template/template.py
 au BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 au BufNewFile,BufRead *Jenkinsfile* setf groovy
@@ -308,3 +309,12 @@ function! CocSplitIfNotOpen(...)
     endif
 endfunction
 command! -nargs=+ CocJumpCmd :call CocSplitIfNotOpen(<f-args>)
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif

@@ -1,4 +1,12 @@
 {
-  "coc.preferences.jumpCommand": "CocJumpCmd",
-  "coc.preferences.formatOnSaveFiletypes": ["*"]
+    "coc.preferences.jumpCommand": "CocJumpCmd",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "typescript",
+        "vue"
+    ],
+    "prettier.tabWidth": 4,
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.messageTarget": "echo",
+    "diagnostic.displayByAle": true
 }
