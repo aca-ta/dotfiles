@@ -83,6 +83,10 @@ install_shellcheck() {
   esac
 }
 
+install_tfenv() {
+  brew install tfenv
+}
+
 install_tools
 install_python
 install_go
@@ -92,3 +96,4 @@ install_youcompleteme
 setup_tmux
 setup_git
 install_shellcheck
+install_tfenv
