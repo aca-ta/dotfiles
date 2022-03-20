@@ -32,7 +32,7 @@ if type dircolors >/dev/null; then
 fi
 
 ## tmux
-if [ -z "$TMUX" -a $TERM_PROGRAM != "vscode" -a type "tmux" > /dev/null 2>&1 ]; then
+[ -z "$TMUX" ] && [ x$TERM_PROGRAM != x"vscode" ] && type "tmux" > /dev/null 2>&1 && {
   [ -n "$ATTACH_ONLY" ] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
@@ -42,7 +42,7 @@ if [ -z "$TMUX" -a $TERM_PROGRAM != "vscode" -a type "tmux" > /dev/null 2>&1 ]; 
 
   tmux new-window && exec tmux a
   exec tmux
-fi
+}
 
 ## git completion
 if [ -f ~/.git-prompt.sh ]; then
