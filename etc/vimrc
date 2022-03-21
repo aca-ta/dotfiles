@@ -238,7 +238,9 @@ let g:rainbow_active = 1
 let g:terraform_fmt_on_save=1
 
 " vimspector
+let g:vimspector_base_dir=$HOME . "/.config/vimspector-config/"
 let g:vimspector_enable_mappings='HUMAN'
+let g:vimspector_install_gadgets = [ 'debugpy' ]
 
 " cucumbertables https://gist.github.com/tpope/287147
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
