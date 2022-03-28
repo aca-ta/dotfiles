@@ -1,24 +1,20 @@
 {
   "configurations": {
-    "Python: Attach To Vim": {
-      "variables": {
-        "port": "5678",
-        "host": "localhost"
-      },
-      "adapter": "multi-session",
-      "configuration": {
-        "request": "attach"
-      }
-    },
-    "Python: Run current script": {
+    "launch": {
       "adapter": "debugpy",
+      "filetypes": [
+        "python"
+      ],
       "configuration": {
+        "name": "launch",
+        "type": "python",
         "request": "launch",
-        "program": "${file}",
-        "args": [ "*${args:--update-gadget-config}" ],
-        "justMyCode#json": "${justMyCode:true}"
+        "python": "${HOME}/.pyenv/shims/python",
+        "stopOnEntry": true,
+        "console": "externalTerminal",
+        "debugOptions": [],
+        "program": "${file}"
       }
     }
   }
 }
-
