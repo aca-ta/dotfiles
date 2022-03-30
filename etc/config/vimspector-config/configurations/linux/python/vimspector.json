@@ -5,6 +5,12 @@
       "filetypes": [
         "python"
       ],
+      "breakpoints": {
+        "exception": {
+          "caught": "Y",
+          "uncaught": "Y"
+        }
+      },
       "configuration": {
         "name": "launch",
         "type": "python",
@@ -13,13 +19,7 @@
         "stopOnEntry": true,
         "console": "externalTerminal",
         "debugOptions": [],
-        "program": "${file}",
-        "breakpoints": {
-          "exception": {
-            "caught": "Y",
-            "uncaught": "Y"
-          }
-        }
+        "program": "${file}"
       }
     }
   }
