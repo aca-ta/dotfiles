@@ -13,7 +13,13 @@
         "stopOnEntry": true,
         "console": "externalTerminal",
         "debugOptions": [],
-        "program": "${file}"
+        "program": "${file}",
+        "breakpoints": {
+          "exception": {
+            "caught": "Y",
+            "uncaught": "Y"
+          }
+        }
       }
     }
   }
