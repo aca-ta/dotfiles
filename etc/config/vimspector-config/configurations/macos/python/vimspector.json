@@ -1,0 +1,26 @@
+{
+  "configurations": {
+    "launch": {
+      "adapter": "debugpy",
+      "filetypes": [
+        "python"
+      ],
+      "configuration": {
+        "name": "launch",
+        "type": "python",
+        "request": "launch",
+        "python": "${HOME}/.pyenv/shims/python",
+        "stopOnEntry": true,
+        "console": "externalTerminal",
+        "debugOptions": [],
+        "program": "${file}",
+        "breakpoints": {
+          "exception": {
+            "caught": "Y",
+            "uncaught": "Y"
+          }
+        }
+      }
+    }
+  }
+}
