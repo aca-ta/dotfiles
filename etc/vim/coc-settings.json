@@ -5,6 +5,8 @@
         "typescript",
         "vue"
     ],
+    "eslint.format.enable": true,
+    "eslint.autoFixOnSave": true,
     "prettier.tabWidth": 4,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.messageTarget": "echo",
