@@ -8,5 +8,17 @@
     "prettier.tabWidth": 4,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.messageTarget": "echo",
-    "diagnostic.displayByAle": true
+    "diagnostic.displayByAle": true,
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": [
+                "terraform",
+                "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+        }
+    }
 }

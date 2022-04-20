@@ -23,6 +23,10 @@ install_tools(){
   esac
 }
 
+install_terraform(){
+    brew install tfenv terraform-ls
+}
+
 install_python(){
   brew install zlib pyenv
 
@@ -89,6 +93,7 @@ install_tfenv() {
 
 install_tools
 install_python
+install_terraform
 install_go
 install_nodejs
 setup_clang
