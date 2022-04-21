@@ -7,8 +7,9 @@
     ],
     "prettier.tabWidth": 4,
     "diagnostic.checkCurrentLine": true,
-    "diagnostic.messageTarget": "echo",
-    "diagnostic.displayByAle": true,
+    "diagnostic.messageTarget": "float",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
     "languageserver": {
         "terraform": {
             "command": "terraform-ls",
