@@ -3,9 +3,9 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
         "typescript",
+        "typescriptreact",
         "vue"
     ],
-    "prettier.tabWidth": 4,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.messageTarget": "float",
     "python.linting.mypyEnabled": true,
