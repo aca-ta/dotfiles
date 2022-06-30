@@ -4,7 +4,7 @@ install_tools(){
   case "${OSTYPE}" in
     darwin*)
       brew update
-      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd macvim -- --with-override-system-vim
+      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm
       ;;
     *)
       sudo apt update && sudo apt upgrade
@@ -30,8 +30,8 @@ install_terraform(){
 install_python(){
   brew install zlib pyenv
 
-  CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.2
-  pyenv global 3.8.2
+  pyenv install 3.9.14
+  pyenv global 3.9.14
   pyenv rehash
   pip install pipenv pylint mypy
 }
@@ -97,7 +97,6 @@ install_terraform
 install_go
 install_nodejs
 setup_clang
-install_youcompleteme
 setup_tmux
 setup_git
 install_shellcheck

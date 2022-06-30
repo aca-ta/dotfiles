@@ -9,6 +9,7 @@ if [ -d /home/linuxbrew ]; then
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
   if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     alias ls='gls'
