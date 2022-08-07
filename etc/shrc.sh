@@ -22,9 +22,16 @@ if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
     alias sed='gsed'
   fi
+
+
+
 elif [[ "$(uname -r)" = *microsoft* ]]; then
     # for VcXsrv
     export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+
+    if [ -e "/home/linuxbrew/.linuxbrew/opt/mysql-client/bin" ]; then
+      export PATH="/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH"
+    fi
 fi
 
 # dircolor

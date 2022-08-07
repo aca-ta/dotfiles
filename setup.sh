@@ -7,6 +7,10 @@ install_tools(){
       brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm
       ;;
     *)
+
+      # install newer vim
+      sudo add-apt-repository ppa:jonathonf/vim
+
       sudo apt update && sudo apt upgrade
       brew install zsh tmux tig bat fzf fd lsd
 
