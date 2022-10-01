@@ -12,6 +12,7 @@ install_tools(){
       sudo add-apt-repository ppa:jonathonf/vim
 
       sudo apt update && sudo apt upgrade
+      sudo apt install build-essential
       brew install zsh tmux tig bat fzf fd lsd
 
       # enable zsh
