@@ -20,7 +20,7 @@ install_tools(){
       sudo chsh -s "$(command -v zsh)" "${USER}"
 
       # enable fzf key-bindings
-      sh $(brew --prefix)/opt/fzf/install
+      $(brew --prefix)/opt/fzf/install
 
       # install rg
       curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
