@@ -4,6 +4,7 @@
         "javascript",
         "typescript",
         "typescriptreact",
+        "go",
         "vue"
     ],
     "diagnostic.checkCurrentLine": true,
