@@ -11,6 +11,7 @@
     "diagnostic.messageTarget": "float",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
+    "pyright.inlayHints.enable": false,
     "languageserver": {
         "terraform": {
             "command": "terraform-ls",

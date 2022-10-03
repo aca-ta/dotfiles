@@ -7,7 +7,12 @@ install_tools(){
       brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm
       ;;
     *)
+
+      # install newer vim
+      sudo add-apt-repository ppa:jonathonf/vim
+
       sudo apt update && sudo apt upgrade
+      sudo apt install build-essential make
       brew install zsh tmux tig bat fzf fd lsd
 
       # enable zsh
@@ -15,7 +20,7 @@ install_tools(){
       sudo chsh -s "$(command -v zsh)" "${USER}"
 
       # enable fzf key-bindings
-      sh $(brew --prefix)/opt/fzf/install
+      $(brew --prefix)/opt/fzf/install
 
       # install rg
       curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
@@ -28,7 +33,19 @@ install_terraform(){
 }
 
 install_python(){
-  brew install zlib pyenv
+  brew install pyenv
+  # setup build environment
+  # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+  case "${OSTYPE}" in
+    darwin*)
+      brew install openssl readline sqlite3 xz zlib tcl-tk
+      ;;
+    *)
+      sudo apt update; sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+      libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+      libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+      sudo apt install python3-dev
+  esac
 
   pyenv install 3.9.14
   pyenv global 3.9.14
