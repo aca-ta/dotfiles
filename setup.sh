@@ -87,6 +87,11 @@ install_shellcheck() {
   esac
 }
 
+setup_java(){
+  curl -s "https://get.sdkman.io" | bash
+
+}
+
 install_tfenv() {
   brew install tfenv
 }
@@ -101,3 +106,4 @@ setup_tmux
 setup_git
 install_shellcheck
 install_tfenv
+setup_java
