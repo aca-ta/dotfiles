@@ -105,7 +105,6 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'dense-analysis/ale'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
@@ -147,6 +146,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'justmao945/vim-clang'
 Plug 'tell-k/vim-autopep8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'gelguy/wilder.nvim'
 call plug#end()
 
 " nerdtree
@@ -318,3 +318,11 @@ if has("nvim-0.5.0") || has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+" wilder.nvim
+call wilder#setup({'modes': [':', '/', '?']})
+" popup
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'pumblend': 20,
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ }))
