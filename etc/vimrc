@@ -147,6 +147,7 @@ Plug 'justmao945/vim-clang'
 Plug 'tell-k/vim-autopep8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gelguy/wilder.nvim'
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 " nerdtree
@@ -326,3 +327,6 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'pumblend': 20,
       \ 'highlighter': wilder#basic_highlighter(),
       \ }))
+
+" highlightedyank
+let g:highlightedyankjk_highlight_duration = -1
