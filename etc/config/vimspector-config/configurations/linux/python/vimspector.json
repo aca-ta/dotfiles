@@ -8,7 +8,8 @@
       "breakpoints": {
         "exception": {
           "raised": "Y",
-          "uncaught": "Y"
+          "uncaught": "Y",
+          "userUnhandled": "Y"
         }
       },
       "configuration": {
