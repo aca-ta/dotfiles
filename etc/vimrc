@@ -329,4 +329,5 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ }))
 
 " highlightedyank
-let g:highlightedyankjk_highlight_duration = -1
+let g:highlightedyank_highlight_duration = -1
+highlight HighlightedyankRegion ctermbg=lightgray guibg=lightgray
