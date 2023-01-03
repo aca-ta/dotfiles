@@ -132,7 +132,6 @@ Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
-Plug 'Townk/vim-autoclose'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
@@ -174,6 +173,7 @@ nnoremap gp :GitGutterPrevHunk<CR>
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_new_list_item_indent = 0
 
 " indentGuide
 let g:indent_guides_enable_on_vim_startup = 1
