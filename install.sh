@@ -62,7 +62,7 @@ install_zplug() {
 
 
 install_coc_nvim() {
-  vim +'CocInstall -sync coc-pyright coc-json coc-tsserver coc-prettier coc-eslint coc-vetur coc-go coc-sh' +qa
+  vim +'CocInstall -sync coc-pyright coc-json coc-tsserver coc-prettier coc-eslint coc-vetur coc-go coc-sh coc-pairs' +qa
 }
 
 set_symlinks
