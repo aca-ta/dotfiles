@@ -1,27 +1,20 @@
 {
-    "coc.preferences.jumpCommand": "CocJumpCmd",
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "typescript",
-        "typescriptreact",
-        "go",
-        "vue"
-    ],
-    "diagnostic.checkCurrentLine": true,
-    "diagnostic.messageTarget": "float",
-    "python.linting.mypyEnabled": true,
-    "python.linting.pylintEnabled": true,
-    "pyright.inlayHints.enable": false,
-    "languageserver": {
-        "terraform": {
-            "command": "terraform-ls",
-            "args": ["serve"],
-            "filetypes": [
-                "terraform",
-                "tf"
-            ],
-            "initializationOptions": {},
-            "settings": {}
-        }
+  "coc.preferences.jumpCommand": "CocJumpCmd",
+  "[javascript][typescript][typescriptreact][go][vue][json]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "float",
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "pyright.inlayHints.enable": false,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
     }
+  }
 }
