@@ -146,6 +146,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gelguy/wilder.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mzlogin/vim-markdown-toc'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -372,3 +373,6 @@ function! s:markdown_outline() abort
 endfunction
 
 nnoremap <buffer> gO <Cmd>call <sid>markdown_outline()<CR>
+
+"pydocstring
+let g:pydocstring_formatter = 'google'
