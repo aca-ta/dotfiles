@@ -1,6 +1,6 @@
 {
   "coc.preferences.jumpCommand": "CocJumpCmd",
-  "[javascript][typescript][typescriptreact][go][vue][json]": {
+  "[javascript][typescript][typescriptreact][go][vue]": {
     "coc.preferences.formatOnSave": true
   },
   "diagnostic.checkCurrentLine": true,
