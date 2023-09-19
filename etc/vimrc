@@ -147,6 +147,7 @@ Plug 'gelguy/wilder.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'tpope/vim-rhubarb'
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -376,3 +377,7 @@ nnoremap <buffer> gO <Cmd>call <sid>markdown_outline()<CR>
 
 "pydocstring
 let g:pydocstring_formatter = 'google'
+
+" mzlogin/vim-markdown-toc
+let g:vmt_list_item_char = '-'
+
