@@ -13,7 +13,7 @@ install_tools(){
 
       sudo apt update && sudo apt upgrade
       sudo apt install build-essential make
-      brew install zsh tmux tig bat fzf fd lsd
+      brew install zsh tmux tig bat fzf fd lsd gnu-tar gnu-sed
 
       # enable zsh
       command -v zsh | sudo tee -a /etc/shells
