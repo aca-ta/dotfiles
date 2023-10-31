@@ -148,6 +148,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-rhubarb'
+Plug 'rhysd/conflict-marker.vim'
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -381,3 +382,8 @@ let g:pydocstring_formatter = 'google'
 " mzlogin/vim-markdown-toc
 let g:vmt_list_item_char = '-'
 
+
+" 特定環境用
+if filereadable($HOME . "/.vim/additional_vimrc")
+  source $HOME/.vim/additional_vimrc
+endif
