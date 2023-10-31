@@ -1,12 +1,13 @@
 {
   "coc.preferences.jumpCommand": "CocJumpCmd",
-  "[javascript][typescript][typescriptreact][go][vue]": {
+  "[javascript][typescript][typescriptreact][go]": {
     "coc.preferences.formatOnSave": true
   },
   "diagnostic.checkCurrentLine": true,
   "diagnostic.messageTarget": "float",
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": true,
+  "eslint.autoFixOnSave": true,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
