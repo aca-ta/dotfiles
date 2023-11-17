@@ -149,6 +149,7 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'github/copilot.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
