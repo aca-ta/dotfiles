@@ -63,7 +63,6 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 " vsplitで右に開く
 set splitright
 
- 
 "タブ関連
 set switchbuf+=usetab,newtab"
 
@@ -149,6 +148,7 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -387,3 +387,8 @@ let g:vmt_list_item_char = '-'
 if filereadable($HOME . "/.vim/additional_vimrc")
   source $HOME/.vim/additional_vimrc
 endif
+
+" copilot macbookでaltを使えないため
+inoremap <C-[> <Plug>(copilot-next)
+inoremap <C-]> <Plug>(copilot-previous)
+inoremap <C-\> <Plug>(copilot-suggest)
