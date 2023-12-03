@@ -390,6 +390,7 @@ if filereadable($HOME . "/.vim/additional_vimrc")
 endif
 
 " copilot macbookでaltを使えないため
+let g:copilot_filetypes = {'markdown': v:true}
 inoremap <C-[> <Plug>(copilot-next)
 inoremap <C-]> <Plug>(copilot-previous)
 inoremap <C-\> <Plug>(copilot-suggest)
