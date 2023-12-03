@@ -1,3 +1,8 @@
+" 特定環境用
+if filereadable($HOME . "/.vim/additional_vimrc")
+  source $HOME/.vim/additional_vimrc
+endif
+
 syntax enable
 "カラースキーマ
 let g:space_vim_dark_background = 234
@@ -382,12 +387,6 @@ let g:pydocstring_formatter = 'google'
 
 " mzlogin/vim-markdown-toc
 let g:vmt_list_item_char = '-'
-
-
-" 特定環境用
-if filereadable($HOME . "/.vim/additional_vimrc")
-  source $HOME/.vim/additional_vimrc
-endif
 
 " copilot macbookでaltを使えないため
 let g:copilot_filetypes = {'markdown': v:true}
