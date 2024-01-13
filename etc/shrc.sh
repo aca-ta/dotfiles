@@ -27,7 +27,7 @@ if [ "$(uname)" = "Darwin" ]; then
 
 elif [[ "$(uname -r)" = *microsoft* ]]; then
     # for VcXsrv
-    export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+    export DISPLAY=$(ROUTE.EXE print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
 
     if [ -e "/home/linuxbrew/.linuxbrew/opt/mysql-client/bin" ]; then
       export PATH="/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH"
