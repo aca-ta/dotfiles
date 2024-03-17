@@ -388,8 +388,4 @@ let g:pydocstring_formatter = 'google'
 " mzlogin/vim-markdown-toc
 let g:vmt_list_item_char = '-'
 
-" copilot macbookでaltを使えないため
 let g:copilot_filetypes = {'markdown': v:true}
-inoremap <C-[> <Plug>(copilot-next)
-inoremap <C-]> <Plug>(copilot-previous)
-inoremap <C-\> <Plug>(copilot-suggest)
