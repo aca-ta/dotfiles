@@ -168,3 +168,6 @@ fi
 
 # kubebuilder
 export PATH=$PATH:/usr/local/kubebuilder/bin
+
+# rust
+export PATH=$PATH:~/.cargo/bin

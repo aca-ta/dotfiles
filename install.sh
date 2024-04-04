@@ -38,6 +38,10 @@ fetch_dircolors(){
 install_template() {
   rm -f ${HOME}/.vim/template
   ln -s $(pwd)/template  ${HOME}/.vim/template
+
+  # nvim
+  rm -f ${HOME}/.config/nvim/templates
+  ln -s $(pwd)/template  ${HOME}/.config/nvim/templates
 }
 
 install_vim_plugins(){
@@ -50,6 +54,10 @@ install_vim_plugins(){
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   
   vim +'PlugInstall --sync' +qa
+
+  # nvim
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 install_zplug() {
@@ -63,6 +71,7 @@ install_zplug() {
 
 install_coc_nvim() {
   vim +'CocInstall -sync coc-pyright coc-json coc-tsserver coc-prettier coc-eslint @yaegassy/coc-volar coc-go coc-sh coc-pairs coc-java' +qa
+  nvim +'CocInstall -sync coc-pyright coc-json coc-tsserver coc-prettier coc-eslint @yaegassy/coc-volar coc-go coc-sh coc-pairs coc-java' +qa
 }
 
 set_symlinks
