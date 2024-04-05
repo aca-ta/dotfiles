@@ -1,7 +1,7 @@
 [include]
 	path = ~/.gitconfig_local
 [core]
-	editor = vim -c \"set fenc=utf-8\"
+	editor = nvim -c \"set fenc=utf-8\"
     excludesFile = ~/.gitignore_global
 [secrets]
 	providers = git secrets --aws-provider
