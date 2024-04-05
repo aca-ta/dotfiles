@@ -236,7 +236,7 @@ map r <Plug>(operator-replace)
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " vim-test
-let test#strategy = "vimterminal"
+let test#strategy = "neovim"
 let test#python#runner = 'pyunit'
 let test#vim#term_position = "aboveleft"
 let test#python#pytest#options = '-vv'
