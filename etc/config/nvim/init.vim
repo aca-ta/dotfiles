@@ -158,6 +158,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 Plug 'zbirenbaum/copilot.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -400,3 +401,6 @@ require("CopilotChat").setup {
   -- See Configuration section for rest
 }
 EOF
+
+" toggleterm.nvim
+lua require("toggleterm").setup()
