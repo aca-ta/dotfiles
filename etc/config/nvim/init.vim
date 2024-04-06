@@ -395,12 +395,11 @@ let g:vmt_list_item_char = '-'
 let g:copilot_filetypes = {'markdown': v:true}
 
 " copilotChat.nvim
-lua << EOF
-require("CopilotChat").setup {
-  debug = true, -- Enable debugging
-  -- See Configuration section for rest
-}
-EOF
+" ファイルの存在を確認
+if filereadable(expand($HOME . '/.config/github-copilot/hosts.json'))
+  " Luaファイルを読み込む
+  lua require('copilotchat-settings')
+endif
 
 " toggleterm.nvim
 lua require("toggleterm").setup()
