@@ -159,10 +159,11 @@ Plug 'zbirenbaum/copilot.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
-colorscheme space-vim-dark
+colorscheme nightfox
 
 " nerdtree
 let NERDTreeShowHidden=1
@@ -403,3 +404,6 @@ endif
 
 " toggleterm.nvim
 lua require("toggleterm").setup()
+
+
+let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
