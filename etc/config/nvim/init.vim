@@ -160,6 +160,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -195,29 +196,8 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:vmt_fence_text = 'TOC START'
 let g:vmt_fence_closing_text = 'TOC END'
 
-" indentGuide
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-" ale
-let g:ale_open_list = 1
-let g:ale_list_window_size = 5
-let g:ale_sign_column_always = 1
-let g:ale_keep_list_window_open = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_loclist_msg_format = '[%linter%] %s'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'text': ['textlint'], 'vue': ['eslint'], 'javascript': ['eslint']}
-
 nmap <silent> <C-p> :cprev<CR>
 nmap <silent> <C-n> :cnext<CR>
-
 
 " close a loclist when a window is closed
 augroup CloseLoclistWindowGroup
@@ -407,3 +387,6 @@ lua require("toggleterm").setup()
 
 
 let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+
+" indent blackline
+lua require("ibl").setup()
