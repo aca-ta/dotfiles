@@ -21,7 +21,6 @@ set expandtab
 set shiftwidth=4
 set showtabline=4
 set tabstop=4
-set ambiwidth=double
 " タブ可視化と色設定
 set list lcs=tab:\|\ 
 hi SpecialKey ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#4e4e4e
@@ -103,13 +102,9 @@ source $VIMRUNTIME/macros/matchit.vim
 " Plug
 silent! call plug#begin()
 Plug 'autowitch/hive.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'yuttie/hydrangea-vim'
 Plug 'tpope/vim-vividchalk'
@@ -122,7 +117,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
-Plug 'leafgarland/typescript-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -132,7 +126,6 @@ Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-operator-user'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
-Plug 'posva/vim-vue'
 Plug 'janko/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'hashivim/vim-terraform'
@@ -161,6 +154,7 @@ Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'delphinus/cellwidths.nvim'
 call plug#end()
 
 " plug-vimのディレクトリを参照するため、plug#end()の後にcolorschemeを定義する
@@ -390,3 +384,5 @@ let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
 
 " indent blackline
 lua require("ibl").setup()
+
+lua require("cellwidths").setup { name = "default" }
