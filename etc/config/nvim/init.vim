@@ -141,7 +141,6 @@ Plug 'justmao945/vim-clang'
 Plug 'tell-k/vim-autopep8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gelguy/wilder.nvim'
-Plug 'machakann/vim-highlightedyank'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-rhubarb'
@@ -386,3 +385,8 @@ let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
 lua require("ibl").setup()
 
 lua require("cellwidths").setup { name = "default" }
+
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank { timeout=-1 }
+augroup END
