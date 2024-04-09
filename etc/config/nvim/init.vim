@@ -99,6 +99,12 @@ au BufNewFile,BufRead Dockerfile.* setf Dockerfile
 " XMLの対応カッコ移動
 source $VIMRUNTIME/macros/matchit.vim
 
+function! UpdateRemotePlugins(...)
+" Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+endfunction
+
 " Plug
 silent! call plug#begin()
 Plug 'autowitch/hive.vim'
@@ -140,7 +146,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'justmao945/vim-clang'
 Plug 'tell-k/vim-autopep8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'gelguy/wilder.nvim'
+Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-rhubarb'
