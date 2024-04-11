@@ -1,8 +1,0 @@
-{
-    "rules": {
-        "ja-no-abusage": true,
-        "preset-jtf-style": true,
-        "write-good": true,
-        "ginger": true
-    }
-}
