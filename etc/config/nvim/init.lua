@@ -314,7 +314,7 @@ vim.api.nvim_create_autocmd({"InsertEnter", "CmdlineEnter"}, {
 require("ibl").setup()
 
 -- Toggle terminal
-vim.cmd("lua require('toggleterm').setup()")
+require('toggleterm').setup()
 
 -- which key
 require("which-key").register({
