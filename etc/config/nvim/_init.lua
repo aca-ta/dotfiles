@@ -198,6 +198,17 @@ require("nvim-tree").setup({
 -- Set colorscheme
 vim.cmd[[colorscheme nightfox]]
 
+-- Window resizing mappings in normal mode
+vim.api.nvim_set_keymap('n', '+', '<C-w>+', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '-', '<C-w>-', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '|', '<C-w>|', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '_', '<C-w>_', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '=', '<C-w>=', {noremap = true, silent = true})
+
+-- Visual mode reselection mappings
+vim.api.nvim_set_keymap('v', '>', '>gv', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<', '<gv', {noremap = true, silent = true})
+
 -- NERDTree
 vim.g.NERDTreeShowHidden = 1
 vim.g.nerdtree_tabs_open_on_gui_startup = 0
@@ -207,6 +218,74 @@ vim.g.gitgutter_highlight_lines = 0
 vim.g.gitgutter_max_signs = 1000
 vim.api.nvim_set_keymap("n", "gn", ":GitGutterNextHunk<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "gp", ":GitGutterPrevHunk<CR>", { noremap = true })
+
+-- vim-markdown settings
+vim.g.vim_markdown_folding_disabled = 1
+vim.g.vim_markdown_conceal = 0
+vim.g.vim_markdown_conceal_code_blocks = 0
+vim.g.vim_markdown_new_list_item_indent = 0
+
+-- vim-markdown-toc settings
+vim.g.vmt_fence_text = 'TOC START'
+vim.g.vmt_fence_closing_text = 'TOC END'
+
+-- coc.nvim
+vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { noremap = true })
+vim.api.nvim_set_keymap("n", "rn", "<Plug>(coc-rename)", { noremap = true })
+-- インサートモードで <C-x><C-o> を押した時に coc#refresh() を実行する
+vim.api.nvim_set_keymap('i', '<C-x><C-o>', 'coc#refresh()', { noremap = true, silent = true, expr = true })
+--
+-- CocSplitIfNotOpen function equivalent in Lua
+local function CocSplitIfNotOpen(args)
+    local cursorCmd = ''
+    local fname = args[1]
+    if #args == 2 then  -- Two arguments.
+        cursorCmd = args[1]
+        fname = args[2]
+    end
+    -- Check if the current file is not the target file
+    if fname ~= vim.fn.fnamemodify(vim.fn.expand('%'), ':p:~:.') then
+        vim.cmd('vsplit ' .. fname)
+    end
+    -- Execute cursor command if exists
+    if cursorCmd and #cursorCmd > 0 then
+        vim.cmd(cursorCmd)
+    end
+end
+vim.api.nvim_set_keymap("n", "tj", ": call CocAction('jumpDefinition')<CR>", { noremap = true })
+
+local function show_documentation()
+    local filetype = vim.bo.filetype  -- 現在のバッファの filetype を取得
+    if filetype == 'vim' or filetype == 'help' then
+        -- ヘルプドキュメントを検索して開く
+        local word = vim.fn.expand('<cword>')  -- カーソル下の単語を取得
+        vim.cmd('help ' .. word)
+    else
+        -- CoC の doHover アクションを実行
+        vim.fn.CocAction('doHover')
+    end
+end
+vim.api.nvim_set_keymap('n', 'gd', '', {
+    noremap = true,
+    silent = true,
+    callback = show_documentation
+})
+
+-- wilder.nvim
+local wilder = require('wilder')
+wilder.setup({modes = {':', '/', '?'}})
+wilder.set_option({
+    renderer = wilder.popupmenu_renderer(
+    {
+        pumblend =  20,
+        highlighter =  wilder.basic_highlighter()
+    })
+})
+
+-- Define the CocJumpCmd command in Lua
+vim.api.nvim_create_user_command('CocJumpCmd', function(opts)
+    CocSplitIfNotOpen(vim.split(opts.args, " "))
+end, { nargs = '+' })
 
 -- Set up other plugin configurations and mappings similarly
 -- vim-test
