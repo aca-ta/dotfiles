@@ -84,6 +84,8 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 -- Source matchit.vim
 vim.cmd("source $VIMRUNTIME/macros/matchit.vim")
 
+vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/shims/python3'
+
 -- Vim-Plug setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -325,3 +327,13 @@ require("which-key").register({
 
 -- lualine
 require('lualine').setup()
+
+-- copilotChat
+local file = io.open(vim.env.HOME .. '/.config/github-copilot/hosts.json', "r")
+if file then
+    file:close()
+    require("CopilotChat").setup {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    }
+end
