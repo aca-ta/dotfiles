@@ -177,6 +177,7 @@ require("lazy").setup({
             'nvim-telescope/telescope.nvim', tag = '0.1.6',
             dependencies = { 'nvim-lua/plenary.nvim' }
         },
+        { 'petertriho/nvim-scrollbar' },
 })
 -- empty setup using defaults
 require("nvim-tree").setup()
@@ -337,3 +338,5 @@ if file then
       -- See Configuration section for rest
     }
 end
+-- nvim-scrollbar
+require("scrollbar").setup()
