@@ -171,7 +171,10 @@ require("lazy").setup({
         },
         {
             'nvim-lualine/lualine.nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons' }
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            config = function()
+              require('lualine').setup()
+            end
         },
         {
             'nvim-telescope/telescope.nvim', tag = '0.1.6',
@@ -312,9 +315,6 @@ require("which-key").register({
     f = { "<cmd>Telescope find_files<cr>", "Telescple Find File" },
     g = { "<cmd>Telescope live_grep<cr>", "Telescple live grep" },
 },{ prefix = "<leader>" })
-
--- lualine
-require('lualine').setup()
 
 -- copilotChat
 local file = io.open(vim.env.HOME .. '/.config/github-copilot/hosts.json', "r")
