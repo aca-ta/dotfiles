@@ -145,7 +145,7 @@ if type fzf-tmux > /dev/null; then
     if type fd > /dev/null; then
         fvi() {
             local key=${1}
-            fd $key | fzf-tmux | xargs -o vim
+            fd $key | fzf-tmux | xargs -o nvim
         }
         fcd() {
             local key=${1}
