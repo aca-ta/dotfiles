@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 })
 vim.api.nvim_create_autocmd("BufNewFile", {
     pattern = {"*.py", "*.cpp", "*.sh"},
-    command = "0r $HOME/.vim/template/template." .. vim.fn.expand("<afile>:e")
+    command = "0r $HOME/.vim/template/template." .. vim.fn.expand("%:e")
 })
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     pattern = "*Jenkinsfile*",
