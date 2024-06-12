@@ -99,6 +99,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.cmd("lang en_US.UTF-8")
 
 require("lazy").setup({
         { 'autowitch/hive.vim' },
