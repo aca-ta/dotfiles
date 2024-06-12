@@ -337,3 +337,6 @@ if file then
 end
 -- nvim-scrollbar
 require("scrollbar").setup()
+
+-- jqf
+vim.cmd("command! Jqf %!jq '.'")
