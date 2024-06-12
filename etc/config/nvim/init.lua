@@ -191,6 +191,17 @@ require("lazy").setup({
             dependencies = { 'nvim-lua/plenary.nvim' }
         },
         { 'petertriho/nvim-scrollbar' },
+        {
+          'pwntester/octo.nvim',
+          dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'nvim-tree/nvim-web-devicons',
+          },
+          config = function ()
+            require('octo').setup()
+          end
+        }
 })
 require("nvim-tree").setup({
     filters = {
