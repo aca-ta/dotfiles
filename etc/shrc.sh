@@ -171,3 +171,7 @@ export PATH=$PATH:/usr/local/kubebuilder/bin
 
 # rust
 export PATH=$PATH:~/.cargo/bin
+
+# mysql
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+

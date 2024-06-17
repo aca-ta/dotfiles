@@ -99,12 +99,20 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.cmd("lang en_US.UTF-8")
+-- vim.cmd("lang en_US.UTF-8")
 
 require("lazy").setup({
         { 'autowitch/hive.vim' },
 
-        { 'nvim-tree/nvim-tree.lua'},
+        { 'nvim-tree/nvim-tree.lua',
+           config = function()
+               require("nvim-tree").setup({
+                   filters = {
+                       git_ignored = false,
+                   },
+               })
+           end
+    },
 
         { 'gorodinskiy/vim-coloresque' },
         { 'yuttie/hydrangea-vim' },
@@ -152,7 +160,22 @@ require("lazy").setup({
         { 'tell-k/vim-autopep8' },
 
         { 'neoclide/coc.nvim', branch = 'release' },
-        { 'gelguy/wilder.nvim', build = function() vim.fn['UpdateRemotePlugins']() end },
+        { 'gelguy/wilder.nvim',
+          build = function()
+              vim.fn['UpdateRemotePlugins']()
+          end,
+          config = function()
+              local wilder = require('wilder')
+              wilder.setup({modes = {':', '/', '?'}})
+              wilder.set_option({
+                  renderer = wilder.popupmenu_renderer(
+                  {
+                      pumblend =  20,
+                      highlighter =  wilder.basic_highlighter()
+                  })
+              })
+          end
+    },
         { 'mzlogin/vim-markdown-toc' },
         { 'tpope/vim-rhubarb' },
         { 'rhysd/conflict-marker.vim' },
@@ -162,9 +185,13 @@ require("lazy").setup({
         { 'nvim-lua/plenary.nvim' },
         { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' },
 
-        { 'akinsho/toggleterm.nvim', version = "*", config = true },
+        { 'akinsho/toggleterm.nvim', version = "*", config = function() require('toggleterm').setup() end},
         { 'EdenEast/nightfox.nvim', config = function() vim.cmd('colorscheme nightfox') end },
-        { 'lukas-reineke/indent-blankline.nvim' },
+        { 'lukas-reineke/indent-blankline.nvim',
+           config = function()
+               require("ibl").setup()
+           end
+        },
         { 'delphinus/cellwidths.nvim' },
         {
             "folke/which-key.nvim",
@@ -177,7 +204,14 @@ require("lazy").setup({
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
-            }
+            },
+            config = function()
+                require("which-key").register({
+                    e = {'<cmd>NvimTreeToggle<CR>', 'nvim tree toggle'},
+                    f = { "<cmd>Telescope find_files<cr>", "Telescple Find File" },
+                    g = { "<cmd>Telescope live_grep<cr>", "Telescple live grep" },
+                },{ prefix = "<leader>" })
+            end
         },
         {
             'nvim-lualine/lualine.nvim',
@@ -190,7 +224,7 @@ require("lazy").setup({
             'nvim-telescope/telescope.nvim', tag = '0.1.6',
             dependencies = { 'nvim-lua/plenary.nvim' }
         },
-        { 'petertriho/nvim-scrollbar' },
+        { 'petertriho/nvim-scrollbar', config = function() require("scrollbar").setup() end},
         {
           'pwntester/octo.nvim',
           dependencies = {
@@ -203,14 +237,6 @@ require("lazy").setup({
           end
         }
 })
-require("nvim-tree").setup({
-    filters = {
-        git_ignored = false,
-    },
-})
-
--- Set colorscheme
-vim.cmd[[colorscheme nightfox]]
 
 -- Window resizing mappings in normal mode
 vim.api.nvim_set_keymap('n', '+', '<C-w>+', {noremap = true, silent = true})
@@ -285,17 +311,6 @@ vim.api.nvim_set_keymap('n', 'gd', '', {
     callback = show_documentation
 })
 
--- wilder.nvim
-local wilder = require('wilder')
-wilder.setup({modes = {':', '/', '?'}})
-wilder.set_option({
-    renderer = wilder.popupmenu_renderer(
-    {
-        pumblend =  20,
-        highlighter =  wilder.basic_highlighter()
-    })
-})
-
 -- Define the CocJumpCmd command in Lua
 vim.api.nvim_create_user_command('CocJumpCmd', function(opts)
     CocSplitIfNotOpen(vim.split(opts.args, " "))
@@ -324,19 +339,6 @@ vim.api.nvim_create_autocmd({"InsertEnter", "CmdlineEnter"}, {
     end
 })
 
--- indent blankline
-require("ibl").setup()
-
--- Toggle terminal
-require('toggleterm').setup()
-
--- which key
-require("which-key").register({
-    e = {'<cmd>NvimTreeToggle<CR>', 'nvim tree toggle'},
-    f = { "<cmd>Telescope find_files<cr>", "Telescple Find File" },
-    g = { "<cmd>Telescope live_grep<cr>", "Telescple live grep" },
-},{ prefix = "<leader>" })
-
 -- copilotChat
 local file = io.open(vim.env.HOME .. '/.config/github-copilot/hosts.json', "r")
 if file then
@@ -346,8 +348,6 @@ if file then
       -- See Configuration section for rest
     }
 end
--- nvim-scrollbar
-require("scrollbar").setup()
 
 -- jqf
 vim.cmd("command! Jqf %!jq '.'")
