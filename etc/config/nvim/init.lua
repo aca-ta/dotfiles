@@ -32,7 +32,7 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.showcmd = true
 vim.opt.showmode = true
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard:append{"unnamedplus"}
 vim.opt.showmatch = true
 vim.opt.backspace = "eol,indent,start"
 vim.opt.laststatus = 2
