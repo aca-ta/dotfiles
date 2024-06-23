@@ -47,8 +47,8 @@ install_python(){
       sudo apt install python3-dev
   esac
 
-  pyenv install 3.9.14
-  pyenv global 3.9.14
+  pyenv install 3.12.2
+  pyenv global 3.12.2
   pyenv rehash
   pip install pipenv pylint mypy
 }
