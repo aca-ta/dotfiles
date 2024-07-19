@@ -4,7 +4,7 @@ install_tools(){
   case "${OSTYPE}" in
     darwin*)
       brew update
-      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm macvim neovim jesseduffield/lazygit/lazygit gh
+      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm macvim neovim jesseduffield/lazygit/lazygit gh ghq
       ;;
     *)
 
