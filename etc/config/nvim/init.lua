@@ -340,7 +340,7 @@ vim.api.nvim_create_autocmd({"InsertEnter", "CmdlineEnter"}, {
 })
 
 -- copilotChat
-local file = io.open(vim.env.HOME .. '/.config/github-copilot/hosts.json', "r")
+local file = io.open(vim.env.HOME .. '/.config/github-copilot/apps.json', "r")
 if file then
     file:close()
     require("CopilotChat").setup {
