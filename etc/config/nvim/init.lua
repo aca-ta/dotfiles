@@ -214,9 +214,9 @@ require("lazy").setup({
             },
             config = function()
                 require("which-key").register({
-                    e = {'<cmd>NvimTreeToggle<CR>', 'nvim tree toggle'},
-                    f = { "<cmd>Telescope find_files<cr>", "Telescple Find File" },
-                    g = { "<cmd>Telescope live_grep<cr>", "Telescple live grep" },
+                    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "nvim tree toggle" },
+                    { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Telescple Find File" },
+                    { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Telescple live grep" },
                 },{ prefix = "<leader>" })
             end
         },
