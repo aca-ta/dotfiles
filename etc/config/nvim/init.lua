@@ -180,7 +180,14 @@ require("lazy").setup({
         { 'tpope/vim-rhubarb' },
         { 'rhysd/conflict-marker.vim' },
         { 'github/copilot.vim' },
-        { 'iamcco/markdown-preview.nvim', build = 'cd app && npx --yes yarn install' },
+        { 'iamcco/markdown-preview.nvim',
+            cmd = {"MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop"},
+            build = "cd app && yarn install",
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+            ft = { "markdown" }
+        },
         { 'zbirenbaum/copilot.lua' },
         { 'nvim-lua/plenary.nvim' },
         { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' },
