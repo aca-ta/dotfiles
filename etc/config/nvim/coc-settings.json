@@ -1,6 +1,6 @@
 {
   "coc.preferences.jumpCommand": "CocJumpCmd",
-  "[go][java][terraform]": {
+  "[go][terraform]": {
     "coc.preferences.formatOnSave": true
   },
   "diagnostic.checkCurrentLine": true,
