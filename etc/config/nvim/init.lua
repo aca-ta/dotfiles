@@ -330,6 +330,9 @@ vim.g["test#python#runner"] = 'pyunit'
 vim.g["test#vim#term_position"] = "aboveleft"
 vim.g["test#python#pytest#options"] = '-vv'
 vim.g["test#javascript#runner"] = 'jest'
+vim.g.coc_filetype_map = {
+  tf = 'terraform'
+}
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

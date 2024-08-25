@@ -1,7 +1,7 @@
 {
   "coc.preferences.jumpCommand": "CocJumpCmd",
-  "[javascript][typescript][typescriptreact][go][java]": {
-    "coc.preferences.formatOnSave": false
+  "[go][java][terraform]": {
+    "coc.preferences.formatOnSave": true
   },
   "diagnostic.checkCurrentLine": true,
   "diagnostic.messageTarget": "float",
