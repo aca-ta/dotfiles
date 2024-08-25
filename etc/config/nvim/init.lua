@@ -276,10 +276,7 @@ require("lazy").setup({
                         on_attach = function(client, bufnr)
                             -- キーマッピング
                             vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
-                            vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
-                            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
                             vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
                             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
                         end,
                     }
@@ -363,6 +360,37 @@ require("lazy").setup({
                 }),
             })
         end
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "LspAttach",
+        config = function()
+            require("lspsaga").setup({
+                callhierarchy = {
+                    show_detail = true,
+                    keys = {
+                        edit = "e",
+                        vsplit = "s",
+                        split = "i",
+                        tabe = "t",
+                        jump = "o",
+                        quit = "q",
+                        expand_collapse = "u",
+                    },
+                },
+            })
+
+            -- キーマッピングの設定
+            local keymap = vim.keymap.set
+            keymap("n", "gr", "<cmd>:Lspsaga finder<CR>")
+            keymap("n", "gi", "<cmd>Lspsaga incoming_calls<CR>")
+            keymap("n", "go", "<cmd>Lspsaga outgoing_calls<CR>")
+            keymap("n", "rn", "<cmd>Lspsaga rename<CR>")
+        end,
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons" },
+            { "nvim-treesitter/nvim-treesitter" }
+        }
     }
 })
 
