@@ -159,7 +159,6 @@ require("lazy").setup({
         { 'justmao945/vim-clang' },
         { 'tell-k/vim-autopep8' },
 
-        { 'neoclide/coc.nvim', branch = 'release' },
         { 'gelguy/wilder.nvim',
           build = function()
               vim.fn['UpdateRemotePlugins']()
@@ -242,6 +241,80 @@ require("lazy").setup({
           config = function ()
             require('octo').setup()
           end
+        },
+        {
+            "williamboman/mason.nvim", -- LSP Installer
+            dependencies = {
+                "williamboman/mason-lspconfig.nvim",
+                "neovim/nvim-lspconfig",
+                "nvim-lua/plenary.nvim",
+            },
+            event = "VeryLazy",
+            config = function()
+                require "mason".setup {}
+                local mason_lspconfig = require("mason-lspconfig")
+                local lspconfig = require("lspconfig")
+                mason_lspconfig.setup({
+                  ensure_installed = { "lua_ls", "pyright" , "terraform-ls", "tsserver", "gopls", "bashls"},
+                  automatic_installation = true,
+                })
+                mason_lspconfig.setup_handlers({
+                    function(server_name)
+                        local opts = {
+                            on_attach = function(client, bufnr)
+                                -- キーマッピング
+                                vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
+                                vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
+                                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+                                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+                                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+                                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+                            end,
+                        }
+
+                        -- サーバー固有の設定
+                        if server_name == "gopls" then
+                            opts.settings = {
+                                gopls = {
+                                    analyses = {
+                                        unusedparams = true,
+                                    },
+                                    staticcheck = true,
+                                },
+                            }
+                        elseif server_name == "bashls" then
+                            opts.filetypes = { "sh", "bash" }
+                        end
+
+                        lspconfig[server_name].setup(opts)
+                    end
+	    })
+                vim.cmd("LspStart") -- 初回起動時はBufEnterが発火しない
+            end,
+        },
+        {
+          "nvimtools/none-ls.nvim",
+          config = function()
+              -- https://github.com/nvimtools/none-ls.nvim/wiki/Formatting-on-save#sync-formatting
+              local null_ls = require("null-ls")
+              local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+                  
+              null_ls.setup({
+                  sources = { null_ls.builtins.formatting.terraform_fmt },
+                  on_attach = function(client, bufnr)
+                      if client.supports_method("textDocument/formatting") then
+                          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                          vim.api.nvim_create_autocmd("BufWritePre", {
+                              group = augroup,
+                              buffer = bufnr,
+                              callback = function()
+                                  vim.lsp.buf.format({ async = false })
+                              end,
+                          })
+                      end
+                  end,
+              })
+          end
         }
 })
 
@@ -276,52 +349,6 @@ vim.g.vim_markdown_new_list_item_indent = 0
 vim.g.vmt_fence_text = 'TOC START'
 vim.g.vmt_fence_closing_text = 'TOC END'
 
--- coc.nvim
-vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { noremap = true })
-vim.api.nvim_set_keymap("n", "rn", "<Plug>(coc-rename)", { noremap = true })
--- インサートモードで <C-x><C-o> を押した時に coc#refresh() を実行する
-vim.api.nvim_set_keymap('i', '<C-x><C-o>', 'coc#refresh()', { noremap = true, silent = true, expr = true })
---
--- CocSplitIfNotOpen function equivalent in Lua
-local function CocSplitIfNotOpen(args)
-    local cursorCmd = ''
-    local fname = args[1]
-    if #args == 2 then  -- Two arguments.
-        cursorCmd = args[1]
-        fname = args[2]
-    end
-    -- Check if the current file is not the target file
-    if fname ~= vim.fn.fnamemodify(vim.fn.expand('%'), ':p:~:.') then
-        vim.cmd('vsplit ' .. fname)
-    end
-    -- Execute cursor command if exists
-    if cursorCmd and #cursorCmd > 0 then
-        vim.cmd(cursorCmd)
-    end
-end
-vim.api.nvim_set_keymap("n", "tj", ": call CocAction('jumpDefinition')<CR>", { noremap = true })
-
-local function show_documentation()
-    local filetype = vim.bo.filetype  -- 現在のバッファの filetype を取得
-    if filetype == 'vim' or filetype == 'help' then
-        -- ヘルプドキュメントを検索して開く
-        local word = vim.fn.expand('<cword>')  -- カーソル下の単語を取得
-        vim.cmd('help ' .. word)
-    else
-        -- CoC の doHover アクションを実行
-        vim.fn.CocAction('doHover')
-    end
-end
-vim.api.nvim_set_keymap('n', 'gd', '', {
-    noremap = true,
-    silent = true,
-    callback = show_documentation
-})
-
--- Define the CocJumpCmd command in Lua
-vim.api.nvim_create_user_command('CocJumpCmd', function(opts)
-    CocSplitIfNotOpen(vim.split(opts.args, " "))
-end, { nargs = '+' })
 
 -- Set up other plugin configurations and mappings similarly
 -- vim-test

@@ -72,7 +72,6 @@ install_zplug() {
 install_coc_nvim() {
     local coccommnmd='CocInstall -sync coc-pyright coc-json coc-tsserver coc-prettier coc-eslint @yaegassy/coc-volar coc-go coc-sh coc-pairs coc-java coc-lua'
     vim +"$coccommnmd" +qa
-    nvim +"$coccommand" +qa
 }
 
 set_symlinks
