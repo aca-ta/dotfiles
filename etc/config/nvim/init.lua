@@ -386,6 +386,7 @@ require("lazy").setup({
             keymap("n", "gi", "<cmd>Lspsaga incoming_calls<CR>")
             keymap("n", "go", "<cmd>Lspsaga outgoing_calls<CR>")
             keymap("n", "rn", "<cmd>Lspsaga rename<CR>")
+            keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
         end,
         dependencies = {
             { "nvim-tree/nvim-web-devicons" },
