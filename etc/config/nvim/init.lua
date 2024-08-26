@@ -226,6 +226,7 @@ require("lazy").setup({
                 { "<leader>e", "<cmd>NvimTreeToggle<CR>",       desc = "nvim tree toggle" },
                 { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Telescple Find File" },
                 { "<leader>g", "<cmd>Telescope live_grep<cr>",  desc = "Telescple live grep" },
+                { "<leader>t", "<cmd>ToggleTerm<cr>",           desc = "ToggleTerm" },
             }, { prefix = "<leader>" })
         end
     },
