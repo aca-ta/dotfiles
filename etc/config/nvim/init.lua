@@ -266,7 +266,7 @@ require("lazy").setup({
             local mason_lspconfig = require("mason-lspconfig")
             local lspconfig = require("lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "pyright", "terraform-ls", "tsserver", "gopls", "bashls" },
+                ensure_installed = { "lua_ls", "pyright", "terraformls", "tsserver", "gopls", "bashls" },
                 automatic_installation = true,
             })
             mason_lspconfig.setup_handlers({
