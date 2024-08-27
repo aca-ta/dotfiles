@@ -393,6 +393,13 @@ require("lazy").setup({
             { "nvim-tree/nvim-web-devicons" },
             { "nvim-treesitter/nvim-treesitter" }
         }
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
     }
 })
 

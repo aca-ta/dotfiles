@@ -175,3 +175,4 @@ export PATH=$PATH:~/.cargo/bin
 # mysql
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
+. "$HOME/.cargo/env"
