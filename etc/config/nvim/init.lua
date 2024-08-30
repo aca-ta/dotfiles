@@ -227,6 +227,7 @@ require("lazy").setup({
                 { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Telescple Find File" },
                 { "<leader>g", "<cmd>Telescope live_grep<cr>",  desc = "Telescple live grep" },
                 { "<leader>t", "<cmd>ToggleTerm<cr>",           desc = "ToggleTerm" },
+                { "<leader>c", "<cmd>CopilotChatOpen<cr>",      desc = "CopilotChat" },
             }, { prefix = "<leader>" })
         end
     },
@@ -278,7 +279,6 @@ require("lazy").setup({
                             -- キーマッピング
                             vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
                             vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
                         end,
                     }
 
