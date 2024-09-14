@@ -268,7 +268,7 @@ require("lazy").setup({
             local mason_lspconfig = require("mason-lspconfig")
             local lspconfig = require("lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "pyright", "terraformls", "tsserver", "gopls", "bashls" },
+                ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls" },
                 automatic_installation = true,
             })
             mason_lspconfig.setup_handlers({
@@ -398,9 +398,23 @@ require("lazy").setup({
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
-    }
+    },
+    {
+        "linux-cultist/venv-selector.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+            { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+        },
+        lazy = false,
+        branch = "regexp", -- This is the regexp branch, use this for the new version
+        config = function()
+            require("venv-selector").setup()
+        end,
+        keys = {
+            { ",v", "<cmd>VenvSelect<cr>" },
+        },
+    },
 })
 
 -- Window resizing mappings in normal mode
