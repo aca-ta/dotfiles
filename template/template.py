@@ -1,7 +1,6 @@
 
 
 def main():
-    """Main. """
     pass
 
 
