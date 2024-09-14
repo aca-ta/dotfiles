@@ -1,4 +1,3 @@
-""" template """
 
 
 def main():
