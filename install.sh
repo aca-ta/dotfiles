@@ -75,10 +75,10 @@ install_coc_nvim() {
 }
 
 set_symlinks
-set_git_secrets
-fetch_git_completions
-fetch_dircolors
-install_template
-install_vim_plugins
-install_zplug
-install_coc_nvim
+# set_git_secrets
+# fetch_git_completions
+# fetch_dircolors
+# install_template
+# install_vim_plugins
+# install_zplug
+# install_coc_nvim
