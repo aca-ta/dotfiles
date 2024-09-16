@@ -1,18 +1,8 @@
 #!/bin/bash
 
 set_symlinks() {
+    source ./set_symlink.sh
 
-    for dir in $(find ./etc/* -type d | sed -e 's/^\.\/etc\///g')
-    do
-        mkdir -p ${HOME}/.$dir
-    done
-
-    for file in $(find ./etc/* ! -type d | sed -e 's/^\.\/etc\///g')
-    do
-      rm -f ${HOME}/.${file}
-      echo "$(pwd)/etc/${file} to ~/.${file}"
-      ln -s $(pwd)/etc/${file} ~/.${file}
-    done
 }
 
 fetch_git_completions(){
@@ -75,10 +65,10 @@ install_coc_nvim() {
 }
 
 set_symlinks
-# set_git_secrets
-# fetch_git_completions
-# fetch_dircolors
-# install_template
-# install_vim_plugins
-# install_zplug
-# install_coc_nvim
+set_git_secrets
+fetch_git_completions
+fetch_dircolors
+install_template
+install_vim_plugins
+install_zplug
+install_coc_nvim
