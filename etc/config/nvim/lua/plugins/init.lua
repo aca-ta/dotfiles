@@ -1,13 +1,3 @@
--- copilotChat
-local file = io.open(vim.env.HOME .. '/.config/github-copilot/apps.json', "r")
-if file then
-    file:close()
-    require("CopilotChat").setup {
-        debug = true, -- Enable debugging
-        -- See Configuration section for rest
-    }
-end
-
 return {
     { 'tyru/open-browser.vim' },
     { 'glidenote/memolist.vim' },
