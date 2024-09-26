@@ -54,7 +54,7 @@ vim.opt.switchbuf:append({ "usetab", "newtab" })
 -------------------------------------------------
 -- Autocommands for filetypes
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = { "*.hql", "*.ddl", "*.js", "*.ts", "*.jsx", "*.tsx", "*.vue", "*.cpp", "*.hpp" },
+    pattern = { "*.hql", "*.ddl" },
     command = "setlocal filetype=hive expandtab tabstop=2 shiftwidth=2"
 })
 vim.api.nvim_create_autocmd("BufNewFile", {
