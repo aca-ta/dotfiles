@@ -12,7 +12,7 @@ local manson_nvim =
         local mason_lspconfig = require("mason-lspconfig")
         local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
-            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls" },
+            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar" },
             automatic_installation = true,
         })
         mason_lspconfig.setup_handlers({
@@ -38,6 +38,20 @@ local manson_nvim =
                     }
                 elseif server_name == "bashls" then
                     opts.filetypes = { "sh", "bash" }
+                elseif server_name == "ts_ls" then
+                    local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server")
+                        :get_install_path() .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+                    opts.init_options = {
+                        plugins = {
+                            {
+                                name = "@vue/typescript-plugin",
+                                location = vue_typescript_plugin,
+                                languages = { "javascript", "typescript", "vue" },
+                            },
+                        },
+                    }
+                    opts.filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
+                        "typescript.tsx", "vue" }
                 end
 
                 lspconfig[server_name].setup(opts)
@@ -100,6 +114,13 @@ local nvim_lspsaga =
                     quit = "q",
                     expand_collapse = "u",
                 },
+            },
+            lightbulb = {
+                enable = false,
+                enable_in_insert = false,
+                sign = false,
+                sign_priority = 40,
+                virtual_text = false,
             },
         })
 
