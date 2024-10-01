@@ -52,22 +52,40 @@ local manson_nvim =
                     }
                     opts.filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
                         "typescript.tsx", "vue" }
+                elseif server_name == "lua_ls" then
+                    opts.settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { "vim" }
+                            }
+                        }
+                    }
                 end
 
                 lspconfig[server_name].setup(opts)
             end
         })
-        lspconfig.lua_ls.setup({
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
-        })
         vim.cmd("LspStart")
     end,
+}
+
+local lsp_signature = {
+    "ray-x/lsp_signature.nvim",
+    opts = {
+        bind = true,
+        handler_opts = {
+            border = "rounded"
+        }
+    },
+    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+}
+
+local fidget = {
+    "j-hui/fidget.nvim",
+    event = 'BufEnter',
+    config = function()
+        require "fidget".setup()
+    end
 }
 
 
@@ -171,5 +189,7 @@ return {
     manson_nvim,
     nvim_cmp_lazy,
     nvim_lspsaga,
-    none_ls
+    none_ls,
+    lsp_signature,
+    fidget
 }
