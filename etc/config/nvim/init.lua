@@ -110,6 +110,11 @@ vim.cmd("command! Jqf %!jq '.'")
 -- Source matchit.vim
 vim.cmd("source $VIMRUNTIME/macros/matchit.vim")
 
+-- format
+vim.api.nvim_create_user_command('Format', function()
+    vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+end, {})
+
 -----------------------------------------
 ----------------- other -----------------
 -----------------------------------------

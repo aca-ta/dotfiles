@@ -167,7 +167,8 @@ local none_ls =
             -- format on save
             sources = {
                 null_ls.builtins.formatting.terraform_fmt,
-                null_ls.builtins.formatting.stylua
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.formatting.black
             },
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
@@ -176,7 +177,11 @@ local none_ls =
                         group = augroup,
                         buffer = bufnr,
                         callback = function()
-                            vim.lsp.buf.format({ async = false })
+                            -- 言語ごとにautoformatするかどうかを決める
+                            local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+                            if filetype == 'terraform' or filetype == "lua" then
+                                vim.lsp.buf.format({ async = false })
+                            end
                         end,
                     })
                 end
