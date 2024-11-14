@@ -9,12 +9,35 @@ local manson_nvim =
     event = "VeryLazy",
     config = function()
         require "mason".setup {}
+
+        -- python-lspの関連ライブラリのインストール
+        local pylsp = require("mason-registry").get_package("python-lsp-server")
+        pylsp:on("install:success", function()
+            local path = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/" .. "python-lsp-server")
+            local command = path .. "/venv/bin/pip"
+            local args = {
+                "install",
+                "pylsp-rope",
+                "python-lsp-ruff",
+                "sqlalchemy-stubs",
+            }
+
+            require("plenary.job")
+                :new({
+                    command = command,
+                    args = args,
+                    cwd = path,
+                })
+                :start()
+        end)
+
         local mason_lspconfig = require("mason-lspconfig")
         local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
-            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar" },
+            ensure_installed = { "lua_ls", "pylsp", "terraformls", "ts_ls", "gopls", "bashls", "volar" },
             automatic_installation = true,
         })
+
         mason_lspconfig.setup_handlers({
             function(server_name)
                 local opts = {
@@ -150,6 +173,8 @@ local nvim_lspsaga =
         keymap("n", "rn", "<cmd>Lspsaga rename<CR>")
         keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
         keymap("n", "<leader>r", "<cmd>Lspsaga show_workspace_diagnostics<CR>")
+        keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", { buffer = true })
+        keymap("v", "<leader>a", "<cmd>Lspsaga code_action<CR>", { buffer = true })
     end,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
