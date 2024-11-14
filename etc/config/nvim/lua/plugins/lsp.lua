@@ -149,6 +149,7 @@ local nvim_lspsaga =
         keymap("n", "go", "<cmd>Lspsaga outgoing_calls<CR>")
         keymap("n", "rn", "<cmd>Lspsaga rename<CR>")
         keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
+        keymap("n", "<leader>r", "<cmd>Lspsaga show_workspace_diagnostics<CR>")
     end,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
