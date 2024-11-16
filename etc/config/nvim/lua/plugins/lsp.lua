@@ -163,6 +163,9 @@ local nvim_lspsaga =
                 sign_priority = 40,
                 virtual_text = false,
             },
+            rename = {
+                in_select = false
+            }
         })
 
         -- キーマッピングの設定
