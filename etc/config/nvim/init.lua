@@ -10,9 +10,6 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = " "
 
--- Enable syntax highlighting
-vim.cmd [[syntax enable]]
-
 ------------------------------------------------
 --------------- General settings ---------------
 ------------------------------------------------
@@ -146,3 +143,6 @@ if file then
         -- See Configuration section for rest
     }
 end
+
+-- Enable syntax highlighting
+vim.cmd [[syntax enable]]
