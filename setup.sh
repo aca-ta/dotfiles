@@ -33,7 +33,7 @@ install_terraform(){
 }
 
 install_python(){
-  brew install pyenv
+  brew install pyenv pyenv-virtualenv
   # setup build environment
   # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
   case "${OSTYPE}" in
@@ -47,10 +47,14 @@ install_python(){
       sudo apt install python3-dev
   esac
 
+  eval "$(pyenv virtualenv-init -)"
+
   pyenv install 3.12.2
+
+  pyenv virtualenv 3.12.2 nvim
   pyenv global 3.12.2
   pyenv rehash
-  pip install pipenv pylint mypy
+  pip install pynvim neovim
 }
 
 install_go(){

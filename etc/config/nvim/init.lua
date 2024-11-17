@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     command = "setf yaml"
 })
 
-vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/shims/python3'
+vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3'
 
 
 -----------------------------------------
