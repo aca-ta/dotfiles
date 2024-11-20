@@ -1,4 +1,3 @@
-
 -- vim-markdown settings
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.vim_markdown_conceal = 0
@@ -30,6 +29,10 @@ return {
             vim.g.mkdp_filetypes = { "markdown" }
         end,
         ft = { "markdown" }
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     },
 
     -- python
