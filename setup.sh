@@ -52,7 +52,7 @@ install_python(){
   pyenv install 3.12.2
 
   pyenv virtualenv 3.12.2 nvim
-  pyenv global 3.12.2
+  pyenv global nvim
   pyenv rehash
   pip install pynvim neovim
 }
