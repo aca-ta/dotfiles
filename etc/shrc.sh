@@ -164,6 +164,13 @@ if type fzf-tmux > /dev/null; then
             pwd
         }
     fi
+    # rg + fzf-tmux
+    if type rg > /dev/null; then
+        rvi() {
+            local key=${1}
+            rg -l $key | fzf-tmux --preview "rg --color=always $key {}" | xargs -o nvim
+        }
+    fi
 fi
 
 # kubebuilder
