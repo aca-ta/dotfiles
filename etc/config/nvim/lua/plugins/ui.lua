@@ -8,7 +8,6 @@ return {
     { 'rhysd/conflict-marker.vim' },
     { 'delphinus/cellwidths.nvim' },
     { 'petertriho/nvim-scrollbar', config = function() require("scrollbar").setup() end },
-    { 'EdenEast/nightfox.nvim',    config = function() vim.cmd('colorscheme nightfox') end },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },

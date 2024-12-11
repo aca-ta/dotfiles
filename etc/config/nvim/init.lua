@@ -143,6 +143,3 @@ if file then
         -- See Configuration section for rest
     }
 end
-
--- Enable syntax highlighting
-vim.cmd [[syntax enable]]
