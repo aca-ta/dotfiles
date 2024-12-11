@@ -143,3 +143,8 @@ if file then
         -- See Configuration section for rest
     }
 end
+
+vim.cmd [[
+  syntax enable
+  colorscheme lunaperche
+]]
