@@ -1,9 +1,3 @@
--- vim-markdown settings
-vim.g.vim_markdown_folding_disabled = 1
-vim.g.vim_markdown_conceal = 1
-vim.g.vim_markdown_conceal_code_blocks = 0
-vim.g.vim_markdown_new_list_item_indent = 0
-
 -- vim-markdown-toc settings
 vim.g.vmt_fence_text = 'TOC START'
 vim.g.vmt_fence_closing_text = 'TOC END'
@@ -16,11 +10,6 @@ return {
     -- hive
     { 'autowitch/hive.vim' },
 
-    -- markdown
-    {
-        'plasticboy/vim-markdown',
-        dependencies = { 'godlygeek/tabular' },
-    },
     { 'mzlogin/vim-markdown-toc' },
     {
         'iamcco/markdown-preview.nvim',
@@ -71,6 +60,9 @@ return {
 
         },
         opts = {
+            ui = {
+                bullets = {},
+            },
             workspaces = {
                 {
                     name = "buf-parent",
@@ -83,7 +75,6 @@ return {
     },
 
     -- python
-    { 'psf/black',                            branch = 'stable' },
     {
         "linux-cultist/venv-selector.nvim",
         dependencies = {
