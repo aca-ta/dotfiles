@@ -2,9 +2,6 @@
 vim.g.vmt_fence_text = 'TOC START'
 vim.g.vmt_fence_closing_text = 'TOC END'
 
--- obsidian.nvim settings
-vim.opt.conceallevel = 1
-
 return {
 
     -- hive
@@ -61,7 +58,7 @@ return {
         },
         opts = {
             ui = {
-                bullets = {},
+                enable = false,
             },
             workspaces = {
                 {
