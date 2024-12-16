@@ -54,11 +54,10 @@ return {
         dependencies = {
             -- Required.
             "nvim-lua/plenary.nvim",
-
         },
         opts = {
             ui = {
-                enable = false,
+                bullets = {},
             },
             workspaces = {
                 {

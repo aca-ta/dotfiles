@@ -82,6 +82,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = { "*.yaml.liquid", "*.yml.liquid" },
     command = "setf yaml"
 })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.conceallevel = 1
+    end,
+})
 
 vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3'
 
