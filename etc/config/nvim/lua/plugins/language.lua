@@ -67,6 +67,9 @@ return {
             "nvim-lua/plenary.nvim",
         },
         opts = {
+            ui = {
+                bullets = {}
+            },
             workspaces = {
                 {
                     name = "buf-parent",
@@ -79,7 +82,6 @@ return {
     },
 
     -- python
-    { 'psf/black',                            branch = 'stable' },
     {
         "linux-cultist/venv-selector.nvim",
         dependencies = {
