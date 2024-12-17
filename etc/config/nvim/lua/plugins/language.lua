@@ -33,7 +33,9 @@ return {
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         config = function()
             require('render-markdown').setup({
-                render_modes = { 'n', 'c', 't', 'i' },
+                -- \22 はvisual mode
+                -- https://github.com/MeanderingProgrammer/render-markdown.nvim/issues/188
+                render_modes = { 'n', 'c', 't', 'i', '\22', },
                 heading = {
                     sign = false,
                     icons = {},
