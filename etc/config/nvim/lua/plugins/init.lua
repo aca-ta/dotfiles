@@ -3,7 +3,7 @@ return {
     { 'glidenote/memolist.vim' },
     { 'github/copilot.vim' },
     { 'zbirenbaum/copilot.lua' },
-    { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' },
+    { 'CopilotC-Nvim/CopilotChat.nvim' },
 
     {
         'gelguy/wilder.nvim',
@@ -19,7 +19,8 @@ return {
                         pumblend = 20,
                         highlighter = { wilder.basic_highlighter(), wilder.lua_pcre2_highlighter() },
                         highlights = {
-                            accent = wilder.make_hl('WilderAccent', 'Pmenu', { { a = 1 }, { a = 1 }, { foreground = '#f4468f' } }),
+                            accent = wilder.make_hl('WilderAccent', 'Pmenu',
+                                { { a = 1 }, { a = 1 }, { foreground = '#f4468f' } }),
                         },
                     }
                 )
