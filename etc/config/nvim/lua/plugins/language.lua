@@ -78,8 +78,11 @@ return {
                     path = function()
                         return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
                     end,
+                    overrides = {
+                        disable_frontmatter = true,
+                    }
                 },
-            }
+            },
         },
     },
 
