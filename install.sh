@@ -51,7 +51,12 @@ install_vim_plugins(){
 }
 
 install_zplug() {
-    sudo apt install locales-all
+    case "${OSTYPE}" in
+        darwin*)
+            ;;
+        *)
+            sudo apt install locales-all
+    esac
     if [[ ! -e ${HOME}/.zplug ]]; then
         curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
         chmod -R 775 ${HOME}/.zplug

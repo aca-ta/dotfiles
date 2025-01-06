@@ -49,9 +49,14 @@ install_python(){
 
   eval "$(pyenv virtualenv-init -)"
 
-  pyenv install 3.12.2
+  ENV_NAME=nvim
+  VERSION=3.13.1
+  if pyenv virtualenvs --bare | grep -q "^$ENV_NAME\$"; then
+    pyenv uninstall -f "$ENV_NAME"
+  fi
+  pyenv install $VERSION
 
-  pyenv virtualenv 3.12.2 nvim
+  pyenv virtualenv $VERSION nvim
   pyenv global nvim
   pyenv rehash
   pip install pynvim neovim

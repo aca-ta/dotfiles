@@ -185,7 +185,9 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 # psql
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-. "$HOME/.cargo/env"
+if [ -e "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # moon
 export PATH="$HOME/.moon/bin:$PATH"
