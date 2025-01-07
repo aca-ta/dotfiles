@@ -152,5 +152,5 @@ end
 
 vim.cmd [[
   syntax enable
-  colorscheme lunaperche
+  colorscheme tokyonight-night
 ]]
