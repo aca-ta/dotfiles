@@ -9,6 +9,12 @@ return {
     { 'delphinus/cellwidths.nvim' },
     { 'petertriho/nvim-scrollbar', config = function() require("scrollbar").setup() end },
     {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
