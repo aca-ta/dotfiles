@@ -191,3 +191,6 @@ fi
 
 # moon
 export PATH="$HOME/.moon/bin:$PATH"
+
+# rye
+. "$HOME/.rye/env"
