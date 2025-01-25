@@ -1,4 +1,3 @@
-
 -- vim-test
 vim.g["test#strategy"] = "neovim"
 vim.g["test#python#runner"] = 'pyunit'
@@ -32,9 +31,16 @@ return {
     },
     { 'puremourning/vimspector' },
     { 'janko/vim-test' },
-    { 'thinca/vim-quickrun',
-        dependencies = { 'Shougo/vimproc.vim',             build = 'make' },
+    {
+        'thinca/vim-quickrun',
+        dependencies = { 'Shougo/vimproc.vim', build = 'make' },
     },
     { 'tpope/vim-commentary' },
+    {
+        'nacro90/numb.nvim',
+        config = function()
+            require('numb').setup()
+        end,
+    }
 
 }
