@@ -8,6 +8,7 @@ vim.g.vim_markdown_new_list_item_indent = 0
 vim.g.vmt_fence_text = 'TOC START'
 vim.g.vmt_fence_closing_text = 'TOC END'
 
+
 return {
 
     -- hive
