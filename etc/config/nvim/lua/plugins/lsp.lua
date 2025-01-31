@@ -10,31 +10,10 @@ local manson_nvim =
     config = function()
         require "mason".setup {}
 
-        -- python-lspの関連ライブラリのインストール
-        local pylsp = require("mason-registry").get_package("python-lsp-server")
-        pylsp:on("install:success", function()
-            local path = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/" .. "python-lsp-server")
-            local command = path .. "/venv/bin/pip"
-            local args = {
-                "install",
-                "pylsp-rope",
-                "python-lsp-ruff",
-                "sqlalchemy-stubs",
-            }
-
-            require("plenary.job")
-                :new({
-                    command = command,
-                    args = args,
-                    cwd = path,
-                })
-                :start()
-        end)
-
         local mason_lspconfig = require("mason-lspconfig")
         local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
-            ensure_installed = { "lua_ls", "pylsp", "terraformls", "ts_ls", "gopls", "bashls", "volar" },
+            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar", "rust_analyzer" },
             automatic_installation = true,
         })
 
