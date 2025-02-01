@@ -71,6 +71,37 @@ local manson_nvim =
     end,
 }
 
+-- diagnosticを常にfloatingで表示
+vim.diagnostic.config({
+    virtual_text = false,     -- 仮想テキストを無効化
+    signs = true,             -- サインカラムは表示（必要に応じて切り替え）
+    underline = true,         -- エラー部分に下線を表示
+    update_in_insert = false, -- インサートモードでは更新しない（オプション）
+    severity_sort = true,     -- 深刻度でソート
+    float = {
+        source = "always",    -- エラーのソースを常に表示
+        format = function(diagnostic)
+            return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+        end,
+        header = "", -- ヘッダーを空にする
+        prefix = "", -- プレフィックスを空にする
+    },
+})
+
+-- カーソルが止まったときにdiagnosticを表示
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+    end
+})
+
+-- カーソルが移動した際も更新する場合は以下を追加
+vim.api.nvim_create_autocmd("CursorMoved", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+    end
+})
+
 local lsp_signature = {
     "ray-x/lsp_signature.nvim",
     opts = {
