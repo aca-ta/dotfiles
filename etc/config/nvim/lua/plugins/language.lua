@@ -73,6 +73,11 @@ return {
             ui = {
                 bullets = {}
             },
+            follow_url_func = function(url)
+                -- Use the default web browser to open the URL
+                -- macの場合
+                vim.fn.jobstart({ "open", url }, { detach = true })
+            end,
             workspaces = {
                 {
                     name = "buf-parent",
