@@ -31,7 +31,7 @@ return {
         tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'puremourning/vimspector' },
+    -- { 'puremourning/vimspector' },
     { 'janko/vim-test' },
     {
         'thinca/vim-quickrun',
@@ -112,6 +112,49 @@ return {
                 },
                 ft = { "markdown", "Avante" },
             },
+        },
+    },
+    {
+        {
+            "mfussenegger/nvim-dap",
+            config = function()
+                local dap = require("dap")
+
+                -- 例: Python のデバッガ設定
+                dap.adapters.python = {
+                    type = "executable",
+                    command = "python",
+                    args = { "-m", "debugpy.adapter" },
+                }
+
+                dap.configurations.python = {
+                    {
+                        type = "python",
+                        request = "launch",
+                        name = "Launch file",
+                        program = "${file}",
+                    },
+                }
+            end,
+        },
+        {
+            "rcarriga/nvim-dap-ui",
+            dependencies = { "mfussenegger/nvim-dap", 'nvim-neotest/nvim-nio', { "theHamsta/nvim-dap-virtual-text", opts = {} } },
+            config = function()
+                local dap, dapui = require("dap"), require("dapui")
+                dapui.setup()
+
+                -- DAP イベントに応じて UI を開閉
+                dap.listeners.after.event_initialized["dapui_config"] = function()
+                    dapui.open()
+                end
+                dap.listeners.before.event_terminated["dapui_config"] = function()
+                    dapui.close()
+                end
+                dap.listeners.before.event_exited["dapui_config"] = function()
+                    dapui.close()
+                end
+            end,
         },
     }
 }
