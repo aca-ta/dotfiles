@@ -13,7 +13,7 @@ local manson_nvim =
         local mason_lspconfig = require("mason-lspconfig")
         local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
-            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar", "rust_analyzer" },
+            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar", "rust_analyzer", "yamlls" },
             automatic_installation = true,
         })
 
