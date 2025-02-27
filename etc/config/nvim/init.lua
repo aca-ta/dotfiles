@@ -89,7 +89,11 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3'
+if vim.fn.executable(vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3') == 1 then
+    vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3'
+else
+    vim.g.python3_host_prog = 'python3'
+end
 
 
 -----------------------------------------
