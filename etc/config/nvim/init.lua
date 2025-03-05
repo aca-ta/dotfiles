@@ -154,6 +154,12 @@ if file then
     }
 end
 
+-- 自動で更新を反映
+vim.api.nvim_create_autocmd("FocusGained", {
+    pattern = "*",
+    command = "checktime"
+})
+
 vim.cmd [[
   syntax enable
   colorscheme tokyonight-night
