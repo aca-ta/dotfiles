@@ -54,12 +54,18 @@ return {
         opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
+            -- openai = {
+            --     model = "gpt-4o", -- $2.5/$10
+            --     -- model = "gpt-4o-mini", -- $0.15/$0.60
+            --     max_tokens = 4096,
+            -- },
             behaviour = {
                 auto_suggestions = true,
                 auto_set_highlight_group = true,
                 auto_set_keymaps = true,
                 auto_apply_diff_after_generation = true,
                 support_paste_from_clipboard = true,
+                cursor_planning_mode = true,
             },
             windows = {
                 position = "right",
