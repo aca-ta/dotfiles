@@ -73,6 +73,7 @@ if [ -f /usr/local/bin/vim ]; then
   alias vim='/usr/local/bin/vim'
 fi
 alias vi='nvim'
+alias vimdiff='nvim -d'
 alias view='vim -R'
 alias exp='explorer.exe'
 export TERM=xterm-256color
