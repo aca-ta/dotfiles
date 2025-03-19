@@ -59,6 +59,13 @@ return {
             --     -- model = "gpt-4o-mini", -- $0.15/$0.60
             --     max_tokens = 4096,
             -- },
+            copilot = {
+                endpoint = "https://api.githubcopilot.com",
+                model = "claude-3.7-sonnet", -- ここでClaudeモデルを指定
+                timeout = 30000,
+                temperature = 0,
+                max_tokens = 4096,
+            },
             behaviour = {
                 auto_suggestions = true,
                 auto_set_highlight_group = true,
