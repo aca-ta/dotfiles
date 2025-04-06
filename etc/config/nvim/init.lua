@@ -115,7 +115,7 @@ vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
 vim.cmd("command! Jqf %!jq '.'")
 
 -- Source matchit.vim
-vim.cmd("source $VIMRUNTIME/macros/matchit.vim")
+vim.g.loaded_matchit = 1
 
 -- format
 vim.api.nvim_create_user_command('Format', function()
