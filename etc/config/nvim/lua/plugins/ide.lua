@@ -148,6 +148,13 @@ return {
             "mfussenegger/nvim-dap",
             config = function()
                 local dap = require("dap")
+                vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+                vim.fn.sign_define('DapStopped', {
+                    text = '➡️', -- 現在位置を示す矢印のシンボル
+                    texthl = 'DapStopped', -- カスタムハイライトグループ名（下で定義）
+                    linehl = 'CursorLine', -- 行全体にハイライトを付ける場合
+                    numhl = ''
+                })
 
                 -- 例: Python のデバッガ設定
                 dap.adapters.python = {
@@ -161,7 +168,11 @@ return {
                         type = "python",
                         request = "launch",
                         name = "Launch file",
-                        program = "${file}",
+                        program = function()
+                            -- ユーザーにファイルパスを入力させるプロンプトを表示
+                            return vim.fn.input('Path to Python file: ', vim.fn.getcwd() .. '/', 'file')
+                        end,
+                        env = { PYTHONPATH = vim.fn.getcwd() },
                     },
                 }
             end,
@@ -177,13 +188,35 @@ return {
                 dap.listeners.after.event_initialized["dapui_config"] = function()
                     dapui.open()
                 end
-                dap.listeners.before.event_terminated["dapui_config"] = function()
-                    dapui.close()
-                end
-                dap.listeners.before.event_exited["dapui_config"] = function()
-                    dapui.close()
-                end
+                -- dap.listeners.before.event_terminated["dapui_config"] = function()
+                --     dapui.close()
+                -- end
+                -- dap.listeners.before.event_exited["dapui_config"] = function()
+                --     dapui.close()
+                -- end
+
+                vim.api.nvim_create_user_command("DapUIToggle", function() dapui.toggle() end, { desc = "Toggle DAP UI" })
             end,
+        },
+        {
+            "Weissle/persistent-breakpoints.nvim",
+            dependencies = { "mfussenegger/nvim-dap" },
+            config = function()
+                require('persistent-breakpoints').setup {
+                    save_dir = vim.fn.stdpath('data') .. '/nvim_checkpoints',
+                    -- when to load the breakpoints? "BufReadPost" is recommanded.
+                    load_breakpoints_event = nil,
+                    -- record the performance of different function. run :lua require('persistent-breakpoints.api').print_perf_data() to see the result.
+                    perf_record = false,
+                    -- perform callback when loading a persisted breakpoint
+                    --- @param opts DAPBreakpointOptions options used to create the breakpoint ({condition, logMessage, hitCondition})
+                    --- @param buf_id integer the buffer the breakpoint was set on
+                    --- @param line integer the line the breakpoint was set on
+                    on_load_breakpoint = nil,
+                    -- set this to true if the breakpoints are not loaded when you are using a session-like plugin.
+                    always_reload = true,
+                }
+            end
         },
         {
             "amitds1997/remote-nvim.nvim",
