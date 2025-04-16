@@ -188,12 +188,10 @@ return {
                 dap.listeners.after.event_initialized["dapui_config"] = function()
                     dapui.open()
                 end
-                -- dap.listeners.before.event_terminated["dapui_config"] = function()
-                --     dapui.close()
-                -- end
-                -- dap.listeners.before.event_exited["dapui_config"] = function()
-                --     dapui.close()
-                -- end
+                dap.listeners.before.event_terminated["dapui_config"] = function()
+                end
+                dap.listeners.before.event_exited["dapui_config"] = function()
+                end
 
                 vim.api.nvim_create_user_command("DapUIToggle", function() dapui.toggle() end, { desc = "Toggle DAP UI" })
             end,
@@ -216,6 +214,14 @@ return {
                     -- set this to true if the breakpoints are not loaded when you are using a session-like plugin.
                     always_reload = true,
                 }
+
+                -- Auto-load breakpoints on Neovim startup
+                vim.api.nvim_create_autocmd("VimEnter", {
+                    callback = function()
+                        vim.cmd("PBLoad")
+                    end,
+                    desc = "Auto-load persistent breakpoints on Neovim startup"
+                })
             end
         },
         {

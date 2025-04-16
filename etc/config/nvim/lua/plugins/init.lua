@@ -79,7 +79,7 @@ return {
                 { "<leader>g", "<cmd>Telescope live_grep<cr>",  desc = "Telescple live grep" },
                 { "<leader>t", "<cmd>ToggleTerm<cr>",           desc = "ToggleTerm" },
                 { "<F5>",      "<cmd>DapContinue<cr>",          desc = "Debug: Continue / Start" },
-                { "<F9>",      "<cmd>DapToggleBreakpoint<cr>",  desc = "Debug: Toggle Breakpoint" },
+                { "<F9>",      "<cmd>PBToggleBreakpoint<cr>",   desc = "Debug: Toggle Breakpoint" },
                 { "<F10>",     "<cmd>DapStepOver<cr>",          desc = "Debug: Step Over" },
                 { "<F11>",     "<cmd>DapStepInto<cr>",          desc = "Debug: Step Into" },
                 { "<S-F11>",   "<cmd>DapStepOut<cr>",           desc = "Debug: Step Out" },
