@@ -174,6 +174,22 @@ return {
                         end,
                         env = { PYTHONPATH = vim.fn.getcwd() },
                     },
+                    {
+                        type = "python",
+                        request = "launch",
+                        name = "Run command",
+                        module = function()
+                            -- モジュール名の入力を求める
+                            local module_name = vim.fn.input('Module name (e.g. pytest): ', 'pytest')
+                            return module_name
+                        end,
+                        args = function()
+                            -- コマンドの引数を求める
+                            return vim.split(vim.fn.input('Arguments: ', '', 'file'), " ")
+                        end,
+                        env = { PYTHONPATH = vim.fn.getcwd() },
+                        cwd = "${workspaceFolder}",
+                    },
                 }
             end,
         },
