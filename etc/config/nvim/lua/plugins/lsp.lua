@@ -1,8 +1,9 @@
 local manson_nvim =
 {
     "williamboman/mason.nvim", -- LSP Installer
+    commit = "4da89f3",
     dependencies = {
-        "williamboman/mason-lspconfig.nvim",
+        { "williamboman/mason-lspconfig.nvim", commit = "1a31f82" },
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
     },
@@ -42,7 +43,7 @@ local manson_nvim =
                     opts.filetypes = { "sh", "bash" }
                 elseif server_name == "ts_ls" then
                     local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server")
-                        :get_install_path() .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+                    -- :get_install_path() .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
                     opts.init_options = {
                         plugins = {
                             {
