@@ -1,9 +1,8 @@
 local manson_nvim =
 {
     "williamboman/mason.nvim", -- LSP Installer
-    commit = "4da89f3",
     dependencies = {
-        { "williamboman/mason-lspconfig.nvim", commit = "1a31f82" },
+        { "williamboman/mason-lspconfig.nvim" },
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
     },
@@ -14,59 +13,53 @@ local manson_nvim =
         local mason_lspconfig = require("mason-lspconfig")
         local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
-            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "volar", "rust_analyzer", "yamlls", "clangd" },
+            ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "rust_analyzer", "yamlls", "clangd" },
             automatic_installation = true,
         })
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                local opts = {
-                    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-                    on_attach = function(client, bufnr)
-                        -- キーマッピング
-                        vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
-                        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-                    end,
-                }
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                },
+            }
+        })
 
-                -- サーバー固有の設定
-                if server_name == "gopls" then
-                    opts.settings = {
-                        gopls = {
-                            analyses = {
-                                unusedparams = true,
-                            },
-                            staticcheck = true,
-                        },
-                    }
-                elseif server_name == "bashls" then
-                    opts.filetypes = { "sh", "bash" }
-                elseif server_name == "ts_ls" then
-                    local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server")
-                    -- :get_install_path() .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-                    opts.init_options = {
-                        plugins = {
-                            {
-                                name = "@vue/typescript-plugin",
-                                location = vue_typescript_plugin,
-                                languages = { "javascript", "typescript", "vue" },
-                            },
-                        },
-                    }
-                    opts.filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-                        "typescript.tsx", "vue" }
-                elseif server_name == "lua_ls" then
-                    opts.settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" }
-                            }
-                        }
-                    }
-                end
+        lspconfig.bashls.setup({
+            capabilities = capabilities,
+            filetypes = { "sh", "bash" }
+        })
 
-                lspconfig[server_name].setup(opts)
-            end
+        lspconfig.ts_ls.setup({
+            capabilities = capabilities,
+            filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" },
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = require("mason-registry").get_package("vue-language-server"),
+                        languages = { "javascript", "typescript", "vue" },
+                    },
+                },
+            },
+        })
+
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" }, -- vimをグローバル変数として認識
+                    },
+                },
+            },
         })
         vim.cmd("LspStart")
     end,
