@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "List(*)",
+      "Fetch(https://*)",
+      "Bash(ls:*)",
+      "Bash(rg:*)",
+      "Bash(fd:*)",
+      "Bash(npm run lint)",
+      "Bash(uv run ruff)",
+      "Bash(gh pr list)",
+      "Read(./**/*.py)",
+      "Read(./**/*.ts)",
+      "Read(./**/*.sh)"
+      ],
+    "deny": []
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude Code\" -message \"Waiting for your response...\" -sound default"
+          }
+        ]
+      }
+    ]
+  }
+}
