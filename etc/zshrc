@@ -25,6 +25,8 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 
+compdef _ls lsd
+
 # zplug
 source ~/.zplug/init.zsh
 
