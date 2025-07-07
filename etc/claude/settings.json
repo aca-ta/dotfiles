@@ -9,6 +9,8 @@
       "Bash(npm run lint)",
       "Bash(uv run ruff)",
       "Bash(gh pr list)",
+      "Bash(gh pr view)",
+      "Bash(gh pr diff)",
       "Read(./**/*.py)",
       "Read(./**/*.ts)",
       "Read(./**/*.sh)"
