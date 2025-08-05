@@ -6,7 +6,7 @@ vim.g["test#python#pytest#options"] = '-vv'
 vim.g["test#javascript#runner"] = 'jest'
 
 -- avante
-vim.opt.laststatus = 3
+-- vim.opt.laststatus = 3
 
 return {
     {
@@ -46,119 +46,119 @@ return {
             require('numb').setup()
         end,
     },
-    {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        lazy = false,
-        version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-        opts = {
-            provider = "copilot",
-            auto_suggestions_provider = "copilot",
-            -- openai = {
-            --     model = "gpt-4o", -- $2.5/$10
-            --     -- model = "gpt-4o-mini", -- $0.15/$0.60
-            --     max_tokens = 4096,
-            -- },
-            providers = {
-                copilot = {
-                    endpoint = "https://api.githubcopilot.com",
-                    model = "claude-3.7-sonnet", -- ここでClaudeモデルを指定
-                    timeout = 30000,
-                    allow_insecure = false,
-                    max_completion_tokens = 1000000,
-                    reasoning_effort = "high",
-                    extra_request_body = {
-                        temperature = 0,
-                        max_tokens = 4096,
-                    }
-                }
-            },
-            behaviour = {
-                -- auto_suggestions = true,
-                auto_set_highlight_group = true,
-                auto_set_keymaps = true,
-                auto_apply_diff_after_generation = true,
-                support_paste_from_clipboard = true,
-                cursor_planning_mode = true,
-            },
-            windows = {
-                position = "right",
-                width = 30,
-                sidebar_header = {
-                    align = "center",
-                    rounded = false,
-                },
-                ask = {
-                    start_insert = true,
-                    border = "rounded"
-                }
-            },
+    -- {
+    --     "yetone/avante.nvim",
+    --     event = "VeryLazy",
+    --     lazy = false,
+    --     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    --     opts = {
+    --         provider = "copilot",
+    --         auto_suggestions_provider = "copilot",
+    --         -- openai = {
+    --         --     model = "gpt-4o", -- $2.5/$10
+    --         --     -- model = "gpt-4o-mini", -- $0.15/$0.60
+    --         --     max_tokens = 4096,
+    --         -- },
+    --         providers = {
+    --             copilot = {
+    --                 endpoint = "https://api.githubcopilot.com",
+    --                 model = "claude-3.7-sonnet", -- ここでClaudeモデルを指定
+    --                 timeout = 30000,
+    --                 allow_insecure = false,
+    --                 max_completion_tokens = 1000000,
+    --                 reasoning_effort = "high",
+    --                 extra_request_body = {
+    --                     temperature = 0,
+    --                     max_tokens = 4096,
+    --                 }
+    --             }
+    --         },
+    --         behaviour = {
+    --             -- auto_suggestions = true,
+    --             auto_set_highlight_group = true,
+    --             auto_set_keymaps = true,
+    --             auto_apply_diff_after_generation = true,
+    --             support_paste_from_clipboard = true,
+    --             cursor_planning_mode = true,
+    --         },
+    --         windows = {
+    --             position = "right",
+    --             width = 30,
+    --             sidebar_header = {
+    --                 align = "center",
+    --                 rounded = false,
+    --             },
+    --             ask = {
+    --                 start_insert = true,
+    --                 border = "rounded"
+    --             }
+    --         },
 
-        },
-        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-        build = "make",
-        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-        dependencies = {
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-            "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-            "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-            "zbirenbaum/copilot.lua",        -- for providers='copilot'
-            {
-                -- support for image pasting
-                "HakonHarnes/img-clip.nvim",
-                event = "VeryLazy",
-                opts = {
-                    -- recommended settings
-                    default = {
-                        embed_image_as_base64 = false,
-                        prompt_for_file_name = false,
-                        drag_and_drop = {
-                            insert_mode = true,
-                        },
-                        -- required for Windows users
-                        use_absolute_path = true,
-                    },
-                },
-            },
-            {
-                -- Make sure to set this up properly if you have lazy=true
-                'MeanderingProgrammer/render-markdown.nvim',
-                opts = {
-                    file_types = { "markdown", "Avante" },
-                },
-                ft = { "markdown", "Avante" },
-            },
-        },
-    },
-    {
-        "coder/claudecode.nvim",
-        dependencies = { "folke/snacks.nvim" },
-        config = true,
-        keys = {
-            { "<leader>a",  nil,                              desc = "AI/Claude Code" },
-            { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
-            { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
-            { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
-            { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-            { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
-            { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                 desc = "Send to Claude" },
-            {
-                "<leader>as",
-                "<cmd>ClaudeCodeTreeAdd<cr>",
-                desc = "Add file",
-                ft = { "NvimTree", "neo-tree", "oil" },
-            },
-            -- Diff management
-            { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-            { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
-        },
-    },
+    --     },
+    --     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    --     build = "make",
+    --     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    --     dependencies = {
+    --         "stevearc/dressing.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "MunifTanjim/nui.nvim",
+    --         --- The below dependencies are optional,
+    --         "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+    --         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    --         "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+    --         "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+    --         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+    --         "zbirenbaum/copilot.lua",        -- for providers='copilot'
+    --         {
+    --             -- support for image pasting
+    --             "HakonHarnes/img-clip.nvim",
+    --             event = "VeryLazy",
+    --             opts = {
+    --                 -- recommended settings
+    --                 default = {
+    --                     embed_image_as_base64 = false,
+    --                     prompt_for_file_name = false,
+    --                     drag_and_drop = {
+    --                         insert_mode = true,
+    --                     },
+    --                     -- required for Windows users
+    --                     use_absolute_path = true,
+    --                 },
+    --             },
+    --         },
+    --         {
+    --             -- Make sure to set this up properly if you have lazy=true
+    --             'MeanderingProgrammer/render-markdown.nvim',
+    --             opts = {
+    --                 file_types = { "markdown", "Avante" },
+    --             },
+    --             ft = { "markdown", "Avante" },
+    --         },
+    --     },
+    -- },
+    -- {
+    --     "coder/claudecode.nvim",
+    --     dependencies = { "folke/snacks.nvim" },
+    --     config = true,
+    --     keys = {
+    --         { "<leader>a",  nil,                              desc = "AI/Claude Code" },
+    --         { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+    --         { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
+    --         { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
+    --         { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+    --         { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
+    --         { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                 desc = "Send to Claude" },
+    --         {
+    --             "<leader>as",
+    --             "<cmd>ClaudeCodeTreeAdd<cr>",
+    --             desc = "Add file",
+    --             ft = { "NvimTree", "neo-tree", "oil" },
+    --         },
+    --         -- Diff management
+    --         { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+    --         { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+    --     },
+    -- },
     {
         "ravitemer/mcphub.nvim",
         dependencies = {
