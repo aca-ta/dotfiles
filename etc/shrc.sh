@@ -40,7 +40,7 @@ if type dircolors >/dev/null; then
 fi
 
 ## tmux
-[ -z "$TMUX" ] && [ x$TERM_PROGRAM != x"vscode" ] && type "tmux" > /dev/null 2>&1 && {
+[ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ] && [ x$TERM_PROGRAM != x"vscode" ] && type "tmux" > /dev/null 2>&1 && {
   [ -n "$ATTACH_ONLY" ] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
