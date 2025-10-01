@@ -194,3 +194,9 @@ export PATH="$HOME/.moon/bin:$PATH"
 
 # rye
 . "$HOME/.rye/env"
+
+# STU
+export STU_ROOT_DIR=$HOME/.config/stu
+
+# OSC52
+# export USE_OSC52="true"

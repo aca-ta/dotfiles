@@ -174,8 +174,8 @@ if use_osc52 then
             end
         end,
     })
-    keymap("n", "<leader>y", '"xyy', { noremap = true, desc = "Yank line to x (clipboard)" })
-    keymap("v", "<leader>y", '"xy', { noremap = true, desc = "Yank selection to x (clipboard)" })
+    vim.keymap.set("n", "<leader>y", '"xyy', { noremap = true, desc = "Yank line to x (clipboard)" })
+    vim.keymap.set("v", "<leader>y", '"xy', { noremap = true, desc = "Yank selection to x (clipboard)" })
     vim.notify("Clipboard mode: OSC52 only on register 'x' yank", vim.log.levels.INFO)
 else
     vim.opt.clipboard = "unnamedplus"
