@@ -11,7 +11,6 @@ local manson_nvim =
         require "mason".setup {}
 
         local mason_lspconfig = require("mason-lspconfig")
-        local lspconfig = require("lspconfig")
         mason_lspconfig.setup({
             ensure_installed = { "lua_ls", "pyright", "terraformls", "ts_ls", "gopls", "bashls", "rust_analyzer", "yamlls", "clangd" },
             automatic_installation = true,
@@ -20,7 +19,7 @@ local manson_nvim =
         vim.keymap.set("n", "tj", vim.lsp.buf.definition, { buffer = bufnr })
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
-        lspconfig.gopls.setup({
+        vim.lsp.config('gopls', {
             capabilities = capabilities,
             settings = {
                 gopls = {
@@ -32,12 +31,12 @@ local manson_nvim =
             }
         })
 
-        lspconfig.bashls.setup({
+        vim.lsp.config('bashls', {
             capabilities = capabilities,
             filetypes = { "sh", "bash" }
         })
 
-        lspconfig.ts_ls.setup({
+        vim.lsp.config('ts_ls', {
             capabilities = capabilities,
             filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" },
             init_options = {
@@ -51,7 +50,7 @@ local manson_nvim =
             },
         })
 
-        lspconfig.lua_ls.setup({
+        vim.lsp.config('lua_ls', {
             capabilities = capabilities,
             settings = {
                 Lua = {
