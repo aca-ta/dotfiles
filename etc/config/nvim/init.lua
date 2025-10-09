@@ -161,22 +161,21 @@ vim.api.nvim_create_autocmd("FocusGained", {
 })
 
 -- リモートの上 neovim からクリップボードにコピーする
-local use_osc52 = (os.getenv("USE_OSC52") == "true")
+local use_osc52 = os.getenv("SSH_CONNECTION") ~= nil
 if use_osc52 then
     vim.opt.clipboard = ""
     vim.api.nvim_create_autocmd("TextYankPost", {
         callback = function()
-            local regname = vim.v.event.regname
-            if regname == "x" then
-                local lines = vim.fn.getreg("x", 1, true)
+            local event = vim.v.event
+
+            if event.operator == "y" and event.regname == "" then
+                local lines = vim.fn.getreg('"', 1, true)
                 local osc52_copy = require("vim.ui.clipboard.osc52").copy("+")
                 osc52_copy(lines)
             end
         end,
     })
-    vim.keymap.set("n", "<leader>y", '"xyy', { noremap = true, desc = "Yank line to x (clipboard)" })
-    vim.keymap.set("v", "<leader>y", '"xy', { noremap = true, desc = "Yank selection to x (clipboard)" })
-    vim.notify("Clipboard mode: OSC52 only on register 'x' yank", vim.log.levels.INFO)
+    vim.notify("Clipboard mode: OSC52 (SSH detected)", vim.log.levels.INFO)
 else
     vim.opt.clipboard = "unnamedplus"
     vim.notify("Clipboard mode: unnamedplus", vim.log.levels.INFO)
