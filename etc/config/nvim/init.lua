@@ -144,15 +144,6 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
 
 require("lazy_nvim").setup(require("plugins"))
 
--- copilotChat
-local file = io.open(vim.env.HOME .. '/.config/github-copilot/apps.json', "r")
-if file then
-    file:close()
-    require("CopilotChat").setup {
-        debug = true, -- Enable debugging
-        -- See Configuration section for rest
-    }
-end
 
 -- 自動で更新を反映
 vim.api.nvim_create_autocmd("FocusGained", {
