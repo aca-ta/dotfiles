@@ -37,4 +37,17 @@ return {
             require("ibl").setup()
         end
     },
+    {
+        'sunjon/shade.nvim',
+        config = function()
+            require('shade').setup({
+                overlay_opacity = 70,
+                opacity_step = 1,
+                keys = {
+                    toggle = '<Leader>s',
+                }
+            })
+        end
+
+    }
 }
