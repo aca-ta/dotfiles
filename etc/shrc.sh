@@ -10,19 +10,12 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
   eval $(/opt/homebrew/bin/brew shellenv)
-  if [ -e "/usr/local/opt/coreutils/libexec/gnubin" ]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    alias ls='gls'
-  fi
-  if [ -e "/usr/local/opt/gnu-tar/libexec/gnubin/tar" ]; then
-    export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+  if [ -e "/opt/homebrew/bin/gtar" ]; then
     alias tar='gtar'
   fi
-  if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]; then
-    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  if [ -e "/opt/homebrew/bin/gsed" ]; then
     alias sed='gsed'
   fi
-
 
 
 elif [[ "$(uname -r)" = *microsoft* ]]; then
