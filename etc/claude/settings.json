@@ -14,7 +14,7 @@
       "Read(./**/*.py)",
       "Read(./**/*.ts)",
       "Read(./**/*.sh)"
-      ],
+    ],
     "deny": []
   },
   "hooks": {
@@ -29,5 +29,6 @@
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": true
 }
