@@ -58,15 +58,16 @@ return {
         },
         config = function()
             require("which-key").add({
-                { "<leader>e", "<cmd>NvimTreeToggle<CR>",       desc = "nvim tree toggle" },
-                { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Telescple Find File" },
-                { "<leader>g", "<cmd>Telescope live_grep<cr>",  desc = "Telescple live grep" },
-                { "<leader>t", "<cmd>ToggleTerm<cr>",           desc = "ToggleTerm" },
-                { "<F5>",      "<cmd>DapContinue<cr>",          desc = "Debug: Continue / Start" },
-                { "<F9>",      "<cmd>PBToggleBreakpoint<cr>",   desc = "Debug: Toggle Breakpoint" },
-                { "<F10>",     "<cmd>DapStepOver<cr>",          desc = "Debug: Step Over" },
-                { "<F11>",     "<cmd>DapStepInto<cr>",          desc = "Debug: Step Into" },
-                { "<S-F11>",   "<cmd>DapStepOut<cr>",           desc = "Debug: Step Out" },
+                { "<leader>e",  "<cmd>NvimTreeToggle<CR>",                  desc = "nvim tree toggle" },
+                { "<leader>f",  "<cmd>Telescope find_files<cr>",            desc = "Telescple Find File" },
+                { "<leader>g",  "<cmd>Telescope live_grep<cr>",             desc = "Telescple live grep" },
+                { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>",      desc = "ToggleTerm" },
+                { "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "ToggleTerm" },
+                { "<F5>",       "<cmd>DapContinue<cr>",                     desc = "Debug: Continue / Start" },
+                { "<F9>",       "<cmd>PBToggleBreakpoint<cr>",              desc = "Debug: Toggle Breakpoint" },
+                { "<F10>",      "<cmd>DapStepOver<cr>",                     desc = "Debug: Step Over" },
+                { "<F11>",      "<cmd>DapStepInto<cr>",                     desc = "Debug: Step Into" },
+                { "<S-F11>",    "<cmd>DapStepOut<cr>",                      desc = "Debug: Step Out" },
             }, { prefix = "<leader>" })
         end
     },
