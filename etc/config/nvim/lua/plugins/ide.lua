@@ -58,6 +58,11 @@ return {
         dependencies = { "folke/snacks.nvim" },
         config = true,
         lazy = false,
+        opts = {
+            diff_opts = {
+                keep_terminal_focus = true, -- trueにすると、diff開いた後もClaudeウィンドウにフォーカスが戻る
+            },
+        },
         keys = {
             { "<leader>a",  nil,                              desc = "AI/Claude Code" },
             { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },

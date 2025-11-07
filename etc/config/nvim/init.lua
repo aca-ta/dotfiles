@@ -172,6 +172,23 @@ else
     vim.notify("Clipboard mode: unnamedplus", vim.log.levels.INFO)
 end
 
+-- Neovim設定に追加
+vim.o.autoread = true
+
+-- ファイル変更を検知したときに自動で読み込む
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    pattern = "*",
+    command = "if mode() != 'c' | checktime | endif",
+})
+
+-- ファイル変更の通知
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    pattern = "*",
+    callback = function()
+        vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.INFO)
+    end,
+})
+
 
 vim.cmd [[
   syntax enable
