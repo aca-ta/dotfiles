@@ -27,11 +27,20 @@ return {
                 direction = 'float',
                 size = function(term)
                     if term.direction == "horizontal" then
-                        return vim.o.lines * 0.4
+                        return vim.o.lines * 0.35
                     elseif term.direction == "vertical" then
-                        return vim.o.columns * 0.4
+                        return vim.o.columns * 0.35
                     end
                 end
+            })
+            vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+                callback = function()
+                    if vim.bo.buftype == "terminal" then
+                        vim.schedule(function()
+                            vim.cmd("startinsert")
+                        end)
+                    end
+                end,
             })
         end
     },
