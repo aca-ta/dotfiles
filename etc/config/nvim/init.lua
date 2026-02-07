@@ -194,3 +194,36 @@ vim.cmd [[
   syntax enable
   colorscheme tokyonight-night
 ]]
+
+-- 非フォーカスウィンドウの背景・前景を暗くする
+local function dim_color(color, factor)
+    local r = math.floor(bit.rshift(color, 16) * factor)
+    local g = math.floor(bit.rshift(bit.band(color, 0x00ff00), 8) * factor)
+    local b = math.floor(bit.band(color, 0x0000ff) * factor)
+    return string.format("#%02x%02x%02x", r, g, b)
+end
+local function update_dimmed_hl()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    vim.api.nvim_set_hl(0, "NormalDimmed", {
+        bg = dim_color(normal.bg or 0, 0.8),
+        fg = dim_color(normal.fg or 0xffffff, 0.6),
+    })
+end
+local dim_group = vim.api.nvim_create_augroup("win_dim", { clear = true })
+update_dimmed_hl()
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = dim_group,
+    callback = update_dimmed_hl,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+    group = dim_group,
+    callback = function()
+        vim.wo.winhighlight = "Normal:NormalDimmed"
+    end,
+})
+vim.api.nvim_create_autocmd("WinEnter", {
+    group = dim_group,
+    callback = function()
+        vim.wo.winhighlight = ""
+    end,
+})

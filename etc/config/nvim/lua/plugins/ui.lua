@@ -37,11 +37,4 @@ return {
             require("ibl").setup()
         end
     },
-    {
-        "tadaa/vimade",
-        opts = {
-            recipe = { "default", { animate = true } },
-            fadelevel = 0.8,
-        }
-    }
 }
