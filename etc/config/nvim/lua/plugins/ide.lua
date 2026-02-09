@@ -216,7 +216,23 @@ return {
             "willothy/flatten.nvim",
             config = {
                 window = {
-                    open = "tab"
+                    open = function(files, argv, stdin_buf, guest_cwd)
+                        -- ターミナル以外のウィンドウを探す
+                        local target_win = nil
+                        for _, win in ipairs(vim.api.nvim_list_wins()) do
+                            local buf = vim.api.nvim_win_get_buf(win)
+                            if vim.bo[buf].buftype ~= "terminal" then
+                                target_win = win
+                                break
+                            end
+                        end
+                        if target_win then
+                            vim.api.nvim_set_current_win(target_win)
+                            vim.cmd("vsplit")
+                        else
+                            vim.cmd("vsplit")
+                        end
+                    end
                 }
             },
             -- or pass configuration with
