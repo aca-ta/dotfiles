@@ -1,6 +1,6 @@
 {
   "env": {
-    "DATABRICKS_WORKSPACE_PROFILE": "dbc-24f125d6-4420"
+    "DATABRICKS_WORKSPACE_PROFILE": "DEFAULT"
   },
   "permissions": {
     "allow": [
