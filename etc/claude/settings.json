@@ -1,4 +1,7 @@
 {
+  "env": {
+    "DATABRICKS_WORKSPACE_PROFILE": "dbc-24f125d6-4420"
+  },
   "permissions": {
     "allow": [
       "List(*)",
@@ -18,6 +21,26 @@
     "deny": []
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__databricks_sql__execute_sql",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"deny\", \"permissionDecisionReason\": \"execute_sql is NOT allowed. Use execute_sql_read_only instead.\"}}'"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__databricks_sql__poll_sql_result",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"allow\"}}'"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": "",
@@ -30,6 +53,9 @@
       }
     ]
   },
+  "enabledMcpjsonServers": [
+    "databricks_sql"
+  ],
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,

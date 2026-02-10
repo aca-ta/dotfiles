@@ -88,12 +88,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end
 })
 
--- カーソルが移動した際も更新する場合は以下を追加
-vim.api.nvim_create_autocmd("CursorMoved", {
-    callback = function()
-        vim.diagnostic.open_float(nil, { focus = false })
-    end
-})
 
 local lsp_signature = {
     "ray-x/lsp_signature.nvim",

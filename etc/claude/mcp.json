@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "databricks_sql": {
+      "type": "stdio",
+      "command": "sh",
+      "args": [
+        ".claude/mcp/databricks_sql.sh"
+      ]
+    }
+  }
+}
+
