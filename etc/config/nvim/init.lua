@@ -107,6 +107,16 @@ vim.api.nvim_set_keymap('n', '|', '<C-w>|', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '_', '<C-w>_', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '=', '<C-w>=', { noremap = true, silent = true })
 
+-- Window navigation mappings
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left pane' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to below pane' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to above pane' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right pane' })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move to left pane' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move to below pane' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move to above pane' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right pane' })
+
 -- Visual mode reselection mappings
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
