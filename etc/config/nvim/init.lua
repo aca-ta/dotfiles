@@ -116,6 +116,7 @@ vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move to left pane' }
 vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move to below pane' })
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move to above pane' })
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right pane' })
+vim.keymap.set('t', '<C-]>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Visual mode reselection mappings
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
