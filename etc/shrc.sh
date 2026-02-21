@@ -1,5 +1,7 @@
 [[ "$-" != *i* ]] && return
 
+[ -f "$HOME/.shrc_extra.sh" ] && source "$HOME/.shrc_extra.sh"
+
 # LANG
 export LANG=en_US.UTF-8
 

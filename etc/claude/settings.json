@@ -20,6 +20,9 @@
     ],
     "deny": []
   },
+  "enabledMcpjsonServers": [
+    "databricks_sql"
+  ],
   "hooks": {
     "PreToolUse": [
       {
@@ -53,9 +56,6 @@
       }
     ]
   },
-  "enabledMcpjsonServers": [
-    "databricks_sql"
-  ],
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
