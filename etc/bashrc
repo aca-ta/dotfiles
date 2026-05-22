@@ -10,3 +10,7 @@ PS1='\[\e[32m\][\t \W]\[\e[0m\]$(__git_ps1 " (%s)")\$ '
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+
+HISTFILESIZE=65535
+HISTSIZE=65535
+shopt -s histappend
