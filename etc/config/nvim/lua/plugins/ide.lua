@@ -92,6 +92,24 @@ return {
         },
     },
     {
+        "ishiooon/codex.nvim",
+        dependencies = { "folke/snacks.nvim" },
+        opts = {
+            status_indicator = { enabled = false },
+        },
+        keys = {
+            { "<leader>cc", "<cmd>Codex<cr>", desc = "Codex: Toggle" },
+            { "<leader>cf", "<cmd>CodexFocus<cr>", desc = "Codex: Focus" },
+            { "<leader>cs", "<cmd>CodexSend<cr>", mode = "v", desc = "Codex: 選択範囲を送信" },
+            {
+                "<leader>cs",
+                "<cmd>CodexTreeAdd<cr>",
+                desc = "Codex: ファイルを追加",
+                ft = { "neo-tree", "oil" },
+            },
+        },
+    },
+    {
         "ravitemer/mcphub.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
