@@ -51,6 +51,32 @@
           {
             "type": "command",
             "command": "terminal-notifier -title \"Claude Code\" -message \"Waiting for your response...\" -sound default"
+          },
+          {
+            "type": "command",
+            "command": "[ -n \"$TMUX\" ] && { tmux set-window-option -t \"$TMUX_PANE\" window-status-style 'bg=green,fg=black'; tmux set-window-option -t \"$TMUX_PANE\" window-status-current-style 'bg=green,fg=black'; } 2>/dev/null; true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \"$TMUX\" ] && { tmux set-window-option -t \"$TMUX_PANE\" window-status-style 'bg=yellow,fg=black'; tmux set-window-option -t \"$TMUX_PANE\" window-status-current-style 'bg=yellow,fg=black'; } 2>/dev/null; true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \"$TMUX\" ] && { tmux set-window-option -t \"$TMUX_PANE\" -u window-status-style; tmux set-window-option -t \"$TMUX_PANE\" -u window-status-current-style; } 2>/dev/null; true"
           }
         ]
       }
