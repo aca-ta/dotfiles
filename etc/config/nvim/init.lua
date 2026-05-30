@@ -118,6 +118,15 @@ vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move to above pane' 
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right pane' })
 vim.keymap.set('t', '<C-]>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Claude Code / Codex (snacks terminal) では <C-j> をそのまま送って改行に使う
+-- (上のウィンドウ移動用 <C-j> をバッファローカルで上書き。<C-k> 等で移動は可能)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'snacks_terminal',
+  callback = function(args)
+    vim.keymap.set('t', '<C-j>', '<C-j>', { buffer = args.buf, desc = 'Send newline to Claude/Codex' })
+  end,
+})
+
 -- Visual mode reselection mappings
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
