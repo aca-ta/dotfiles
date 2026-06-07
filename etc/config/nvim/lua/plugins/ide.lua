@@ -94,12 +94,22 @@ return {
     {
         "ishiooon/codex.nvim",
         dependencies = { "folke/snacks.nvim" },
+        lazy = false,
         opts = {
+            auto_start = false,
             status_indicator = { enabled = false },
         },
         keys = {
             { "<leader>cc", "<cmd>Codex<cr>", desc = "Codex: Toggle" },
             { "<leader>cf", "<cmd>CodexFocus<cr>", desc = "Codex: Focus" },
+            {
+                "<leader>cr",
+                function()
+                    vim.cmd("silent! CodexClose")
+                    vim.cmd("CodexOpen resume")
+                end,
+                desc = "Codex: Resume",
+            },
             { "<leader>cs", "<cmd>CodexSend<cr>", mode = "v", desc = "Codex: 選択範囲を送信" },
             {
                 "<leader>cs",
