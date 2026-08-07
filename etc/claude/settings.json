@@ -69,7 +69,18 @@
       "mcp__claude_ai_Notion__fetch",
       "mcp__claude_ai_Notion__search"
     ],
-    "deny": []
+    "deny": [
+      "Bash(databricks api post *)",
+      "Bash(databricks api patch *)",
+      "Bash(databricks api put *)",
+      "Bash(databricks api delete *)",
+      "Bash(databricks jobs reset *)",
+      "Bash(databricks jobs update *)",
+      "Bash(databricks jobs create *)",
+      "Bash(databricks jobs delete *)",
+      "Bash(databricks bundle deploy *)",
+      "Bash(databricks pipelines delete *)"
+    ]
   },
   "model": "opus[1m]",
   "enabledMcpjsonServers": [
@@ -83,6 +94,15 @@
           {
             "type": "command",
             "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"deny\", \"permissionDecisionReason\": \"execute_sql is NOT allowed. Use execute_sql_read_only instead.\"}}'"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__databricks_sql__execute_sql_read_only",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"allow\"}}'"
           }
         ]
       },

@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Minimal Databricks SQL MCP server backed by Statement Execution API.
 
-This avoids the flaky `databricks auth token` and remote MCP paths. It reads the
-workspace OAuth access token from Databricks CLI's token cache and calls the
-Databricks REST API directly.
+This avoids the remote MCP paths and calls the Databricks REST API directly.
+
+The workspace OAuth access token comes from `databricks auth token`, which works
+regardless of where the CLI stores credentials. Reading ~/.databricks/token-cache.json
+directly is kept only as a fallback: under `auth_storage = secure` (the default on
+macOS) the CLI keeps tokens in the Keychain and never refreshes that file, so a
+cache-only implementation silently breaks once the last written token expires.
 """
 
 from __future__ import annotations
@@ -66,6 +70,8 @@ class DatabricksSqlClient:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
         self._warehouse_id: str | None = settings.warehouse_id
+        self._token: str | None = None
+        self._token_expiry: datetime | None = None
 
     def execute(self, statement: str, *, read_only: bool) -> dict[str, Any]:
         if read_only and not is_read_only_sql(statement):
@@ -148,22 +154,67 @@ class DatabricksSqlClient:
             ) from error
 
     def _access_token(self) -> str:
-        last_error: RuntimeError | None = None
-        for attempt in range(2):
+        if self._token and self._token_expiry and not self._is_near_expiry(self._token_expiry):
+            return self._token
+
+        errors: list[str] = []
+        for source in (self._cli_access_token, self._cached_access_token):
             try:
-                return self._cached_access_token()
+                token, expiry = source()
             except RuntimeError as error:
-                last_error = error
-                if attempt == 0:
-                    self._refresh_cli_auth()
-                    continue
-                raise
+                errors.append(str(error))
+                continue
+            self._token, self._token_expiry = token, expiry
+            return token
 
-        if last_error:
-            raise last_error
-        raise RuntimeError("unable to load Databricks access token")
+        raise RuntimeError(
+            "unable to load Databricks access token; run "
+            f"`databricks auth login --profile {self.settings.profile}` ({'; '.join(errors)})"
+        )
 
-    def _cached_access_token(self) -> str:
+    def _is_near_expiry(self, expires_at: datetime) -> bool:
+        return expires_at <= datetime.now(timezone.utc) + timedelta(
+            seconds=self.settings.token_min_ttl_seconds
+        )
+
+    def _cli_access_token(self) -> tuple[str, datetime | None]:
+        """Ask the CLI for a token. Works with both `secure` and `file` auth_storage."""
+        try:
+            completed = subprocess.run(
+                ["databricks", "auth", "token", "--profile", self.settings.profile],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=self.settings.auth_refresh_timeout_seconds,
+            )
+        except subprocess.CalledProcessError as error:
+            detail = (error.stderr or "").strip().splitlines()[-1:] or [str(error)]
+            raise RuntimeError(f"`databricks auth token` failed: {detail[0]}") from error
+        except (OSError, subprocess.TimeoutExpired) as error:
+            raise RuntimeError(f"`databricks auth token` failed: {error}") from error
+
+        # The CLI may print unrelated notices before the JSON payload.
+        start = completed.stdout.find("{")
+        if start == -1:
+            raise RuntimeError("`databricks auth token` returned no JSON")
+        try:
+            payload = json.loads(completed.stdout[start:])
+        except json.JSONDecodeError as error:
+            raise RuntimeError("`databricks auth token` returned invalid JSON") from error
+
+        token = payload.get("access_token")
+        if not token:
+            raise RuntimeError("`databricks auth token` returned no access_token")
+
+        expiry = payload.get("expiry")
+        expires_at = parse_databricks_time(expiry) if expiry else None
+        if expires_at and self._is_near_expiry(expires_at):
+            raise RuntimeError("`databricks auth token` returned an expired token")
+
+        return str(token), expires_at
+
+    def _cached_access_token(self) -> tuple[str, datetime | None]:
+        """Fallback for environments without the CLI. Stale under `auth_storage = secure`."""
         try:
             cache = json.loads(self.settings.token_cache.read_text())
         except OSError as error:
@@ -181,32 +232,11 @@ class DatabricksSqlClient:
             raise RuntimeError(f"Databricks token cache entry for {host} has no access_token")
 
         expiry = entry.get("expiry")
-        if expiry:
-            expires_at = parse_databricks_time(expiry)
-            min_expiry = datetime.now(timezone.utc) + timedelta(
-                seconds=self.settings.token_min_ttl_seconds
-            )
-            if expires_at <= min_expiry:
-                raise RuntimeError(
-                    "Databricks cached access token is expired or near expiry"
-                )
+        expires_at = parse_databricks_time(expiry) if expiry else None
+        if expires_at and self._is_near_expiry(expires_at):
+            raise RuntimeError("Databricks cached access token is expired or near expiry")
 
-        return str(token)
-
-    def _refresh_cli_auth(self) -> None:
-        try:
-            subprocess.run(
-                ["databricks", "current-user", "me", "--profile", self.settings.profile],
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=self.settings.auth_refresh_timeout_seconds,
-            )
-        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
-            raise RuntimeError(
-                "unable to refresh Databricks cached access token; "
-                f"run `databricks auth login --profile {self.settings.profile}`"
-            ) from error
+        return str(token), expires_at
 
     def _format_statement_response(self, response: dict[str, Any]) -> dict[str, Any]:
         statement_id = response.get("statement_id")
