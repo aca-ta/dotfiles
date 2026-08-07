@@ -20,6 +20,7 @@
     ],
     "deny": []
   },
+  "model": "opus[1m]",
   "enabledMcpjsonServers": [
     "databricks_sql"
   ],
@@ -85,7 +86,9 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
   },
+  "tui": "fullscreen",
   "editorMode": "normal"
 }

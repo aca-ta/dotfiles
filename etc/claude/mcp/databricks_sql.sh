@@ -1,14 +1,18 @@
-#!/bin/bash -euC
-set -eu
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Only login if the cached token is invalid/expired
-if ! databricks auth token -p "$DATABRICKS_WORKSPACE_PROFILE" > /dev/null 2>&1; then
-  databricks auth login -p "$DATABRICKS_WORKSPACE_PROFILE"
-fi
-DATABRICKS_WORKSPACE_HOSTNAME=`databricks auth describe -p $DATABRICKS_WORKSPACE_PROFILE -o json | jq -r '.details.host'`
-export DATABRICKS_PERSONAL_ACCESS_TOKEN=`databricks auth token -p $DATABRICKS_WORKSPACE_PROFILE -o json | jq -r '.access_token'`
+script_path="${BASH_SOURCE[0]}"
+while [[ -L "$script_path" ]]; do
+  script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+  link_target="$(readlink "$script_path")"
+  if [[ "$link_target" == /* ]]; then
+    script_path="$link_target"
+  else
+    script_path="$script_dir/$link_target"
+  fi
+done
 
-# Launch MCP remote for Databricks SQL
-npx mcp-remote \
-    $DATABRICKS_WORKSPACE_HOSTNAME/api/2.0/mcp/sql \
-    --header 'Authorization: Bearer ${DATABRICKS_PERSONAL_ACCESS_TOKEN}'
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+python_bin="${DATABRICKS_SQL_MCP_PYTHON:-/opt/homebrew/bin/python3}"
+
+exec "$python_bin" "$script_dir/databricks_sql_rest_mcp.py" "$@"
