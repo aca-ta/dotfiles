@@ -17,7 +17,6 @@
       "Read(./**/*.py)",
       "Read(./**/*.ts)",
       "Read(./**/*.sh)",
-
       "Bash(aws s3 ls *)",
       "Bash(aws --profile prd s3 ls *)",
       "Bash(aws s3api get-bucket-policy *)",
@@ -26,13 +25,11 @@
       "Bash(aws sts get-caller-identity *)",
       "Bash(aws iam get-role *)",
       "Bash(aws configure list-profiles *)",
-
       "Bash(terraform validate)",
       "Bash(terraform validate *)",
       "Bash(terraform init)",
       "Bash(terraform init *)",
       "Bash(terraform providers *)",
-
       "Bash(databricks api get *)",
       "Bash(databricks account groups get *)",
       "Bash(databricks account groups list *)",
@@ -48,16 +45,13 @@
       "Bash(databricks pipelines get *)",
       "Bash(databricks pipelines list-pipelines *)",
       "Bash(databricks warehouses list *)",
-
       "Bash(npm run check)",
       "Bash(npm run typecheck)",
-
       "Bash(npx tsc)",
       "Bash(npx tsc *)",
       "Bash(npx eslint)",
       "Bash(npx eslint *)",
       "Bash(uv run ruff *)",
-
       "mcp__databricks_sql__execute_sql_read_only",
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__read_console_messages",
@@ -166,5 +160,6 @@
     "vercel@claude-plugins-official": true
   },
   "tui": "fullscreen",
+  "theme": "dark",
   "editorMode": "normal"
 }

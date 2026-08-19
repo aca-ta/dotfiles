@@ -50,6 +50,10 @@ install_vim_plugins(){
          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
+install_nvim_plugins() {
+  nvim --headless "+Lazy! sync" "+UpdateRemotePlugins" +qa
+}
+
 install_zplug() {
     case "${OSTYPE}" in
         darwin*)
@@ -75,5 +79,6 @@ fetch_git_completions
 fetch_dircolors
 install_template
 install_vim_plugins
+install_nvim_plugins
 install_zplug
 install_coc_nvim

@@ -60,7 +60,6 @@ local manson_nvim =
                 },
             },
         })
-        vim.cmd("LspStart")
     end,
 }
 
