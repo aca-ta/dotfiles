@@ -92,6 +92,9 @@ local lsp_signature = {
     "ray-x/lsp_signature.nvim",
     opts = {
         bind = true,
+        -- Avoid requesting signatureHelp on CursorHold in buffers whose LSP
+        -- server does not support it. Insert-mode signature help still works.
+        cursorhold_update = false,
         handler_opts = {
             border = "rounded"
         }
