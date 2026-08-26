@@ -224,7 +224,7 @@ return {
                 -- Auto-load breakpoints on Neovim startup
                 vim.api.nvim_create_autocmd("VimEnter", {
                     callback = function()
-                        vim.cmd("PBLoad")
+                        require("persistent-breakpoints.api").load_breakpoints()
                     end,
                     desc = "Auto-load persistent breakpoints on Neovim startup"
                 })
