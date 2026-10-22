@@ -88,9 +88,10 @@ if [ -e ~/.pyenv ]; then
 fi
 
 # nvm
-if [ -e ~/.nvm/nvm.sh ]; then
-    source $HOME/.nvm/nvm.sh
-    nvm use node
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh" --no-use
+    nvm use --silent default
 fi
 #yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

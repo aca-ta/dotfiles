@@ -161,5 +161,6 @@
   },
   "tui": "fullscreen",
   "theme": "dark",
-  "editorMode": "normal"
+  "editorMode": "normal",
+  "agentPushNotifEnabled": true
 }
