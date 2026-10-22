@@ -35,7 +35,12 @@ if type dircolors >/dev/null; then
 fi
 
 ## tmux
-[ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ] && [ x$TERM_PROGRAM != x"vscode" ] && type "tmux" > /dev/null 2>&1 && {
+# 端末から人が開いた対話シェルでだけ自動起動する
+# - [ -t 0 ] && [ -t 1 ]: GUI アプリが環境取得用に起動する、PTY なしのシェルを除外
+# - ZSH_TMUX_AUTOSTART=false: Codex などが tmux を自動起動しないよう指定している
+[ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ] && [ x$TERM_PROGRAM != x"vscode" ] \
+  && [ -t 0 ] && [ -t 1 ] && [ x$ZSH_TMUX_AUTOSTART != x"false" ] \
+  && type "tmux" > /dev/null 2>&1 && {
   [ -n "$ATTACH_ONLY" ] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
