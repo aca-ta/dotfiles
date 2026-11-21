@@ -1,10 +1,16 @@
 #!/bin/bash
 
+DOTFILES_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=tool-versions.sh
+source "$DOTFILES_ROOT/tool-versions.sh"
+# shellcheck source=scripts/setup-runtimes.sh
+source "$DOTFILES_ROOT/scripts/setup-runtimes.sh"
+
 install_tools(){
   case "${OSTYPE}" in
     darwin*)
       brew update
-      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq lsd nvm macvim neovim jesseduffield/lazygit/lazygit gh ghq terminal-notifier
+      brew install zsh tmux reattach-to-user-namespace tig bat fzf coreutils gnu-tar fd lsd rg cmake jq macvim neovim jesseduffield/lazygit/lazygit gh ghq terminal-notifier
       ;;
     *)
 
@@ -13,18 +19,15 @@ install_tools(){
 
       sudo apt update && sudo apt upgrade
       sudo apt install build-essential make
-      brew install zsh tmux tig bat fzf fd lsd gnu-tar gnu-sed
+      brew install zsh tmux tig bat fzf fd lsd gnu-tar gnu-sed ripgrep
 
       # enable zsh
       command -v zsh | sudo tee -a /etc/shells
       sudo chsh -s "$(command -v zsh)" "${USER}"
 
       # enable fzf key-bindings
-      $(brew --prefix)/opt/fzf/install
+      "$(brew --prefix)/opt/fzf/install"
 
-      # install rg
-      curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
-      sudo dpkg -i ripgrep_11.0.2_amd64.deb
   esac
 }
 
@@ -32,55 +35,11 @@ install_terraform(){
     brew install tfenv terraform-ls
 }
 
-install_python(){
-  brew install pyenv pyenv-virtualenv
-  # setup build environment
-  # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-  case "${OSTYPE}" in
-    darwin*)
-      brew install openssl readline sqlite3 xz zlib tcl-tk
-      ;;
-    *)
-      sudo apt update; sudo apt install -y make build-essential libssl-dev zlib1g-dev \
-      libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-      libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-      sudo apt install python3-dev
-  esac
-
-  eval "$(pyenv virtualenv-init -)"
-
-  ENV_NAME=nvim
-  VERSION=3.13.1
-  if pyenv virtualenvs --bare | grep -q "^$ENV_NAME\$"; then
-    pyenv uninstall -f "$ENV_NAME"
-  fi
-  pyenv install $VERSION
-
-  pyenv virtualenv $VERSION nvim
-  pyenv global nvim
-  pyenv rehash
-  pip install pynvim neovim
-}
-
-install_go(){
-  if [[ ! -e ${HOME}/.goenv ]]; then
-    git clone https://github.com/syndbg/goenv.git ~/.goenv
-  fi
-  ~/.goenv/bin/goenv install 1.12.7
-  ~/.goenv/bin/goenv global 1.12.7
-  ~/.goenv/bin/goenv rehash
-}
-
-install_nodejs() {
-  if [[ ! -e ${HOME}/.nvm ]]; then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-  fi
-  nvm install --lts
-  nvm use --lts
-}
-
 setup_clang() {
-  sudo apt install clang-format
+  case "${OSTYPE}" in
+    darwin*) brew install clang-format ;;
+    *) sudo apt install clang-format ;;
+  esac
 }
 
 setup_tmux(){
@@ -91,7 +50,7 @@ setup_tmux(){
 
 
 setup_git(){
-  if [[ $(type git) ]]; then
+  if command -v git >/dev/null 2>&1; then
     git config --global core.excludesfile ~/.gitignore_global
     git config --global core.editor 'vim -c "set fenc=utf-8"'
   fi
@@ -122,14 +81,50 @@ install_tfenv() {
   brew install tfenv
 }
 
-install_tools
-install_python
-install_terraform
-install_go
-install_nodejs
-setup_clang
-setup_tmux
-setup_git
-install_shellcheck
-install_tfenv
-setup_java
+usage() {
+  cat <<'HELP'
+Usage: ./setup.sh [all|runtimes|python|go|node|--help]
+  all       Full setup (default; also changes shell, editor and Git settings)
+  runtimes  Update CA bundle and Python, Go, Node.js only
+  python    Update CA bundle and the Python/Neovim environment
+  go        Update CA bundle and Go
+  node      Update CA bundle and nvm/Node.js
+HELP
+}
+
+main() {
+  if (( $# > 1 )); then
+    usage >&2
+    return 2
+  fi
+  case "${1:-all}" in
+    -h|--help) usage; return ;;
+    all|runtimes|python|go|node) ;;
+    *) usage >&2; return 2 ;;
+  esac
+  prepare_runtime_setup
+  case "${1:-all}" in
+    python) install_python ;;
+    go) install_go ;;
+    node) install_nodejs ;;
+    runtimes) install_python; install_go; install_nodejs ;;
+    all)
+      install_tools
+      install_python
+      install_terraform
+      install_go
+      install_nodejs
+      setup_clang
+      setup_tmux
+      setup_git
+      install_shellcheck
+      install_tfenv
+      setup_java
+      ;;
+  esac
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  set -eo pipefail
+  main "$@"
+fi

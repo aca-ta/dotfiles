@@ -4,7 +4,7 @@
       "type": "stdio",
       "command": "bash",
       "args": [
-        ".claude/mcp/databricks_sql.sh"
+        "${HOME}/.claude/mcp/databricks_sql.sh"
       ],
       "timeout": 300
     }

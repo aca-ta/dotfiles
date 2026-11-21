@@ -89,10 +89,15 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-if vim.fn.executable(vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3') == 1 then
-    vim.g.python3_host_prog = vim.env.HOME .. '/.pyenv/versions/nvim/bin/python3'
-else
-    vim.g.python3_host_prog = 'python3'
+local pyenv_root = vim.env.PYENV_ROOT or (vim.env.HOME .. '/.pyenv')
+vim.g.python3_host_prog = 'python3'
+-- Keep the legacy provider available before the first versioned setup succeeds.
+for _, env_name in ipairs({ 'nvim-current', 'nvim' }) do
+    local python = pyenv_root .. '/versions/' .. env_name .. '/bin/python3'
+    if vim.fn.executable(python) == 1 then
+        vim.g.python3_host_prog = python
+        break
+    end
 end
 
 

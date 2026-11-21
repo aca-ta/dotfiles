@@ -35,7 +35,14 @@ if type dircolors >/dev/null; then
 fi
 
 ## tmux
-[ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ] && [ x$TERM_PROGRAM != x"vscode" ] && type "tmux" > /dev/null 2>&1 && {
+# 端末から人が開いた対話シェルでだけ自動起動する
+# - [ -t 0 ] && [ -t 1 ]: GUI アプリが環境取得用に起動する、PTY なしのシェルを除外
+# - ZSH_TMUX_AUTOSTART=false: Codex などが tmux を自動起動しないよう指定している
+# - TERM_PROGRAM=claude-desktop: Claude Desktop がセッションごとに開く端末
+[ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ] && [ x$TERM_PROGRAM != x"vscode" ] \
+  && [ x$TERM_PROGRAM != x"claude-desktop" ] \
+  && [ -t 0 ] && [ -t 1 ] && [ x$ZSH_TMUX_AUTOSTART != x"false" ] \
+  && type "tmux" > /dev/null 2>&1 && {
   [ -n "$ATTACH_ONLY" ] && {
     tmux a 2>/dev/null || {
       cd && exec tmux
@@ -88,9 +95,10 @@ if [ -e ~/.pyenv ]; then
 fi
 
 # nvm
-if [ -e ~/.nvm/nvm.sh ]; then
-    source $HOME/.nvm/nvm.sh
-    nvm use node
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh" --no-use
+    nvm use --silent default
 fi
 #yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
